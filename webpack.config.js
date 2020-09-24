@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: './src/server.tsx',
@@ -20,9 +19,6 @@ module.exports = {
       'process.env': {
         NODE_ENV: `'production'`,
       },
-    }),
-    new HtmlWebpackPlugin({
-      favicon: './public/favicon.ico',
     }),
   ],
   module: {

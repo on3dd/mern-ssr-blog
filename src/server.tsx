@@ -1,17 +1,23 @@
 import React from 'react';
 import express from 'express';
 import { renderToString } from 'react-dom/server';
+import { ServerStyleSheet } from 'styled-components';
+
 import App from './client/App';
 import Html from './client/Html';
-import { ServerStyleSheet } from 'styled-components';
 
 const port = 3000;
 const server = express();
 
-server.get('/', (req, res) => {
+const generateHtmlProps = (Node: React.ComponentType) => {
   const sheet = new ServerStyleSheet();
-  const body = renderToString(sheet.collectStyles(<App />));
+  const body = renderToString(sheet.collectStyles(<Node />));
   const styles = sheet.getStyleTags();
+  return { body, styles };
+}
+
+server.get('/', (req, res) => {
+  const { body, styles } = generateHtmlProps(App);
   const title = 'Test Server Side Rendering App';
 
   res.send(
@@ -23,5 +29,7 @@ server.get('/', (req, res) => {
   );
 });
 
-server.listen(port);
-console.log(`Serving at http://localhost:${port}`);
+server.listen(port, () => {
+  console.log(`Serving at http://localhost:${port}`)
+});
+
