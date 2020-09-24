@@ -2,8 +2,11 @@ const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const path = require('path');
 
+const isDevelopment = process.env.NODE_ENV !== 'production';
+
 module.exports = {
-  entry: './src/server.tsx',
+  entry: ['react-hot-loader/patch', './src/server.tsx'],
+  mode: isDevelopment ? 'development' : 'production',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'server.js',
@@ -20,14 +23,20 @@ module.exports = {
         NODE_ENV: `'production'`,
       },
     }),
-  ],
+    isDevelopment && new webpack.HotModuleReplacementPlugin(),
+  ].filter(Boolean),
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loader: 'babel-loader'
       },
     ],
+  },
+  devServer: {
+    // contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 3000,
   },
 };

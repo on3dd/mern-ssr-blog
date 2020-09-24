@@ -11,6 +11,20 @@ import Html from './client/Html';
 const port = 3000;
 const server = express();
 
+const webpack = require('webpack');
+const webpackConfig = require('../webpack.config');
+const compiler = webpack(webpackConfig);
+
+server.use(require("webpack-dev-middleware")(compiler, {
+  noInfo: true, publicPath: webpackConfig.output.publicPath
+}));
+
+server.use(require("webpack-hot-middleware")(compiler, {
+  log: false,
+  path: `/__webpack_hmr`,
+  heartbeat: 10 * 1000,
+}));
+
 const generateHtmlContent = (Component: React.ComponentType, routerProps?: StaticRouterProps) => {
   const sheet = new ServerStyleSheet();
   const body = renderToString((

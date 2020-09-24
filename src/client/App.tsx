@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch, NavLink } from 'react-router-dom';
+import { hot } from 'react-hot-loader/root';
 import styled from 'styled-components';
 
 const AppContainer = styled.div`
@@ -26,4 +27,4 @@ const App = () => {
   )
 };
 
-export default App;
+export default hot(App);
