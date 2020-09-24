@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Switch, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const AppContainer = styled.div`
@@ -12,6 +13,17 @@ const AppContainer = styled.div`
   background: linear-gradient(20deg, rgb(219, 112, 147), #daa357);
 `;
 
-const App = () => <AppContainer>💅</AppContainer>;
+const App = () => {
+  return (
+    <AppContainer>
+      💅
+      <Switch>
+        <Route exact path="/">home</Route>
+        <Route path="/niggers">niggers</Route>
+        <Route>ауе жизнь ворам</Route>
+      </Switch>
+    </AppContainer>
+  )
+};
 
 export default App;
