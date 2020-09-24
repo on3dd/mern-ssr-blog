@@ -1,8 +1,5 @@
-/**
- * Html
- * This Html.js file acts as a template that we insert all our generated
- * application strings into before sending it to the client.
- */
+import { faviconUrl } from '../utils/constants';
+
 type HtmlProps = {
   body: string;
   styles: string;
@@ -14,6 +11,7 @@ const Html = ({ body, styles, title }: HtmlProps) => `
   <html>
     <head>
       <title>${title}</title>
+      <link rel="icon" href="${faviconUrl}" />
       ${styles}
     </head>
     <body style="margin:0">
