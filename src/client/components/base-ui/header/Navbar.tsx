@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { colors } from '../../../../utils/constants';
 
@@ -29,12 +29,17 @@ const NavbarLi = styled.li`
   }
 `;
 
-const NavbarLink = styled(Link)`
+const NavbarLink = styled(NavLink)`
   color: inherit;
   font-size: 1.2rem;
   text-decoration: none;
   text-transform: lowercase;
   transition: all .1s ease-out;
+
+  &.is-active {
+    color: ${colors.black};
+    text-decoration: underline;
+  }
 `;
 
 const routes = [
@@ -49,7 +54,7 @@ const Navbar: React.FC = () => (
     <NavbarUl className="navbar__links">
       {routes.map(el => (
         <NavbarLi key={el.name} className="navbar__links">
-          <NavbarLink to={el.to}>{el.name}</NavbarLink>
+          <NavbarLink to={el.to} exact activeClassName='is-active'>{el.name}</NavbarLink>
         </NavbarLi>
       ))}
     </NavbarUl>

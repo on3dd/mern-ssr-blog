@@ -11,7 +11,7 @@ const PostsDiv = styled.div`
 
 const Posts = () => {
   return (
-    <PostsDiv className="posts container">
+    <PostsDiv className="posts">
       <PostsList />
     </PostsDiv >
   )

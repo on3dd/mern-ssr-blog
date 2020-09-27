@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Icon from '../base-ui/Icon';
-import { colors } from '../../../utils/constants';
+import { colors, placeholderUrl } from '../../../utils/constants';
 
 const PostArticle = styled.article`
   display: flex;
@@ -67,10 +67,20 @@ const PostIcon = styled(Icon)`
   margin-left: .25rem;
 `
 
-const PostImage = styled.div`
+const PostPlaceholder = styled.div`
+  position: relative;
   width: 152px;
-  background-color: red;
+  background-color: #aaaaaa;
   border-radius: 5px;
+  overflow: hidden;
+`
+
+const PostImg = styled.img`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
 `
 
 const PostsItem: React.FC = () => (
@@ -90,9 +100,9 @@ const PostsItem: React.FC = () => (
       </PostFooter>
     </PostBody>
 
-    <PostImage className="post__image">
-
-    </PostImage>
+    <PostPlaceholder className="post__placeholder">
+      <PostImg className="post__image" src={placeholderUrl} />
+    </PostPlaceholder>
   </PostArticle>
 )
 

@@ -2,6 +2,10 @@ import { createGlobalStyle } from 'styled-components';
 import { colors } from '../utils/constants';
 
 const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     margin: 0;
     color: ${colors.grayDarken};
@@ -34,9 +38,11 @@ const GlobalStyle = createGlobalStyle`
   .screen {
     display: flex;
     justify-content: center;
+    flex: 1;
   }
 
   .container {
+    position: relative;
     padding: 0 1rem;
     width: 100%;
     max-width: 1032px !important;
