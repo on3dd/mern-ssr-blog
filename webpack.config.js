@@ -30,12 +30,18 @@ module.exports = {
       {
         test: /\.ts(x)?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        options: {
+          // This is a feature of `babel-loader` for webpack (not Babel itself).
+          // It enables caching results in ./node_modules/.cache/babel-loader/
+          // directory for faster rebuilds.
+          cacheDirectory: true,
+          plugins: ['react-hot-loader/babel'],
+        },
       },
     ],
   },
   devServer: {
-    // contentBase: path.join(__dirname, 'dist'),
     compress: true,
     port: 3000,
   },
