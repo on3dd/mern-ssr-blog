@@ -7,7 +7,7 @@ import Header from './components/base-ui/header';
 import Home from './screens/Home';
 import GlobalStyles from '../utils/globalStyles';
 
-const AppContainer = styled.div`
+const AppContainer = styled.main`
   flex: 1;
   padding: 0 40px;
 `;

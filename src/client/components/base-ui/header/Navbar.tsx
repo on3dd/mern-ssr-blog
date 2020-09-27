@@ -18,10 +18,10 @@ const NavbarUl = styled.ul`
 const NavbarLi = styled.li`
   display: block;
   list-style: none;
-  color: ${colors.lightGray};
+  color: ${colors.grayLighten};
 
   &:hover {
-    color: ${colors.gray};
+    color: ${colors.grayDarken};
   }
 
   &:not(:first-child) {

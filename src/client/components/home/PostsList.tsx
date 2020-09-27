@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import PostsItem from './PostsItem';
 
 const Ul = styled.ul`
+  margin: 0;
+  padding: 0;
 `
 
 const PostList: React.FC = () => (

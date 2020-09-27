@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 import Navbar from './Navbar';
 
-const HeaderDiv = styled.div`
+const HeaderDiv = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,7 +30,7 @@ const Right = styled(ContentDiv)``;
 
 const Brand = styled(Link)`
   padding: 1rem 0;
-  font-size: 2rem !important;4
+  font-size: 2rem !important;
   font-family: inherit;
   font-weight: bolder;
   text-decoration: none;

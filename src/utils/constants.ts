@@ -3,6 +3,7 @@ export const faviconUrl =
 
 export const colors = {
   black: 'rgba(0,0,0,.9)',
-  gray: 'rgba(0,0,0,.84)',
-  lightGray: 'rgba(0,0,0,.54)',
+  grayDarken: 'rgba(0,0,0,.84)',
+  gray: 'rgba(0,0,0,.68)',
+  grayLighten: 'rgba(0,0,0,.54)',
 };
