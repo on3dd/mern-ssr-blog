@@ -1,8 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+
 import styled from 'styled-components';
 
-import { COLORS } from '@utils/constants';
+import { COLORS, BREAKPOINTS } from '@utils/constants';
 
 const NavbarDiv = styled.nav`
   display: block;
@@ -11,9 +12,14 @@ const NavbarDiv = styled.nav`
 
 const NavbarUl = styled.ul`
   display: flex;
+  flex-direction: column;
   width: inherit;
   margin: 0;
   padding: 0;
+
+  @media (min-width: ${BREAKPOINTS.tablet}) {
+    flex-direction: row;
+  }
 `
 
 const NavbarLi = styled.li`
@@ -25,8 +31,10 @@ const NavbarLi = styled.li`
     color: ${COLORS.grayDarken};
   }
 
-  &:not(:first-child) {
-    margin-left: 1.5rem;
+  @media (min-width: ${BREAKPOINTS.tablet}) {
+    &:not(:first-child) {
+      margin-left: 1.5rem;
+    }
   }
 `;
 

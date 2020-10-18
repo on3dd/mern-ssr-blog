@@ -6,7 +6,7 @@ import PostsList from '@components/home/PostsList';
 const PostsDiv = styled.div`
   display: flex;
   justify-content: center;
-  padding: 1rem !important;
+  /* padding: 1rem !important; */
 `
 
 const Posts: React.FC = () => {
