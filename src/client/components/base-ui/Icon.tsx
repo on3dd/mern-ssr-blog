@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconContext } from 'react-icons';
 import styled from 'styled-components';
-import { colors } from '../../../utils/constants';
+import { COLORS } from '@utils/constants';
 
 type IconProps = {
   icon: string;
@@ -25,10 +25,10 @@ const IconButton = styled("button") <{ size?: string }> `
   height: ${props => props.size || '1rem'};
   width: ${props => props.size || '1rem'};
 
-  color: ${colors.gray};
+  color: ${COLORS.gray};
 
   &:hover {
-    color: ${colors.grayDarken};
+    color: ${COLORS.grayDarken};
     background-color: rgba(0,0,0,.1);
   }
 `;

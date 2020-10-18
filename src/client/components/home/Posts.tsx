@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import PostsList from './PostsList';
+import PostsList from '@components/home/PostsList';
 
 const PostsDiv = styled.div`
   display: flex;

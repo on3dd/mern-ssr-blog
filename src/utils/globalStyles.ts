@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { colors } from '../utils/constants';
+import { COLORS } from '@utils/constants';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
-    color: ${colors.grayDarken};
+    color: ${COLORS.grayDarken};
     font-size: 16px;
     font-family: Open-Sans, Helvetica, Sans-Serif;
   }
@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1, h2, h3 {
-    color: ${colors.black};
+    color: ${COLORS.black};
   }
 
   a {

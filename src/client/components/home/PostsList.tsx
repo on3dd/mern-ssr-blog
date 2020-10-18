@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import PostsItem from './PostsItem';
+import PostsItem from '@components/home/PostsItem';
 
 const Ul = styled.ul`
   margin: 0;

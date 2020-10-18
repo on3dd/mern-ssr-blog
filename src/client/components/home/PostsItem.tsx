@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Icon from '../base-ui/Icon';
-import { colors, placeholderUrl } from '../../../utils/constants';
+import Icon from '@components/base-ui/Icon';
+import { COLORS, PLACEHOLDER_URL } from '@utils/constants';
 
 const PostArticle = styled.article`
   display: flex;
@@ -29,7 +29,7 @@ const PostDescription = styled.p`
   margin: 0;
   margin-top: 0.5rem;
   padding: 0;
-  color: ${colors.grayLighten};
+  color: ${COLORS.grayLighten};
   font-size: 1rem;
   line-height: 1.25rem;
 `
@@ -60,7 +60,7 @@ const PostCategory = styled.span`
 
 const PostDate = styled.span`
   display: block;
-  color: ${colors.grayLighten};
+  color: ${COLORS.grayLighten};
 `;
 
 const PostIcon = styled(Icon)`
@@ -101,7 +101,7 @@ const PostsItem: React.FC = () => (
     </PostBody>
 
     <PostPlaceholder className="post__placeholder">
-      <PostImg className="post__image" src={placeholderUrl} />
+      <PostImg className="post__image" src={PLACEHOLDER_URL} />
     </PostPlaceholder>
   </PostArticle>
 )

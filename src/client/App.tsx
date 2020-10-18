@@ -3,12 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 import { hot } from 'react-hot-loader/root';
 import styled from 'styled-components';
 
-import GlobalStyles from '../utils/globalStyles';
+import GlobalStyles from '@utils/globalStyles';
 
-import Header from './components/base-ui/header';
-import Default from './layouts/Default';
-import Home from './screens/Home';
-import NotFound from './screens/NotFound';
+import Header from '@components/base-ui/header';
+import Default from '@layouts/Default';
+import Home from '@screens/Home';
+import NotFound from '@screens/NotFound';
 
 const AppContainer = styled.main`
   display: flex;

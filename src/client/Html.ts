@@ -1,4 +1,4 @@
-import { faviconUrl } from '../utils/constants';
+import { FAVICON_URL } from '@utils/constants';
 
 type HtmlProps = {
   body: string;
@@ -11,7 +11,7 @@ const Html = ({ body, styles, title }: HtmlProps) => `
   <html>
     <head>
       <title>${title}</title>
-      <link rel="icon" href="${faviconUrl}" />
+      <link rel="icon" href="${FAVICON_URL}" />
       ${styles}
     </head>
     <body style="margin:0">

@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { colors } from '../../../../utils/constants';
+
+import { COLORS } from '@utils/constants';
 
 const NavbarDiv = styled.nav`
   display: block;
@@ -18,10 +19,10 @@ const NavbarUl = styled.ul`
 const NavbarLi = styled.li`
   display: block;
   list-style: none;
-  color: ${colors.grayLighten};
+  color: ${COLORS.grayLighten};
 
   &:hover {
-    color: ${colors.grayDarken};
+    color: ${COLORS.grayDarken};
   }
 
   &:not(:first-child) {
@@ -37,7 +38,7 @@ const NavbarLink = styled(NavLink)`
   transition: all .1s ease-out;
 
   &.is-active {
-    color: ${colors.black};
+    color: ${COLORS.black};
     text-decoration: underline;
   }
 `;

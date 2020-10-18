@@ -21,6 +21,7 @@
       "@client/*": ["./src/client/*"],
       "@components/*": ["./src/client/components/*"],
       "@layouts/*": ["./src/client/layouts/*"],
+      "@screens/*": ["./src/client/screens/*"],
       "@typesdir/*": ["./src/client/types/*"],
       "@styles/*": ["./src/client/styles/*"],
       "@actions/*": ["./src/client/actions/*"],
