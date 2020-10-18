@@ -1,57 +1,22 @@
-import React from 'react';
-import express from 'express';
-import { StaticRouterProps } from 'react-router';
-import { StaticRouter } from 'react-router-dom';
-import { renderToString } from 'react-dom/server';
-import { ServerStyleSheet } from 'styled-components';
+import server from '@server/server';
+import logger from '@server/shared/Logger';
+import ErrorHandler from '@server/shared/ErrorHandler';
 
-import App from '@client/App.tsx';
-import Html from '@client/Html.ts';
+const port = Number(process.env.PORT || 3000);
 
-const port = 3000;
-const server = express();
-
-const webpack = require('webpack');
-const webpackConfig = require('@root/webpack.config');
-const compiler = webpack(webpackConfig);
-
-server.use(require("webpack-dev-middleware")(compiler, {
-  noInfo: true, publicPath: webpackConfig.output.publicPath
-}));
-
-server.use(require("webpack-hot-middleware")(compiler, {
-  log: false,
-  path: `/__webpack_hmr`,
-  heartbeat: 10 * 1000,
-}));
-
-const generateHtmlContent = (Component: React.ComponentType, routerProps?: StaticRouterProps) => {
-  const sheet = new ServerStyleSheet();
-  const body = renderToString((
-    <StaticRouter {...routerProps}>
-      {sheet.collectStyles(<Component />)}
-    </StaticRouter>
-  ));
-  const styles = sheet.getStyleTags();
-
-  return { body, styles };
-}
-
-server.get('/*', (req, res) => {
-  const context = {};
-  const { body, styles } = generateHtmlContent(App, { location: req.url, context });
-  const title = 'Test Server Side Rendering App';
-
-  res.send(
-    Html({
-      body,
-      styles,
-      title,
-    }),
-  );
-});
+const errorHandler = new ErrorHandler();
 
 server.listen(port, () => {
-  console.log(`Serving at http://localhost:${port}`)
+  logger.info(`Serving at http://localhost:${port}`)
 });
 
+(process as NodeJS.EventEmitter)
+  .on('unhandledRejection', (reason: string, _: Promise<any>) => {
+    throw reason;
+  });
+
+(process as NodeJS.EventEmitter)
+  .on('uncaughtException', (error: Error) => {
+    errorHandler.handleError(error);
+    if (!errorHandler.isTrustedError(error)) process.exit(1);
+  });

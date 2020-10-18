@@ -11,6 +11,9 @@
 # production
 /dist
 
+# logs
+/logs
+
 # misc
 .DS_Store
 .env.local
