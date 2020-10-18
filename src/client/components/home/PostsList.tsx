@@ -8,14 +8,16 @@ const Ul = styled.ul`
   padding: 0;
 `
 
-const PostList: React.FC = () => (
-  <Ul className="post-list">
-    <PostsItem />
-    <PostsItem />
-    <PostsItem />
-    <PostsItem />
-    <PostsItem />
-  </Ul>
-)
+const PostList: React.FC = () => {
+  const arr: JSX.Element[] = new Array<Number>(5)
+    .fill(0, 0)
+    .map((_, idx) => <PostsItem key={idx} />);
+
+  return (
+    <Ul className="post-list">
+      {arr}
+    </Ul>
+  );
+}
 
 export default PostList;

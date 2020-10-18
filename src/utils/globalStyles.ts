@@ -1,16 +1,36 @@
 import { createGlobalStyle } from 'styled-components';
-import { COLORS } from '@utils/constants';
+import { COLORS, BREAKPOINTS } from '@utils/constants';
 
 const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
 
+  html {
+    font-size: 14px;
+
+    @media (min-width: ${BREAKPOINTS.tablet}) {
+      font-size: 15px;
+    }
+
+    @media (min-width: ${BREAKPOINTS.laptop}) {
+      font-size: 16px;
+    }
+  }
+
   body {
     margin: 0;
+    padding: 0 1rem;
     color: ${COLORS.grayDarken};
-    font-size: 16px;
     font-family: Open-Sans, Helvetica, Sans-Serif;
+
+    @media (min-width: ${BREAKPOINTS.tablet}) {
+      padding: 0 2rem;
+    }
+
+    @media (min-width: ${BREAKPOINTS.laptop}) {
+      padding: 0 2.5rem;
+    }
   }
 
   #app {
@@ -19,7 +39,6 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     min-height: 100vh;
     width: 100%;
-    max-width: 100vw;
     overflow: hidden;
   }
 
@@ -58,7 +77,7 @@ const GlobalStyle = createGlobalStyle`
     overflow: hidden;
     text-overflow: ellipsis;
 
-    display: -webkit-box;
+    display: -webkit-box !important;
    -webkit-line-clamp: 2; /* number of lines to show */
    -webkit-box-orient: vertical;
   }

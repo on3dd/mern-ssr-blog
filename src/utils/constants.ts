@@ -10,3 +10,11 @@ export const COLORS = {
   gray: 'rgba(0,0,0,.68)',
   grayLighten: 'rgba(0,0,0,.54)',
 };
+
+// For using with min-width media query
+export const BREAKPOINTS = {
+  mobile: '320px',
+  tablet: '768px',
+  laptop: '1366px',
+  desktop: '1680px',
+};

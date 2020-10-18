@@ -1,25 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { COLORS, BREAKPOINTS, PLACEHOLDER_URL } from '@utils/constants';
+
 import Icon from '@components/base-ui/Icon';
-import { COLORS, PLACEHOLDER_URL } from '@utils/constants';
 
 const PostArticle = styled.article`
-  display: flex;
-  max-width: 680px;
+  display: grid;
+  grid-template-columns: minmax(125px, 1fr) minmax(auto, 152px);
+  grid-gap: 1.5rem;
   margin-bottom: 3rem;
 `
 
 const PostBody = styled.div`
-  flex: 1;
-  min-width: 0;
-  margin-right: 1.5rem;
+  /* margin-right: 1.5rem; */
 `;
 
 const PostHeader = styled.h2`
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 600;
+
+  @media (min-width: ${BREAKPOINTS.tablet}) {
+    font-size: 1.25rem;
+  }
+
+  @media (min-width: ${BREAKPOINTS.laptop}) {
+    font-size: 1.5rem;
+  }
+
 `
 
 const PostDescription = styled.p`
@@ -43,6 +52,7 @@ const PostFooter = styled.div`
 
 const PostFooterDiv = styled.div`
   display: inline-flex;
+  font-size: 0.9rem;
 
   &:first-of-type {
     flex-direction: column;
@@ -56,6 +66,7 @@ const PostFooterDiv = styled.div`
 
 const PostCategory = styled.span`
   display: block;
+  margin-bottom: 0.2rem;
 `;
 
 const PostDate = styled.span`
@@ -69,7 +80,6 @@ const PostIcon = styled(Icon)`
 
 const PostPlaceholder = styled.div`
   position: relative;
-  width: 152px;
   background-color: #aaaaaa;
   border-radius: 5px;
   overflow: hidden;
@@ -86,11 +96,11 @@ const PostImg = styled.img`
 const PostsItem: React.FC = () => (
   <PostArticle className="post">
     <PostBody className="post__body">
-      <PostHeader className="post__header">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil, natus.</PostHeader>
+      <PostHeader className="post__header truncate-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil, natus.</PostHeader>
       <PostDescription className="post__description truncate-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at corporis fugiat exercitationem sit unde, consequatur eum. Expedita sequi deleniti provident quasi at dicta eius! Unde error minus possimus. Porro!</PostDescription>
       <PostFooter className="post__footer">
         <PostFooterDiv className="post__footer__div">
-          <PostCategory className="post__category">Lorem, ipsum dolor.</PostCategory>
+          <PostCategory className="post__category">Programming</PostCategory>
           <PostDate className="post__date">Jul 25</PostDate>
         </PostFooterDiv>
         <PostFooterDiv className="post__footer__div">

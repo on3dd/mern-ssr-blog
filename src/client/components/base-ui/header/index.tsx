@@ -8,7 +8,6 @@ const HeaderDiv = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 40px;
   font-family: 'Courier New', Courier, monospace;
 `;
 

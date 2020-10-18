@@ -9,7 +9,7 @@ const PostsDiv = styled.div`
   padding: 1rem !important;
 `
 
-const Posts = () => {
+const Posts: React.FC = () => {
   return (
     <PostsDiv className="posts">
       <PostsList />
