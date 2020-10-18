@@ -5,7 +5,7 @@ const path = require('path');
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-  entry: ['react-hot-loader/patch', './src/server.tsx'],
+  entry: ['react-hot-loader/patch', './src/server/index.tsx'],
   mode: isDevelopment ? 'development' : 'production',
   output: {
     path: path.resolve(__dirname, 'dist'),

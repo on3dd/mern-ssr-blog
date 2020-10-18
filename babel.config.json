@@ -4,5 +4,25 @@
     "@babel/preset-react",
     "@babel/preset-typescript"
   ],
-  "plugins": ["react-hot-loader/babel"]
+  "plugins": [
+    ["react-hot-loader/babel", {}],
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@root": ["./"],
+          "@src": ["./src"],
+          "@client": ["./src/client"],
+          "@components": "./src/client/components",
+          "@layouts": "./src/client/layouts",
+          "@typesdir": "./src/client/types",
+          "@actions": "./src/client/actions",
+          "@reducers": "./src/client/reducers",
+          "@store": "./src/client/store",
+          "@server": "./src/server",
+          "@utils": "./src/utils"
+        }
+      }
+    ]
+  ]
 }

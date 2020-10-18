@@ -5,14 +5,14 @@ import { StaticRouter } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
 import { ServerStyleSheet } from 'styled-components';
 
-import App from './client/App';
-import Html from './client/Html';
+import App from '@client/App.tsx';
+import Html from '@client/Html.ts';
 
 const port = 3000;
 const server = express();
 
 const webpack = require('webpack');
-const webpackConfig = require('../webpack.config');
+const webpackConfig = require('@root/webpack.config');
 const compiler = webpack(webpackConfig);
 
 server.use(require("webpack-dev-middleware")(compiler, {

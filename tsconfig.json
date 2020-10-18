@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -17,9 +13,22 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react",
-    // "noEmit": true
+    // "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@root/*": ["./*"],
+      "@src/*": ["./src/*"],
+      "@client/*": ["./src/client/*"],
+      "@components/*": ["./src/client/components/*"],
+      "@layouts/*": ["./src/client/layouts/*"],
+      "@typesdir/*": ["./src/client/types/*"],
+      "@styles/*": ["./src/client/styles/*"],
+      "@actions/*": ["./src/client/actions/*"],
+      "@reducers/*": ["./src/client/reducers/*"],
+      "@store/*": ["./src/client/store/*"],
+      "@server/*": ["./src/server/*"],
+      "@utils/*": ["./src/utils/*"]
+    }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
