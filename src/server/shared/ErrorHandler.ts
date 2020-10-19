@@ -1,7 +1,6 @@
 import { logger } from '@server/shared/Logger';
 import AppError from '@server/shared/AppError';
 
-// TODO: make ErrorHandler singleton
 export default class ErrorHandler {
   private static instance: ErrorHandler;
 

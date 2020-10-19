@@ -7,6 +7,7 @@ import express, {
 } from 'express';
 import 'express-async-errors';
 
+import { Server as HttpServer } from 'http';
 import { StatusCodes } from 'http-status-codes';
 
 import router from '@server/routes';
@@ -20,20 +21,21 @@ const compiler = webpack(webpackConfig);
 const errorHandler = ErrorHandler.getInstance();
 
 export default class Server {
-  private server: Express;
+  private app: Express;
+  private server!: HttpServer;
   private static instance: Server;
 
   private constructor() {
-    this.server = express();
+    this.app = express();
 
-    this.server.use(
+    this.app.use(
       require('webpack-dev-middleware')(compiler, {
         noInfo: true,
         publicPath: webpackConfig.output.publicPath,
       }),
     );
 
-    this.server.use(
+    this.app.use(
       require('webpack-hot-middleware')(compiler, {
         log: false,
         path: `/__webpack_hmr`,
@@ -41,32 +43,38 @@ export default class Server {
       }),
     );
 
-    this.server.use(
+    this.app.use(
       urlencoded({
         extended: true,
       }),
     );
 
-    this.server.use(httpLogger);
+    this.app.use(httpLogger);
 
-    this.server.use('/', router);
+    this.app.use('/', router);
 
     // Print API errors
-    this.server.use(
-      (err: Error, req: Request, res: Response, _: NextFunction) => {
-        errorHandler.handleError(err);
+    this.app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
+      errorHandler.handleError(err);
 
-        return res.status(StatusCodes.BAD_REQUEST).json({
-          data: null,
-          error: err.message,
-        });
-      },
-    );
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        data: null,
+        error: err.message,
+      });
+    });
   }
 
   public start(port: number) {
     return new Promise<void>((resolve) => {
-      this.server.listen(port, () => {
+      this.server = this.app.listen(port, () => {
+        resolve();
+      });
+    });
+  }
+
+  public close() {
+    return new Promise<void>((resolve) => {
+      this.server.close(() => {
         resolve();
       });
     });
