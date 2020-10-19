@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
+import StoreProvider from '@utils/storeProvider';
 import App from '@client/App.tsx';
 
 ReactDOM.hydrate(
   <BrowserRouter>
-    <App />
+    <StoreProvider>
+      <App />
+    </StoreProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );

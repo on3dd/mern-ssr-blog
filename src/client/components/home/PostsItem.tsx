@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import { COLORS, BREAKPOINTS, PLACEHOLDER_URL } from '@utils/constants';
 
+import Post from '@typesdir/Post';
+
 import Icon from '@components/base-ui/Icon';
 
 const PostArticle = styled.article`
@@ -93,27 +95,33 @@ const PostImg = styled.img`
   width: 200px;
 `
 
-const PostsItem: React.FC = () => (
-  <PostArticle className="post">
-    <PostBody className="post__body">
-      <PostHeader className="post__header truncate-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil, natus.</PostHeader>
-      <PostDescription className="post__description truncate-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at corporis fugiat exercitationem sit unde, consequatur eum. Expedita sequi deleniti provident quasi at dicta eius! Unde error minus possimus. Porro!</PostDescription>
-      <PostFooter className="post__footer">
-        <PostFooterDiv className="post__footer__div">
-          <PostCategory className="post__category">Programming</PostCategory>
-          <PostDate className="post__date">Jul 25</PostDate>
-        </PostFooterDiv>
-        <PostFooterDiv className="post__footer__div">
-          <PostIcon icon="RegBookmark" size="2rem" title="Add to bookmarks" />
-          <PostIcon icon="EllipsisH" size="2rem" title="Other actions" />
-        </PostFooterDiv>
-      </PostFooter>
-    </PostBody>
+type PostsItemProps = {
+  data: Post;
+}
 
-    <PostPlaceholder className="post__placeholder">
-      <PostImg className="post__image" src={PLACEHOLDER_URL} />
-    </PostPlaceholder>
-  </PostArticle>
-)
+const PostsItem: React.FC<PostsItemProps> = (
+  { data }: PostsItemProps
+) => (
+    <PostArticle className="post">
+      <PostBody className="post__body">
+        <PostHeader className="post__header truncate-2">{data.title}</PostHeader>
+        <PostDescription className="post__description truncate-2">{data.description}</PostDescription>
+        <PostFooter className="post__footer">
+          <PostFooterDiv className="post__footer__div">
+            <PostCategory className="post__category">Programming</PostCategory>
+            <PostDate className="post__date">{data.date}</PostDate>
+          </PostFooterDiv>
+          <PostFooterDiv className="post__footer__div">
+            <PostIcon icon="RegBookmark" size="2rem" title="Add to bookmarks" />
+            <PostIcon icon="EllipsisH" size="2rem" title="Other actions" />
+          </PostFooterDiv>
+        </PostFooter>
+      </PostBody>
+
+      <PostPlaceholder className="post__placeholder">
+        <PostImg className="post__image" src={PLACEHOLDER_URL} />
+      </PostPlaceholder>
+    </PostArticle>
+  )
 
 export default PostsItem;

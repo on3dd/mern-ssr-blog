@@ -17,9 +17,9 @@
       "module-resolver",
       {
         "alias": {
-          "@root": ["./"],
-          "@src": ["./src"],
-          "@client": ["./src/client"],
+          "@root": "./",
+          "@src": "./src",
+          "@client": "./src/client",
           "@components": "./src/client/components",
           "@layouts": "./src/client/layouts",
           "@screens": "./src/client/screens",

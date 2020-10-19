@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Post from '@typesdir/Post';
+
 import PostsItem from '@components/home/PostsItem';
 
 const Ul = styled.ul`
@@ -8,14 +10,16 @@ const Ul = styled.ul`
   padding: 0;
 `
 
-const PostList: React.FC = () => {
-  const arr: JSX.Element[] = new Array<Number>(10)
-    .fill(0, 0)
-    .map((_, idx) => <PostsItem key={idx} />);
+type PostListProps = {
+  data: Post[];
+}
 
+const PostList: React.FC<PostListProps> = (
+  { data }: PostListProps
+) => {
   return (
     <Ul className="post-list">
-      {arr}
+      {data.map((el) => <PostsItem data={el} key={el.id} />)}
     </Ul>
   );
 }
