@@ -1,7 +1,12 @@
-import logger from '@server/shared/Logger';
+import { logger } from '@server/shared/Logger';
 import AppError from '@server/shared/AppError';
 
+// TODO: make ErrorHandler singleton
 export default class ErrorHandler {
+  private static instance: ErrorHandler;
+
+  private constructor() {}
+
   public handleError(err: Error) {
     logger.error(err.message);
   }
@@ -12,5 +17,13 @@ export default class ErrorHandler {
     }
 
     return false;
+  }
+
+  public static getInstance(): ErrorHandler {
+    if (!ErrorHandler.instance) {
+      ErrorHandler.instance = new ErrorHandler();
+    }
+
+    return ErrorHandler.instance;
   }
 }

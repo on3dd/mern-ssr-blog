@@ -10,7 +10,7 @@ import { createLogger, format, transports } from 'winston';
 const { File, Console } = transports;
 
 // Init Logger
-const logger = createLogger({
+export const logger = createLogger({
   level: 'info',
 });
 
@@ -56,4 +56,8 @@ if (process.env.NODE_ENV === 'production') {
   logger.add(consoleTransport);
 }
 
-export default logger;
+export const stream = {
+  write: (message: string) => {
+    logger.info(message);
+  },
+};

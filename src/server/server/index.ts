@@ -10,11 +10,14 @@ import 'express-async-errors';
 import { StatusCodes } from 'http-status-codes';
 
 import router from '@server/routes';
-import logger from '@server/shared/Logger';
+import ErrorHandler from '@server/shared/ErrorHandler';
+import httpLogger from '@server/middlewares/httpLogger';
 
 const webpack = require('webpack');
 const webpackConfig = require('@root/webpack.config');
 const compiler = webpack(webpackConfig);
+
+const errorHandler = ErrorHandler.getInstance();
 
 export default class Server {
   private server: Express;
@@ -44,14 +47,17 @@ export default class Server {
       }),
     );
 
+    this.server.use(httpLogger);
+
     this.server.use('/', router);
 
     // Print API errors
     this.server.use(
       (err: Error, req: Request, res: Response, _: NextFunction) => {
-        logger.error(err.message, err);
+        errorHandler.handleError(err);
 
         return res.status(StatusCodes.BAD_REQUEST).json({
+          data: null,
           error: err.message,
         });
       },

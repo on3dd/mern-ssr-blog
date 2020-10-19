@@ -10,6 +10,7 @@ export default class Db {
       useCreateIndex: true,
       useUnifiedTopology: true,
       useNewUrlParser: true,
+      useFindAndModify: false,
     });
   }
 

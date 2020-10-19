@@ -1,8 +1,6 @@
 import { Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
-// TODO: replace logger with ErrorHandler
-import logger from '@server/shared/Logger';
 import Post from '@server/models/post';
 
 const router = Router();
@@ -25,25 +23,14 @@ router.post('/', async (req, res) => {
     date: req.body.date,
   });
 
-  try {
-    await post.save();
+  await post.save();
 
-    res //
-      .status(StatusCodes.OK)
-      .send({
-        data: post,
-        error: null,
-      });
-  } catch (err) {
-    logger.warn(err.message);
-
-    res //
-      .status(StatusCodes.BAD_REQUEST)
-      .send({
-        data: null,
-        error: err.message,
-      });
-  }
+  res //
+    .status(StatusCodes.OK)
+    .send({
+      data: post,
+      error: null,
+    });
 });
 
 export default router;
