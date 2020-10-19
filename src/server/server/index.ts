@@ -1,24 +1,15 @@
-import express, {
-  Request,
-  Response,
-  NextFunction,
-  Express,
-  urlencoded,
-} from 'express';
+import express, { Express, urlencoded } from 'express';
 import 'express-async-errors';
 
 import { Server as HttpServer } from 'http';
-import { StatusCodes } from 'http-status-codes';
 
 import router from '@server/routes';
-import ErrorHandler from '@server/shared/ErrorHandler';
 import httpLogger from '@server/middlewares/httpLogger';
+import errorHandler from '@server/middlewares/errorLogger';
 
 const webpack = require('webpack');
 const webpackConfig = require('@root/webpack.config');
 const compiler = webpack(webpackConfig);
-
-const errorHandler = ErrorHandler.getInstance();
 
 export default class Server {
   private app: Express;
@@ -53,15 +44,8 @@ export default class Server {
 
     this.app.use('/', router);
 
-    // Print API errors
-    this.app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
-      errorHandler.handleError(err);
-
-      return res.status(StatusCodes.BAD_REQUEST).json({
-        data: null,
-        error: err.message,
-      });
-    });
+    // Must be placed after the router
+    this.app.use(errorHandler);
   }
 
   public start(port: number) {
