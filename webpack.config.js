@@ -1,12 +1,21 @@
+const path = require('path');
+const dotenv = require('dotenv').config({
+  path: path.join(__dirname, '/.env'),
+});
+
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
-const path = require('path');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-  entry: ['react-hot-loader/patch', './src/server/index.tsx'],
+  entry: ['react-hot-loader/patch', './src/server/index.ts'],
   mode: isDevelopment ? 'development' : 'production',
+  target: 'node',
+  node: {
+    __dirname: false,
+    __filename: false,
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'server.js',
@@ -15,13 +24,10 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
-  target: 'node',
   externals: nodeExternals(),
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: `'production'`,
-      },
+      'process.env': dotenv.parsed,
     }),
     isDevelopment && new webpack.HotModuleReplacementPlugin(),
   ].filter(Boolean),
