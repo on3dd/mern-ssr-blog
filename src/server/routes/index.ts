@@ -1,4 +1,7 @@
 import { Router } from 'express';
+import { createStore } from 'redux';
+
+import rootReducer from '@reducers/index';
 
 import ApiRouter from '@server/routes/api';
 import generateHtmlContent from '@server/utils/generateHtmlContent';
@@ -12,6 +15,11 @@ router.use('/api', ApiRouter);
 
 router.get('/*', (req, res) => {
   const context = {};
+
+  const store = createStore(rootReducer);
+  const finalState = store.getState();
+
+  console.log('finalState', finalState);
 
   const { body, styles } = generateHtmlContent(App, {
     location: req.url,
