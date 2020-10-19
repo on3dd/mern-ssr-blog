@@ -6,7 +6,7 @@ import AppError from '@server/shared/AppError';
 import ErrorHandler from '@server/shared/ErrorHandler';
 
 const url = String(process.env.DB_URL) || '';
-const port = Number(process.env.PORT || 3000);
+const port = Number(process.env.PORT) || 3000;
 
 const db = Db.getInstance();
 const server = Server.getInstance();

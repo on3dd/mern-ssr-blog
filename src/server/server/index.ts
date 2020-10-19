@@ -1,4 +1,10 @@
-import express, { Request, Response, NextFunction, Express } from 'express';
+import express, {
+  Request,
+  Response,
+  NextFunction,
+  Express,
+  urlencoded,
+} from 'express';
 import 'express-async-errors';
 
 import { StatusCodes } from 'http-status-codes';
@@ -29,6 +35,12 @@ export default class Server {
         log: false,
         path: `/__webpack_hmr`,
         heartbeat: 10 * 1000,
+      }),
+    );
+
+    this.server.use(
+      urlencoded({
+        extended: true,
       }),
     );
 

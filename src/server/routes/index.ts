@@ -1,12 +1,14 @@
 import { Router } from 'express';
 
+import ApiRouter from '@server/routes/api';
 import generateHtmlContent from '@server/utils/generateHtmlContent';
 
 import App from '@client/App.tsx';
 import Html from '@client/Html.ts';
 
-// Init router and path
 const router = Router();
+
+router.use('/api', ApiRouter);
 
 router.get('/*', (req, res) => {
   const context = {};
