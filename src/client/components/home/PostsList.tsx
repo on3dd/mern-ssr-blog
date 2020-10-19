@@ -9,7 +9,7 @@ const Ul = styled.ul`
 `
 
 const PostList: React.FC = () => {
-  const arr: JSX.Element[] = new Array<Number>(5)
+  const arr: JSX.Element[] = new Array<Number>(10)
     .fill(0, 0)
     .map((_, idx) => <PostsItem key={idx} />);
 
