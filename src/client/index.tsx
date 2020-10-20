@@ -4,10 +4,10 @@ import { BrowserRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 
 import StoreProvider from '@utils/storeProvider';
-import createStore from '@store/index';
+import preloadedStore from '@store/preloadedStore';
 import routes from '@router/index';
 
-const store = createStore();
+const store = preloadedStore();
 
 ReactDOM.hydrate(
   <BrowserRouter>

@@ -14,7 +14,10 @@ const initialState: PostsState = {
   errorMessage: null,
 };
 
-const postsReducer = (state = initialState, action: AsyncAction) => {
+const postsReducer = (
+  state = initialState,
+  action: AsyncAction,
+) => {
   switch (action.type) {
     case FETCHING_POSTS:
       return Object.assign({}, state, {
@@ -33,10 +36,10 @@ const postsReducer = (state = initialState, action: AsyncAction) => {
 
     case FETCHING_POSTS_FAIL:
       return Object.assign({}, state, {
-        data: action.payload,
+        data: null,
         isFetching: false,
         hasError: true,
-        errorMessage: action.err,
+        errorMessage: action.payload,
       });
 
     default:

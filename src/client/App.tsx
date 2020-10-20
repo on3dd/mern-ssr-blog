@@ -21,13 +21,17 @@ const RouterView = styled.main`
   flex: 1;
 `;
 
-const App: React.FC = (route: RouteConfig) => {
+type AppProps = {
+  route?: RouteConfig;
+};
+
+const App: React.FC<AppProps> = ({ route }: AppProps) => {
   return (
     <AppContainer className="app">
       <Header />
       <GlobalStyles />
       <RouterView className="router-view">
-        {renderRoutes(route.routes)}
+        {route && renderRoutes(route.routes)}
       </RouterView>
     </AppContainer>
   );

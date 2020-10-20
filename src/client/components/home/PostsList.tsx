@@ -17,6 +17,7 @@ type PostListProps = {
 const PostList: React.FC<PostListProps> = ({
   data,
 }: PostListProps) => {
+  console.log('data', data);
   return (
     <Ul className="post-list">
       {data.map((el) => (

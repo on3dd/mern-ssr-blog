@@ -13,5 +13,5 @@ const loadData = (store: Store<unknown>) => {
 
 export default {
   component: Home,
-  // loadData,
+  loadData,
 };

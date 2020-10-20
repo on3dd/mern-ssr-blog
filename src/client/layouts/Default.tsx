@@ -4,11 +4,17 @@ import {
   RouteConfig,
 } from 'react-router-config';
 
-const DefaultLayout: React.FC = (route: RouteConfig) => {
+type DefaultLayoutProps = {
+  route?: RouteConfig;
+};
+
+const DefaultLayout: React.FC<DefaultLayoutProps> = ({
+  route,
+}: DefaultLayoutProps) => {
   return (
     <div className="screen">
       <div className="container">
-        {renderRoutes(route.routes)}
+        {route && renderRoutes(route.routes)}
       </div>
     </div>
   );

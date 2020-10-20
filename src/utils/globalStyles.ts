@@ -62,9 +62,13 @@ const GlobalStyle = createGlobalStyle`
 
   .container {
     position: relative;
-    padding: 0 1rem;
+    padding: 0.25rem;
     width: 100%;
     max-width: 1032px !important;
+
+    @media (min-width: ${BREAKPOINTS.tablet}) {
+      padding: 0.5rem;
+    }
   }
 
   .truncate {

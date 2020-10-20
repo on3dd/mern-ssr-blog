@@ -23,13 +23,14 @@ const generateHtmlContent = ({
   context,
 }: GenerateHtmlContentProps) => {
   const sheet = new ServerStyleSheet();
+  const Component = renderRoutes(routes);
 
   const body = renderToString(
-    <StoreProvider store={store}>
-      <StaticRouter location={req.path} context={context}>
-        {sheet.collectStyles(renderRoutes(routes))}
-      </StaticRouter>
-    </StoreProvider>,
+    <StaticRouter location={req.url} context={context}>
+      <StoreProvider store={store}>
+        {sheet.collectStyles(Component)}
+      </StoreProvider>
+    </StaticRouter>,
   );
 
   const styles = sheet.getStyleTags();

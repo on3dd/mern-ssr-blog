@@ -19,6 +19,7 @@ const routes = [
             ...Home,
           },
           {
+            path: '*',
             ...NotFound,
           },
         ],
