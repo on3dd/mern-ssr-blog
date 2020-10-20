@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
 import { hot } from 'react-hot-loader/root';
 
 import styled from 'styled-components';
@@ -8,31 +8,25 @@ import GlobalStyles from '@utils/globalStyles';
 
 import Header from '@components/base-ui/header';
 
-import Default from '@layouts/Default';
-
-import Home from '@screens/Home';
-import NotFound from '@screens/NotFound';
-
 const AppContainer = styled.main`
   display: flex;
   flex: 1;
 `;
 
-const App = () => {
+// TODO: fix any
+const App = ({ route }: any) => {
   return (
-    <>
+    <AppContainer>
       <Header />
       <GlobalStyles />
       <AppContainer className="main">
-        <Switch>
-          <Route exact path="/" component={() => Default({ component: Home })} />
-          <Route path="/qwe">qwe</Route>
-          <Route component={() => Default({ component: NotFound })} />
-        </Switch>
+        {renderRoutes(route.routes)}
       </AppContainer>
-    </>
-  )
+    </AppContainer>
+  );
 };
 
-export default process.env.NODE_ENV === "development" ? hot(App) : App
-
+export default {
+  component:
+    process.env.NODE_ENV === 'development' ? hot(App) : App,
+};

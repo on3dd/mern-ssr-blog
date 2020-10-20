@@ -1,21 +1,18 @@
 import React from 'react';
-
-// import styled from 'styled-components';
+import { renderRoutes } from 'react-router-config';
 
 type DefaultLayoutProps = {
-  component: React.ComponentType;
-  [key: string]: any;
-}
+  route: any; // TODO: fix any
+};
 
-const DefaultLayout = (props: DefaultLayoutProps) => {
-  const { component: Component, ...otherProps } = props;
+const DefaultLayout = ({ route }: DefaultLayoutProps) => {
   return (
     <div className="screen">
       <div className="container">
-        <Component {...otherProps} />
+        {renderRoutes(route.routes)}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default DefaultLayout;

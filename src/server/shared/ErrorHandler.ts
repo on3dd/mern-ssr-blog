@@ -7,7 +7,7 @@ export default class ErrorHandler {
   private constructor() {}
 
   public handleError(err: Error) {
-    logger.error(err.message);
+    logger.error(err.stack);
   }
 
   public isTrustedError(error: Error) {
