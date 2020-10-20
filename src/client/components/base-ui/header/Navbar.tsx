@@ -20,7 +20,7 @@ const NavbarUl = styled.ul`
   @media (min-width: ${BREAKPOINTS.tablet}) {
     flex-direction: row;
   }
-`
+`;
 
 const NavbarLi = styled.li`
   display: block;
@@ -43,7 +43,7 @@ const NavbarLink = styled(NavLink)`
   font-size: 1.2rem;
   text-decoration: none;
   text-transform: lowercase;
-  transition: all .1s ease-out;
+  transition: all 0.1s ease-out;
 
   &.is-active {
     color: ${COLORS.black};
@@ -56,18 +56,24 @@ const routes = [
   { to: '/programming', name: 'programming' },
   { to: '/music', name: 'music' },
   { to: '/other', name: 'other' },
-]
+];
 
 const Navbar: React.FC = () => (
   <NavbarDiv className="navbar">
     <NavbarUl className="navbar__links">
-      {routes.map(el => (
+      {routes.map((el) => (
         <NavbarLi key={el.name} className="navbar__links">
-          <NavbarLink to={el.to} exact activeClassName='is-active'>{el.name}</NavbarLink>
+          <NavbarLink
+            to={el.to}
+            exact
+            activeClassName="is-active"
+          >
+            {el.name}
+          </NavbarLink>
         </NavbarLi>
       ))}
     </NavbarUl>
   </NavbarDiv>
-)
+);
 
 export default Navbar;

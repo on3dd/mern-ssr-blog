@@ -6,10 +6,8 @@ import rootReducer from '@reducers/index';
 
 import generateHtmlContent from '@server/utils/generateHtmlContent';
 
-import App from '@client/App.tsx';
 import Html from '@client/Html.ts';
-
-import clientRoutes from '@router/index';
+import clientRoutes from '@client/router/index';
 
 const router = Router();
 

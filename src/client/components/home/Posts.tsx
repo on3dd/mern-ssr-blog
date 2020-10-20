@@ -11,12 +11,14 @@ import PostsList from '@components/home/PostsList';
 const PostsDiv = styled.div`
   display: flex;
   justify-content: center;
-`
+`;
 
 const Posts: React.FC = () => {
   const dispatch = useDispatch();
 
-  const posts = useSelector((state: RootState) => state.posts);
+  const posts = useSelector(
+    (state: RootState) => state.posts,
+  );
 
   useEffect(() => {
     console.log('useEffect');
@@ -27,8 +29,8 @@ const Posts: React.FC = () => {
   return (
     <PostsDiv className="posts">
       <PostsList data={posts.data} />
-    </PostsDiv >
-  )
-}
+    </PostsDiv>
+  );
+};
 
 export default Posts;

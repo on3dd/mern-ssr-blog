@@ -16,10 +16,16 @@ const fetchPosts = () => async (dispatch: any) => {
   return axiosService
     .get(API_ENDPOINTS.posts)
     .then((res) => {
-      dispatch({ type: FETCHING_POSTS_SUCCESS, payload: res.data });
+      dispatch({
+        type: FETCHING_POSTS_SUCCESS,
+        payload: res.data,
+      });
     })
     .catch((err) => {
-      dispatch({ type: FETCHING_POSTS_FAIL, payload: err.data });
+      dispatch({
+        type: FETCHING_POSTS_FAIL,
+        payload: err.data,
+      });
     });
 };
 

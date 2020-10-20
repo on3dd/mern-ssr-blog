@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { COLORS, BREAKPOINTS, PLACEHOLDER_URL } from '@utils/constants';
+import {
+  COLORS,
+  BREAKPOINTS,
+  PLACEHOLDER_URL,
+} from '@utils/constants';
 
 import Post from '@typesdir/Post';
 
@@ -9,10 +13,13 @@ import Icon from '@components/base-ui/Icon';
 
 const PostArticle = styled.article`
   display: grid;
-  grid-template-columns: minmax(125px, 1fr) minmax(auto, 152px);
+  grid-template-columns: minmax(125px, 1fr) minmax(
+      auto,
+      152px
+    );
   grid-gap: 1.5rem;
   margin-bottom: 3rem;
-`
+`;
 
 const PostBody = styled.div`
   /* margin-right: 1.5rem; */
@@ -30,8 +37,7 @@ const PostHeader = styled.h2`
   @media (min-width: ${BREAKPOINTS.laptop}) {
     font-size: 1.5rem;
   }
-
-`
+`;
 
 const PostDescription = styled.p`
   display: block;
@@ -43,7 +49,7 @@ const PostDescription = styled.p`
   color: ${COLORS.grayLighten};
   font-size: 1rem;
   line-height: 1.25rem;
-`
+`;
 
 const PostFooter = styled.div`
   display: flex;
@@ -77,15 +83,15 @@ const PostDate = styled.span`
 `;
 
 const PostIcon = styled(Icon)`
-  margin-left: .25rem;
-`
+  margin-left: 0.25rem;
+`;
 
 const PostPlaceholder = styled.div`
   position: relative;
   background-color: #aaaaaa;
   border-radius: 5px;
   overflow: hidden;
-`
+`;
 
 const PostImg = styled.img`
   position: absolute;
@@ -93,35 +99,54 @@ const PostImg = styled.img`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 200px;
-`
+`;
 
 type PostsItemProps = {
   data: Post;
-}
+};
 
-const PostsItem: React.FC<PostsItemProps> = (
-  { data }: PostsItemProps
-) => (
-    <PostArticle className="post">
-      <PostBody className="post__body">
-        <PostHeader className="post__header truncate-2">{data.title}</PostHeader>
-        <PostDescription className="post__description truncate-2">{data.description}</PostDescription>
-        <PostFooter className="post__footer">
-          <PostFooterDiv className="post__footer__div">
-            <PostCategory className="post__category">Programming</PostCategory>
-            <PostDate className="post__date">{data.date}</PostDate>
-          </PostFooterDiv>
-          <PostFooterDiv className="post__footer__div">
-            <PostIcon icon="RegBookmark" size="2rem" title="Add to bookmarks" />
-            <PostIcon icon="EllipsisH" size="2rem" title="Other actions" />
-          </PostFooterDiv>
-        </PostFooter>
-      </PostBody>
+const PostsItem: React.FC<PostsItemProps> = ({
+  data,
+}: PostsItemProps) => (
+  <PostArticle className="post">
+    <PostBody className="post__body">
+      <PostHeader className="post__header truncate-2">
+        {data.title}
+      </PostHeader>
+      <PostDescription className="post__description truncate-2">
+        {data.description}
+      </PostDescription>
+      <PostFooter className="post__footer">
+        <PostFooterDiv className="post__footer__div">
+          <PostCategory className="post__category">
+            Programming
+          </PostCategory>
+          <PostDate className="post__date">
+            {data.date}
+          </PostDate>
+        </PostFooterDiv>
+        <PostFooterDiv className="post__footer__div">
+          <PostIcon
+            icon="RegBookmark"
+            size="2rem"
+            title="Add to bookmarks"
+          />
+          <PostIcon
+            icon="EllipsisH"
+            size="2rem"
+            title="Other actions"
+          />
+        </PostFooterDiv>
+      </PostFooter>
+    </PostBody>
 
-      <PostPlaceholder className="post__placeholder">
-        <PostImg className="post__image" src={PLACEHOLDER_URL} />
-      </PostPlaceholder>
-    </PostArticle>
-  )
+    <PostPlaceholder className="post__placeholder">
+      <PostImg
+        className="post__image"
+        src={PLACEHOLDER_URL}
+      />
+    </PostPlaceholder>
+  </PostArticle>
+);
 
 export default PostsItem;

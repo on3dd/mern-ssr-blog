@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
 
 import Navbar from '@components/base-ui/header/Navbar';
 
@@ -24,9 +23,9 @@ const InnerTopBar = styled.div`
 const ContentDiv = styled.div`
   display: flex;
   align-items: center;
-`
+`;
 
-const Left = styled(ContentDiv)``
+const Left = styled(ContentDiv)``;
 const Right = styled(ContentDiv)``;
 
 const Brand = styled(Link)`
@@ -50,7 +49,9 @@ const Header: React.FC = () => (
     <InnerDiv className="header__inner container">
       <InnerTopBar className="header__inner-topbar">
         <Left className="header__inner-left">
-          <Brand to="/" className="header__brand">on3dd blog</Brand>
+          <Brand to="/" className="header__brand">
+            on3dd blog
+          </Brand>
         </Left>
         <Right className="header__inner=right"></Right>
       </InnerTopBar>
@@ -59,6 +60,6 @@ const Header: React.FC = () => (
       </InnerNavbar>
     </InnerDiv>
   </HeaderDiv>
-)
+);
 
 export default Header;

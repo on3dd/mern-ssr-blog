@@ -4,7 +4,6 @@ import {
   RouteConfig,
 } from 'react-router-config';
 import { hot } from 'react-hot-loader/root';
-
 import styled from 'styled-components';
 
 import GlobalStyles from '@utils/globalStyles';

@@ -4,4 +4,5 @@ module.exports = {
   tabWidth: 2,
   useTabs: false,
   printWidth: 60,
+  singleAttributePerLine: true,
 };

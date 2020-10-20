@@ -26,20 +26,28 @@ const start = async () => {
 
 start();
 
-(process as NodeJS.EventEmitter).on('unhandledRejection', (reason: string) => {
-  throw reason;
-});
+(process as NodeJS.EventEmitter).on(
+  'unhandledRejection',
+  (reason: string) => {
+    throw reason;
+  },
+);
 
-(process as NodeJS.EventEmitter).on('uncaughtException', (error: Error) => {
-  errorHandler.handleError(error);
+(process as NodeJS.EventEmitter).on(
+  'uncaughtException',
+  (error: Error) => {
+    errorHandler.handleError(error);
 
-  if (!errorHandler.isTrustedError(error)) {
-    process.exit(1);
-  }
-});
+    if (!errorHandler.isTrustedError(error)) {
+      process.exit(1);
+    }
+  },
+);
 
 const shutdown = async () => {
-  logger.warn('SIGTERM signal received: closing HTTP server');
+  logger.warn(
+    'SIGTERM signal received: closing HTTP server',
+  );
 
   await server.close();
 

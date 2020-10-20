@@ -5,6 +5,6 @@ const Home: React.FC = () => (
   <div className="home">
     <Posts />
   </div>
-)
+);
 
 export default Home;

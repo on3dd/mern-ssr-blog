@@ -11,8 +11,6 @@ import StoreProvider from '@utils/storeProvider';
 
 import routes from '@router/index';
 
-import App from '@client/App';
-
 type GenerateHtmlContentProps = {
   req: Request;
   store: Store<unknown>;
