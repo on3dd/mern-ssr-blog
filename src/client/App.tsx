@@ -1,5 +1,8 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import {
+  renderRoutes,
+  RouteConfig,
+} from 'react-router-config';
 import { hot } from 'react-hot-loader/root';
 
 import styled from 'styled-components';
@@ -8,31 +11,30 @@ import GlobalStyles from '@utils/globalStyles';
 
 import Header from '@components/base-ui/header';
 
-import Default from '@layouts/Default';
+const AppContainer = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+`;
 
-import Home from '@screens/Home';
-import NotFound from '@screens/NotFound';
-
-const AppContainer = styled.main`
+const RouterView = styled.main`
   display: flex;
   flex: 1;
 `;
 
-const App = () => {
+const App: React.FC = (route: RouteConfig) => {
   return (
-    <>
+    <AppContainer className="app">
       <Header />
       <GlobalStyles />
-      <AppContainer className="main">
-        <Switch>
-          <Route exact path="/" component={() => Default({ component: Home })} />
-          <Route path="/qwe">qwe</Route>
-          <Route component={() => Default({ component: NotFound })} />
-        </Switch>
-      </AppContainer>
-    </>
-  )
+      <RouterView className="router-view">
+        {renderRoutes(route.routes)}
+      </RouterView>
+    </AppContainer>
+  );
 };
 
-export default process.env.NODE_ENV === "development" ? hot(App) : App
-
+export default {
+  component:
+    process.env.NODE_ENV === 'development' ? hot(App) : App,
+};

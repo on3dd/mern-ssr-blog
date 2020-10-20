@@ -27,6 +27,7 @@
       "@actions/*": ["./src/client/actions/*"],
       "@reducers/*": ["./src/client/reducers/*"],
       "@store/*": ["./src/client/store/*"],
+      "@router/*": ["./src/client/router/*"],
       "@server/*": ["./src/server/*"],
       "@utils/*": ["./src/utils/*"]
     }

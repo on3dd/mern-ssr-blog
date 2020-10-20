@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
 
 import StoreProvider from '@utils/storeProvider';
-import App from '@client/App.tsx';
+import routes from '@router/index';
 
 ReactDOM.hydrate(
   <BrowserRouter>
     <StoreProvider>
-      <App />
+      {renderRoutes(routes)}
     </StoreProvider>
   </BrowserRouter>,
   document.getElementById('root')

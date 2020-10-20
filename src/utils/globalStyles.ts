@@ -37,8 +37,8 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
     height: 100%;
-    min-height: 100vh;
     width: 100%;
+    min-height: 100vh;
     overflow: hidden;
   }
 

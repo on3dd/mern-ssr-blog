@@ -1,9 +1,17 @@
 import React from 'react';
+import { Store } from 'redux';
 
-import HomeComponent from '../components/home';
+import fetchPosts from '@actions/fetchPosts';
 
-const Home: React.FC = () => (
-  <HomeComponent />
-)
+import HomeComponent from '@components/home';
 
-export default Home;
+const Home: React.FC = () => <HomeComponent />;
+
+const loadData = (store: Store<unknown>) => {
+  return store.dispatch(fetchPosts());
+};
+
+export default {
+  component: Home,
+  // loadData,
+};
