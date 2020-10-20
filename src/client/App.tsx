@@ -1,5 +1,8 @@
 import React from 'react';
-import { renderRoutes } from 'react-router-config';
+import {
+  renderRoutes,
+  RouteConfig,
+} from 'react-router-config';
 import { hot } from 'react-hot-loader/root';
 
 import styled from 'styled-components';
@@ -12,9 +15,7 @@ const AppContainer = styled.main`
   display: flex;
   flex: 1;
 `;
-
-// TODO: fix any
-const App = ({ route }: any) => {
+const App: React.FC = (route: RouteConfig) => {
   return (
     <AppContainer>
       <Header />

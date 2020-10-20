@@ -5,11 +5,16 @@ const dotenv = require('dotenv').config({
 
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-  entry: ['react-hot-loader/patch', './src/server/index.ts'],
+  entry: [
+    'react-hot-loader/patch',
+    './src/server/index.ts',
+  ],
   mode: isDevelopment ? 'development' : 'production',
   target: 'node',
   node: {
@@ -26,10 +31,12 @@ module.exports = {
   },
   externals: nodeExternals(),
   plugins: [
+    // new BundleAnalyzerPlugin(),
     new webpack.DefinePlugin({
       'process.env': dotenv.parsed,
     }),
-    isDevelopment && new webpack.HotModuleReplacementPlugin(),
+    isDevelopment &&
+      new webpack.HotModuleReplacementPlugin(),
   ].filter(Boolean),
   module: {
     rules: [

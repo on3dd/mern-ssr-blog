@@ -1,12 +1,10 @@
-import { RouteConfig } from 'react-router-config';
-
 import App from '@client/App';
 
 import Default from '@layouts/Default';
 import Home from '@screens/Home';
 import NotFound from '@screens/NotFound';
 
-const routes: RouteConfig[] = [
+const routes = [
   {
     ...App,
     routes: [

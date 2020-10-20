@@ -26,20 +26,10 @@ const generateHtmlContent = ({
 }: GenerateHtmlContentProps) => {
   const sheet = new ServerStyleSheet();
 
-  try {
-    const res = renderToString(
-      sheet.collectStyles(renderRoutes(routes)),
-    );
-    console.log('obama nigger', res);
-  } catch (err) {
-    console.error('obama nigger error', err);
-  }
-
   const body = renderToString(
     <StoreProvider store={store}>
       <StaticRouter location={req.path} context={context}>
-        {/* {sheet.collectStyles(renderRoutes(routes))} */}
-        <div>fuck obama</div>
+        {sheet.collectStyles(renderRoutes(routes))}
       </StaticRouter>
     </StoreProvider>,
   );

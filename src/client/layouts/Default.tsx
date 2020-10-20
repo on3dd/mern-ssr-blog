@@ -1,11 +1,10 @@
 import React from 'react';
-import { renderRoutes } from 'react-router-config';
+import {
+  renderRoutes,
+  RouteConfig,
+} from 'react-router-config';
 
-type DefaultLayoutProps = {
-  route: any; // TODO: fix any
-};
-
-const DefaultLayout = ({ route }: DefaultLayoutProps) => {
+const DefaultLayout: React.FC = (route: RouteConfig) => {
   return (
     <div className="screen">
       <div className="container">
@@ -15,4 +14,6 @@ const DefaultLayout = ({ route }: DefaultLayoutProps) => {
   );
 };
 
-export default DefaultLayout;
+export default {
+  component: DefaultLayout,
+};

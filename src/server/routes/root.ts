@@ -14,11 +14,7 @@ import clientRoutes from '@router/index';
 const router = Router();
 
 router.get('/*', (req, res) => {
-  const context = {};
-
   const store = createStore(rootReducer);
-  const finalState = store.getState();
-
   const routes = matchRoutes(clientRoutes, req.path);
 
   const promises = routes
