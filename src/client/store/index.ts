@@ -6,6 +6,4 @@ import rootReducer from '@reducers/index';
 
 const middleware = applyMiddleware(thunk, promise);
 
-const store = createStore(rootReducer, middleware);
-
-export default store;
+export default () => createStore(rootReducer, middleware);

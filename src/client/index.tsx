@@ -4,15 +4,18 @@ import { BrowserRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 
 import StoreProvider from '@utils/storeProvider';
+import createStore from '@store/index';
 import routes from '@router/index';
+
+const store = createStore();
 
 ReactDOM.hydrate(
   <BrowserRouter>
-    <StoreProvider>
+    <StoreProvider store={store}>
       {renderRoutes(routes)}
     </StoreProvider>
   </BrowserRouter>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change

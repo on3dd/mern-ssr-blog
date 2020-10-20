@@ -1,18 +1,16 @@
 import { Router } from 'express';
-import { createStore } from 'redux';
 import { matchRoutes } from 'react-router-config';
 
-import rootReducer from '@reducers/index';
+import Html from '@client/Html.ts';
+import createStore from '@client/store';
+import clientRoutes from '@client/router';
 
 import generateHtmlContent from '@server/utils/generateHtmlContent';
-
-import Html from '@client/Html.ts';
-import clientRoutes from '@client/router/index';
 
 const router = Router();
 
 router.get('/*', (req, res) => {
-  const store = createStore(rootReducer);
+  const store = createStore();
   const routes = matchRoutes(clientRoutes, req.path);
 
   const promises = routes
@@ -29,6 +27,8 @@ router.get('/*', (req, res) => {
     });
 
   Promise.all(promises).then(() => {
+    console.log('store.getState()', store.getState());
+
     const context = {};
     const { body, styles } = generateHtmlContent({
       req,
