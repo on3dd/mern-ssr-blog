@@ -8,6 +8,7 @@ import PostsItem from '@components/home/PostsItem';
 const Ul = styled.ul`
   margin: 0;
   padding: 0;
+  width: 100%;
 `;
 
 type PostListProps = {

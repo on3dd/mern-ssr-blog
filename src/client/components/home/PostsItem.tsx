@@ -13,10 +13,9 @@ import Icon from '@components/base-ui/Icon';
 
 const PostArticle = styled.article`
   display: grid;
-  grid-template-columns: minmax(125px, 1fr) minmax(
-      auto,
-      152px
-    );
+  grid-template-columns: //
+    minmax(175px, 1fr) //
+    minmax(auto, 152px);
   grid-gap: 1.5rem;
   margin-bottom: 3rem;
 `;
