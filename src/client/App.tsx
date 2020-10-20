@@ -11,18 +11,25 @@ import GlobalStyles from '@utils/globalStyles';
 
 import Header from '@components/base-ui/header';
 
-const AppContainer = styled.main`
+const AppContainer = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+`;
+
+const RouterView = styled.main`
   display: flex;
   flex: 1;
 `;
+
 const App: React.FC = (route: RouteConfig) => {
   return (
-    <AppContainer>
+    <AppContainer className="app">
       <Header />
       <GlobalStyles />
-      <AppContainer className="main">
+      <RouterView className="router-view">
         {renderRoutes(route.routes)}
-      </AppContainer>
+      </RouterView>
     </AppContainer>
   );
 };
