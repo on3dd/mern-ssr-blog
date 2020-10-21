@@ -21,6 +21,7 @@
     "morgan": "^1.10.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-error-boundary": "^3.0.2",
     "react-hot-loader": "^4.13.0",
     "react-icons": "^3.11.0",
     "react-redux": "^7.2.1",

@@ -3,12 +3,14 @@ import {
   renderRoutes,
   RouteConfig,
 } from 'react-router-config';
+import { ErrorBoundary } from 'react-error-boundary';
 import { hot } from 'react-hot-loader/root';
 import styled from 'styled-components';
 
 import GlobalStyles from '@utils/globalStyles';
 
 import Header from '@components/base-ui/header';
+import ErrorFallback from '@components/base-ui/error-fallback';
 
 const AppContainer = styled.div`
   display: flex;
@@ -31,7 +33,9 @@ const App: React.FC<AppProps> = ({ route }: AppProps) => {
       <Header />
       <GlobalStyles />
       <RouterView className="router-view">
-        {route && renderRoutes(route.routes)}
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          {route && renderRoutes(route.routes)}
+        </ErrorBoundary>
       </RouterView>
     </AppContainer>
   );
