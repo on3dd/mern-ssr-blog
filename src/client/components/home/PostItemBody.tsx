@@ -5,7 +5,7 @@ import { COLORS, BREAKPOINTS } from '@utils/constants';
 
 import Post from '@typesdir/Post';
 
-import Icon from '@components/base-ui/Icon';
+import Icon from '@components/base-ui/icon';
 
 const PostBody = styled.div`
   /* margin-right: 1.5rem; */
