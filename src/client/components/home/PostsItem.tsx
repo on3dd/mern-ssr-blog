@@ -1,15 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {
-  COLORS,
-  BREAKPOINTS,
-  PLACEHOLDER_URL,
-} from '@utils/constants';
-
 import Post from '@typesdir/Post';
 
-import Icon from '@components/base-ui/Icon';
+import PostBody from '@components/home/PostItemBody';
+import PostImage from '@components/home/PostItemImage';
 
 const PostArticle = styled.article`
   display: grid;
@@ -20,86 +15,6 @@ const PostArticle = styled.article`
   margin-bottom: 3rem;
 `;
 
-const PostBody = styled.div`
-  /* margin-right: 1.5rem; */
-`;
-
-const PostHeader = styled.h2`
-  margin: 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-
-  @media (min-width: ${BREAKPOINTS.tablet}) {
-    font-size: 1.25rem;
-  }
-
-  @media (min-width: ${BREAKPOINTS.laptop}) {
-    font-size: 1.5rem;
-  }
-`;
-
-const PostDescription = styled.p`
-  display: block;
-  height: 100%;
-  max-height: 40px;
-  margin: 0;
-  margin-top: 0.5rem;
-  padding: 0;
-  color: ${COLORS.grayLighten};
-  font-size: 1rem;
-  line-height: 1.25rem;
-`;
-
-const PostFooter = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 0.66rem;
-`;
-
-const PostFooterDiv = styled.div`
-  display: inline-flex;
-  font-size: 0.9rem;
-
-  &:first-of-type {
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  &:last-of-type {
-    align-items: center;
-  }
-`;
-
-const PostCategory = styled.span`
-  display: block;
-  margin-bottom: 0.2rem;
-`;
-
-const PostDate = styled.span`
-  display: block;
-  color: ${COLORS.grayLighten};
-`;
-
-const PostIcon = styled(Icon)`
-  margin-left: 0.25rem;
-`;
-
-const PostPlaceholder = styled.div`
-  position: relative;
-  background-color: #aaaaaa;
-  border-radius: 5px;
-  overflow: hidden;
-`;
-
-const PostImg = styled.img`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 200px;
-`;
-
 type PostsItemProps = {
   data: Post;
 };
@@ -108,43 +23,8 @@ const PostsItem: React.FC<PostsItemProps> = ({
   data,
 }: PostsItemProps) => (
   <PostArticle className="post">
-    <PostBody className="post__body">
-      <PostHeader className="post__header truncate-2">
-        {data.title}
-      </PostHeader>
-      <PostDescription className="post__description truncate-2">
-        {data.description}
-      </PostDescription>
-      <PostFooter className="post__footer">
-        <PostFooterDiv className="post__footer__div">
-          <PostCategory className="post__category">
-            Programming
-          </PostCategory>
-          <PostDate className="post__date">
-            {data.date}
-          </PostDate>
-        </PostFooterDiv>
-        <PostFooterDiv className="post__footer__div">
-          <PostIcon
-            icon="RegBookmark"
-            size="2rem"
-            title="Add to bookmarks"
-          />
-          <PostIcon
-            icon="EllipsisH"
-            size="2rem"
-            title="Other actions"
-          />
-        </PostFooterDiv>
-      </PostFooter>
-    </PostBody>
-
-    <PostPlaceholder className="post__placeholder">
-      <PostImg
-        className="post__image"
-        src={PLACEHOLDER_URL}
-      />
-    </PostPlaceholder>
+    <PostBody data={data} />
+    <PostImage data={data} />
   </PostArticle>
 );
 
