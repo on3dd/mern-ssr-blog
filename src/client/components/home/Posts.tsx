@@ -24,7 +24,7 @@ const Posts: React.FC = () => {
     console.log('useEffect posts', posts);
 
     dispatch(fetchPosts);
-  }, []);
+  }, [posts.data.length]);
 
   return (
     <PostsDiv className="posts">

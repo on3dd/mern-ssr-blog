@@ -13,8 +13,6 @@ router.get('/*', (req, res) => {
   const store = createStore();
   const routes = matchRoutes(clientRoutes, req.path);
 
-  console.log('routes', routes);
-
   const promises = routes
     .map(({ route }) => {
       return route.loadData ? route.loadData(store) : null;
@@ -31,7 +29,6 @@ router.get('/*', (req, res) => {
   Promise.all(promises).then(() => {
     const context = {};
     const preloadedState = store.getState();
-    console.log('preloadedState', preloadedState);
 
     const { body, styles } = generateHtmlContent({
       req,

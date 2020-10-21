@@ -1,10 +1,7 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 
-import {
-  COLORS,
-  BREAKPOINTS,
-} from '@utils/constants';
+import { COLORS, BREAKPOINTS } from '@utils/constants';
 
 import Post from '@typesdir/Post';
 
@@ -81,37 +78,43 @@ type PostItemBodyProps = {
 
 const PostItemBody: React.FC<PostItemBodyProps> = ({
   data,
-}: PostItemBodyProps) => (
-  <PostBody className="post__body">
-    <PostHeader className="post__header truncate-2">
-      {data.title}
-    </PostHeader>
-    <PostDescription className="post__description truncate-2">
-      {data.description}
-    </PostDescription>
-    <PostFooter className="post__footer">
-      <PostFooterDiv className="post__footer__div">
-        <PostCategory className="post__category">
-          Programming
-        </PostCategory>
-        <PostDate className="post__date">
-          {data.date}
-        </PostDate>
-      </PostFooterDiv>
-      <PostFooterDiv className="post__footer__div">
-        <PostIcon
-          icon="RegBookmark"
-          size="2rem"
-          title="Add to bookmarks"
-        />
-        <PostIcon
-          icon="EllipsisH"
-          size="2rem"
-          title="Other actions"
-        />
-      </PostFooterDiv>
-    </PostFooter>
-  </PostBody>
-);
+}: PostItemBodyProps) => {
+  const memoizedDate = useMemo(() => {
+    return new Date(data.date).toDateString();
+  }, [data.date]);
+
+  return (
+    <PostBody className="post__body">
+      <PostHeader className="post__header truncate-2">
+        {data.title}
+      </PostHeader>
+      <PostDescription className="post__description truncate-2">
+        {data.description}
+      </PostDescription>
+      <PostFooter className="post__footer">
+        <PostFooterDiv className="post__footer__div">
+          <PostCategory className="post__category">
+            Programming
+          </PostCategory>
+          <PostDate className="post__date">
+            {memoizedDate}
+          </PostDate>
+        </PostFooterDiv>
+        <PostFooterDiv className="post__footer__div">
+          <PostIcon
+            icon="RegBookmark"
+            size="2rem"
+            title="Add to bookmarks"
+          />
+          <PostIcon
+            icon="EllipsisH"
+            size="2rem"
+            title="Other actions"
+          />
+        </PostFooterDiv>
+      </PostFooter>
+    </PostBody>
+  );
+};
 
 export default PostItemBody;
