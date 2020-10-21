@@ -10,7 +10,6 @@ const routes = [
     routes: [
       {
         path: '/',
-        exact: true,
         ...Default,
         routes: [
           {
