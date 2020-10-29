@@ -1,12 +1,13 @@
 import { Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
-import Post from '@server/models/post';
+import PostController from '@server/controllers/post';
 
 const router = Router();
+const controller = new PostController();
 
 router.get('/', async (req, res) => {
-  const posts = await Post.find();
+  const posts = await controller.all();
 
   res //
     .status(StatusCodes.OK)
@@ -17,13 +18,7 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const post = new Post({
-    title: req.body.title,
-    description: req.body.description,
-    date: req.body.date,
-  });
-
-  await post.save();
+  const post = await controller.create(req.body);
 
   res //
     .status(StatusCodes.OK)
