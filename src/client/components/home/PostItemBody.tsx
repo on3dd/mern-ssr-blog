@@ -8,7 +8,7 @@ import Post from '@typesdir/Post';
 import Icon from '@components/base-ui/icon';
 
 const PostBody = styled.div`
-  /* margin-right: 1.5rem; */
+  text-transform: lowercase;
 `;
 
 const PostHeader = styled.h2`
@@ -94,7 +94,7 @@ const PostItemBody: React.FC<PostItemBodyProps> = ({
       <PostFooter className="post__footer">
         <PostFooterDiv className="post__footer__div">
           <PostCategory className="post__category">
-            Programming
+            {data.category.name}
           </PostCategory>
           <PostDate className="post__date">
             {memoizedDate}

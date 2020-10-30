@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
@@ -7,6 +7,7 @@ import fetchPosts from '@actions/fetchPosts';
 import RootState from '@typesdir/states/root';
 
 import PostsList from '@components/home/PostsList';
+import PostsPlaceholder from '@components/home/PostsPlaceholder';
 
 const PostsDiv = styled.div`
   display: flex;
@@ -26,9 +27,15 @@ const Posts: React.FC = () => {
     dispatch(fetchPosts);
   }, [posts.data.length]);
 
+  const renderPosts = useMemo(() => {
+    return posts.data.length === 0
+      ? <PostsPlaceholder/>
+      : <PostsList data={posts.data} />
+  }, [posts.data.length]);
+
   return (
     <PostsDiv className="posts">
-      <PostsList data={posts.data} />
+      {renderPosts}
     </PostsDiv>
   );
 };
