@@ -7,25 +7,19 @@ const schema = new Schema({
     unique: true,
     min: 1,
   },
-  title: {
+  name: {
     type: String,
+    unique: true,
     required: true,
   },
-  description: {
-    type: String,
-    required: true,
-  },
-  date: {
-    type: Date,
-    default: Date.now,
-  },
-  category: {
-    type: Schema.Types.ObjectId,
-    ref: 'Category',
-    required: true,
-  },
+  posts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Post',
+    },
+  ],
 });
 
 schema.pre('save', autoincrement);
 
-export default model('Post', schema);
+export default model('Category', schema);
