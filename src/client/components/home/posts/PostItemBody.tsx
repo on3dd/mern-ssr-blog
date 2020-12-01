@@ -88,24 +88,29 @@ const PostItemBody: React.FC<PostItemBodyProps> = ({
       <PostHeader className="post__header truncate-2">
         {data.title}
       </PostHeader>
+
       <PostDescription className="post__description truncate-2">
         {data.description}
       </PostDescription>
+
       <PostFooter className="post__footer">
         <PostFooterDiv className="post__footer__div">
           <PostCategory className="post__category">
             {data.category.name}
           </PostCategory>
+
           <PostDate className="post__date">
             {memoizedDate}
           </PostDate>
         </PostFooterDiv>
+
         <PostFooterDiv className="post__footer__div">
           <PostIcon
             icon="RegBookmark"
             size="2rem"
             title="Add to bookmarks"
           />
+
           <PostIcon
             icon="EllipsisH"
             size="2rem"

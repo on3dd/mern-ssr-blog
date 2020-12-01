@@ -8,7 +8,7 @@ const HeaderDiv = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: Verdana, sans-serif;
 `;
 
 const InnerDiv = styled.div`
@@ -53,8 +53,10 @@ const Header: React.FC = () => (
             on3dd blog
           </Brand>
         </Left>
+
         <Right className="header__inner=right"></Right>
       </InnerTopBar>
+
       <InnerNavbar className="header__inner-navbar">
         <Navbar />
       </InnerNavbar>

@@ -47,7 +47,6 @@ const NavbarLink = styled(NavLink)`
 
   &.is-active {
     color: ${COLORS.black};
-    text-decoration: underline;
   }
 `;
 

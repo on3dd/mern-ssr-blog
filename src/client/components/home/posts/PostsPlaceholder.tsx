@@ -26,7 +26,10 @@ const PostsPlaceholder: React.FC = () => (
     </PostsHeading>
 
     <PostsText className="posts-text">
-      There are no posts here yet 😔
+      There are no posts here yet{' '}
+      <span role="img" aria-label="pensive">
+        😔
+      </span>
     </PostsText>
   </PostsContainer>
 );

@@ -24,7 +24,10 @@ const NotFound: React.FC = () => (
   <Div className="not-found">
     <Code className="not-found__code">404</Code>
     <Text className="not-found__text">
-      Sorry, this page is unavailable 😔
+      Sorry, this page is unavailable{' '}
+      <span role="img" aria-label="pensive">
+        😔
+      </span>
     </Text>
   </Div>
 );
