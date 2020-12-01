@@ -6,8 +6,8 @@ import fetchPosts from '@actions/fetchPosts';
 
 import { RootState } from '@client';
 
-import PostsList from '@components/home/PostsList';
-import PostsPlaceholder from '@components/home/PostsPlaceholder';
+import PostsList from '@components/home/posts/PostsList';
+import PostsPlaceholder from '@components/home/posts/PostsPlaceholder';
 
 const PostsDiv = styled.div`
   display: flex;
