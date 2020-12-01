@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { COLORS, BREAKPOINTS } from '@utils/constants';
 
-import Post from '@typesdir/Post';
+import { Post } from '@client';
 
 import Icon from '@components/base-ui/icon';
 

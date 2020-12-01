@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Post from '@typesdir/Post';
+import { Post } from '@client';
 
 import PostsItem from '@components/home/PostsItem';
 

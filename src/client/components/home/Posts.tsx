@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import fetchPosts from '@actions/fetchPosts';
 
-import RootState from '@typesdir/states/root';
+import { RootState } from '@client';
 
 import PostsList from '@components/home/PostsList';
 import PostsPlaceholder from '@components/home/PostsPlaceholder';
@@ -22,21 +22,20 @@ const Posts: React.FC = () => {
   );
 
   useEffect(() => {
-    console.log('useEffect posts', posts);
-
-    dispatch(fetchPosts);
-  }, [posts.data.length]);
+    dispatch(fetchPosts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const renderPosts = useMemo(() => {
-    return posts.data.length === 0
-      ? <PostsPlaceholder/>
-      : <PostsList data={posts.data} />
-  }, [posts.data.length]);
+    return posts.data.length === 0 ? (
+      <PostsPlaceholder />
+    ) : (
+      <PostsList data={posts.data} />
+    );
+  }, [posts.data]);
 
   return (
-    <PostsDiv className="posts">
-      {renderPosts}
-    </PostsDiv>
+    <PostsDiv className="posts">{renderPosts}</PostsDiv>
   );
 };
 

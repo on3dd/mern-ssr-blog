@@ -23,7 +23,6 @@
           "@components": "./src/client/components",
           "@layouts": "./src/client/layouts",
           "@screens": "./src/client/screens",
-          "@typesdir": "./src/client/types",
           "@actions": "./src/client/actions",
           "@reducers": "./src/client/reducers",
           "@store": "./src/client/store",

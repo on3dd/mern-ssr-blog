@@ -1,4 +1,4 @@
-import Controller from '@server/types/controller';
+import { Controller } from '@server';
 import Category from '@server/models/category';
 
 type CategoryProps = {

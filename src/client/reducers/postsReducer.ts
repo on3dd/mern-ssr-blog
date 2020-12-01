@@ -4,8 +4,7 @@ import {
   FETCHING_POSTS_FAIL,
 } from '@root/src/client/utils/actionTypes';
 
-import AsyncAction from '@typesdir/AsyncAction';
-import PostsState from '@typesdir/states/posts';
+import { AsyncAction, PostsState } from '@client';
 
 const initialState: PostsState = {
   data: [],

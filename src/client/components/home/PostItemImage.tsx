@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { PLACEHOLDER_URL } from '@utils/constants';
 
-import Post from '@typesdir/Post';
+import { Post } from '@client';
 
 const PostPlaceholder = styled.div`
   position: relative;
