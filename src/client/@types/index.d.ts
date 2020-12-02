@@ -2,6 +2,8 @@ declare module '@client' {
   import React from 'react';
   import { AnyAction } from 'redux';
 
+  export { AnyAction } from 'redux';
+
   export interface Action extends AnyAction {
     type: string;
     payload: any;
@@ -32,9 +34,11 @@ declare module '@client' {
     errorMessage: null | string;
   }
 
+  export interface PostState extends State<Post> {}
   export interface PostsState extends State<Post[]> {}
 
   export interface RootState {
+    post: PostState;
     posts: PostsState;
   }
 }

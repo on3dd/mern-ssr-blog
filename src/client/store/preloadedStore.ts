@@ -11,5 +11,5 @@ export default () => {
 
   delete window.__PRELOADED_STATE__;
 
-  return createStore(preloadedState);
+  return createStore(preloadedState) as any;
 };

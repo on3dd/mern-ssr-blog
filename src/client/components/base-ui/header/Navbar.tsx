@@ -29,6 +29,7 @@ const NavbarLi = styled.li`
 
   &:hover {
     color: ${COLORS.grayDarken};
+    text-decoration: underline;
   }
 
   @media (min-width: ${BREAKPOINTS.tablet}) {
@@ -46,7 +47,7 @@ const NavbarLink = styled(NavLink)`
   transition: all 0.1s ease-out;
 
   &.is-active {
-    color: ${COLORS.black};
+    color: ${COLORS.primary};
   }
 `;
 

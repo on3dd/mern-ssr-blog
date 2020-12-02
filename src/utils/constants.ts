@@ -5,10 +5,11 @@ export const PLACEHOLDER_URL =
   'https://breakthrough.org/wp-content/uploads/2018/10/default-placeholder-image.png';
 
 export const COLORS = {
-  black: 'rgba(0,0,0,.9)',
-  grayDarken: 'rgba(0,0,0,.84)',
-  gray: 'rgba(0,0,0,.68)',
-  grayLighten: 'rgba(0,0,0,.54)',
+  black: 'rgba(0, 0, 0, 0.9)',
+  grayDarken: 'rgba(0, 0, 0, 0.84)',
+  gray: 'rgba(0, 0, 0, 0.68)',
+  grayLighten: 'rgba(0, 0, 0, 0.54)',
+  primary: 'rgba(41, 128, 185, 1.0)',
 };
 
 // For using with min-width media query

@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Emoji from '@components/base-ui/emoji';
+
 const PostsContainer = styled.div`
   width: 100%;
   text-align: center;
@@ -26,10 +28,7 @@ const PostsPlaceholder: React.FC = () => (
     </PostsHeading>
 
     <PostsText className="posts-text">
-      There are no posts here yet{' '}
-      <span role="img" aria-label="pensive">
-        😔
-      </span>
+      There are no posts here yet <Emoji value="😔" />
     </PostsText>
   </PostsContainer>
 );

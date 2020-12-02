@@ -1,13 +1,23 @@
 import {
-  FETCHING_POSTS,
-  FETCHING_POSTS_SUCCESS,
-  FETCHING_POSTS_FAIL,
+  FETCHING_POST,
+  FETCHING_POST_SUCCESS,
+  FETCHING_POST_FAIL,
 } from '@root/src/client/utils/actionTypes';
 
-import { AsyncAction, PostsState } from '@client';
+import { AsyncAction, PostState } from '@client';
 
-const initialState: PostsState = {
-  data: [],
+const initialState: PostState = {
+  data: {
+    id: 0,
+    title: '',
+    description: '',
+    date: '',
+    category: {
+      id: 0,
+      name: '',
+      posts: [],
+    },
+  },
   isFetching: false,
   hasError: false,
   errorMessage: null,
@@ -18,14 +28,14 @@ const postsReducer = (
   action: AsyncAction,
 ) => {
   switch (action.type) {
-    case FETCHING_POSTS:
+    case FETCHING_POST:
       return Object.assign({}, state, {
         isFetching: true,
         hasError: false,
         errorMessage: null,
       });
 
-    case FETCHING_POSTS_SUCCESS:
+    case FETCHING_POST_SUCCESS:
       return Object.assign({}, state, {
         data: action.payload,
         isFetching: false,
@@ -33,7 +43,7 @@ const postsReducer = (
         errorMessage: null,
       });
 
-    case FETCHING_POSTS_FAIL:
+    case FETCHING_POST_FAIL:
       return Object.assign({}, state, {
         isFetching: false,
         hasError: true,

@@ -7,23 +7,36 @@ const router = Router();
 const controller = new PostController();
 
 router.get('/', async (req, res) => {
-  const posts = await controller.all();
+  const data = await controller.all();
 
   res //
     .status(StatusCodes.OK)
     .send({
-      data: posts,
+      data,
+      error: null,
+    });
+});
+
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+
+  const data = await controller.find(id);
+
+  res //
+    .status(StatusCodes.OK)
+    .send({
+      data,
       error: null,
     });
 });
 
 router.post('/', async (req, res) => {
-  const post = await controller.create(req.body);
+  const data = await controller.create(req.body);
 
   res //
     .status(StatusCodes.OK)
     .send({
-      data: post,
+      data,
       error: null,
     });
 });

@@ -23,8 +23,7 @@ const Posts: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchPosts());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   const renderPosts = useMemo(() => {
     return posts.data.length === 0 ? (

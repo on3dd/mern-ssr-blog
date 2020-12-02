@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { IconContext } from 'react-icons';
 import styled from 'styled-components';
 import { COLORS } from '@utils/constants';
 
-type IconProps = {
+interface IconProps {
   icon: string;
   title?: string;
   color?: string;
   size?: string;
   style?: string;
-};
+  onClick?: () => void;
+}
 
 const IconButton = styled('button')<{ size?: string }>`
   display: flex;
@@ -33,12 +34,17 @@ const IconButton = styled('button')<{ size?: string }>`
   }
 `;
 
+const ICON_STYLES: CSSProperties = {
+  margin: 0,
+};
+
 const Icon = ({
   icon,
   title,
   color,
   style,
   size = '30px',
+  onClick,
 }: IconProps) => {
   const iconName = `Fa${icon
     .trim()
@@ -47,9 +53,17 @@ const Icon = ({
 
   return (
     <IconContext.Provider
-      value={{ color, className: 'base-icon' }}
+      value={{
+        color,
+        style: ICON_STYLES,
+        className: 'base-icon',
+      }}
     >
-      <IconButton size={size} className="base-icon-button">
+      <IconButton
+        size={size}
+        onClick={onClick}
+        className="base-icon-button"
+      >
         <FaIcon title={title} size={size} style={style} />
       </IconButton>
     </IconContext.Provider>

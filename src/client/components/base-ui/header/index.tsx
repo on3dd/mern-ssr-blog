@@ -34,6 +34,10 @@ const Brand = styled(Link)`
   font-family: inherit;
   font-weight: bolder;
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const InnerNavbar = styled.div`

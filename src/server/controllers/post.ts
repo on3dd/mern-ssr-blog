@@ -2,6 +2,8 @@ import { Controller } from '@server';
 import Post from '@server/models/post';
 import Category from '@server/models/category';
 
+import { POST_FIND_EXCLUDE } from '@server/utils/constants';
+
 type PostProps = {
   title: string;
   description: string;
@@ -12,6 +14,10 @@ type PostProps = {
 class PostController implements Controller {
   public async all() {
     return Post.find().populate('category');
+  }
+
+  public async find(id: string) {
+    return await Post.findOne({ id }, POST_FIND_EXCLUDE);
   }
 
   public async create({

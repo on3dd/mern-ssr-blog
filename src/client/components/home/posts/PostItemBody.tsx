@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useCallback } from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { COLORS, BREAKPOINTS } from '@utils/constants';
@@ -11,10 +12,16 @@ const PostBody = styled.div`
   text-transform: lowercase;
 `;
 
+const PostLink = styled(NavLink)`
+  text-decoration: none;
+`;
+
 const PostHeader = styled.h2`
   margin: 0;
+  color: inherit;
   font-size: 1.1rem;
   font-weight: 600;
+  transition: color 0.1s ease-out;
 
   @media (min-width: ${BREAKPOINTS.tablet}) {
     font-size: 1.25rem;
@@ -61,6 +68,7 @@ const PostFooterDiv = styled.div`
 const PostCategory = styled.span`
   display: block;
   margin-bottom: 0.2rem;
+  transition: color 0.1s ease-out;
 `;
 
 const PostDate = styled.span`
@@ -79,19 +87,29 @@ type PostItemBodyProps = {
 const PostItemBody: React.FC<PostItemBodyProps> = ({
   data,
 }: PostItemBodyProps) => {
+  const to = useMemo(() => {
+    return `/posts/${data.id}`;
+  }, [data.id]);
+
   const memoizedDate = useMemo(() => {
     return new Date(data.date).toDateString();
   }, [data.date]);
 
+  const onClick = useCallback(() => {
+    console.log('data', data);
+  }, [data]);
+
   return (
     <PostBody className="post__body">
-      <PostHeader className="post__header truncate-2">
-        {data.title}
-      </PostHeader>
+      <PostLink to={to} className="post__link">
+        <PostHeader className="post__header truncate-2">
+          {data.title}
+        </PostHeader>
 
-      <PostDescription className="post__description truncate-2">
-        {data.description}
-      </PostDescription>
+        <PostDescription className="post__description truncate-2">
+          {data.description}
+        </PostDescription>
+      </PostLink>
 
       <PostFooter className="post__footer">
         <PostFooterDiv className="post__footer__div">
@@ -109,12 +127,14 @@ const PostItemBody: React.FC<PostItemBodyProps> = ({
             icon="RegBookmark"
             size="2rem"
             title="Add to bookmarks"
+            onClick={onClick}
           />
 
           <PostIcon
             icon="EllipsisH"
             size="2rem"
             title="Other actions"
+            onClick={onClick}
           />
         </PostFooterDiv>
       </PostFooter>

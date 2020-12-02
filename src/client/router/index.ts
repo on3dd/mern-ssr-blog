@@ -2,6 +2,7 @@ import App from '@client/App';
 
 import Default from '@layouts/Default';
 import Home from '@screens/Home';
+import Post from '@screens/Post';
 import NotFound from '@screens/NotFound';
 
 const routes = [
@@ -16,6 +17,10 @@ const routes = [
             path: '/',
             exact: true,
             ...Home,
+          },
+          {
+            path: '/posts',
+            ...Post,
           },
           {
             path: '*',

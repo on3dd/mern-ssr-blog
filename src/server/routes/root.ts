@@ -10,12 +10,14 @@ import generateHtmlContent from '@server/utils/generateHtmlContent';
 const router = Router();
 
 router.get('/*', (req, res) => {
-  const store = createStore();
+  const store = createStore() as any;
   const routes = matchRoutes(clientRoutes, req.path);
 
   const promises = routes
     .map(({ route }) => {
-      return route.loadData ? route.loadData(store) : null;
+      return route.loadData
+        ? route.loadData(store, req.params)
+        : null;
     })
     .map((promise) => {
       if (promise) {
@@ -23,6 +25,7 @@ router.get('/*', (req, res) => {
           promise.then(resolve).catch(reject);
         });
       }
+
       return null;
     });
 

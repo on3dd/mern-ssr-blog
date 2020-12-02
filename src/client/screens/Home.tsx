@@ -5,13 +5,13 @@ import fetchPosts from '@actions/fetchPosts';
 
 import HomeComponent from '@components/home';
 
-const Home: React.FC = () => <HomeComponent />;
+const component: React.FC = () => <HomeComponent />;
 
 const loadData = (store: Store<unknown>) => {
-  return store.dispatch(fetchPosts());
+  return store.dispatch(fetchPosts() as any);
 };
 
 export default {
-  component: Home,
+  component,
   loadData,
 };
