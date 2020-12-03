@@ -10,6 +10,9 @@ export const COLORS = {
   gray: 'rgba(0, 0, 0, 0.68)',
   grayLighten: 'rgba(0, 0, 0, 0.54)',
   primary: 'rgba(41, 128, 185, 1.0)',
+  backgroundColor: 'rgba(255, 255, 255, 1)',
+  borderColor: 'rgba(0, 0, 0, 0.1)',
+  shadowColor: 'rgba(0, 0, 0, 0.25)',
 };
 
 // For using with min-width media query

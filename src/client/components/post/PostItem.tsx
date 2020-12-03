@@ -14,8 +14,7 @@ import {
 
 import sample from './sample';
 
-// import PostBody from '@root/src/client/components/home/posts/PostItemBody';
-// import PostImage from '@components/home/posts/PostItemImage';
+import PostCodeBlock from './PostCodeBlock';
 
 const postBlock = css`
   margin-bottom: 1rem;
@@ -47,7 +46,8 @@ const PostContainer = styled.div`
   margin-bottom: 1rem;
   position: relative;
   height: 300px;
-  width: 100%;
+  /* width: 100%; */
+  border-radius: 5px;
   overflow: hidden;
 
   @media (min-width: ${BREAKPOINTS.tablet}) {
@@ -67,6 +67,7 @@ const PostImg = styled.img`
   transform: translate(-50%, -50%);
 `;
 
+// TODO: fix width issues on mobile devices
 const PostContent = styled.div`
   font-size: 1.25rem;
 
@@ -78,18 +79,28 @@ const PostContent = styled.div`
     font-size: 1.5em;
   }
 
-  img {
+  p {
     width: 100%;
+    overflow: hidden;
+  }
+
+  p > img {
+    width: 100%;
+  }
+
+  pre {
+    border: 1px solid ${COLORS.borderColor};
+    border-radius: 5px;
   }
 `;
 
-type PostsItemProps = {
+type PostItemProps = {
   data: Post;
 };
 
-const PostsItem: React.FC<PostsItemProps> = ({
+const PostItem: React.FC<PostItemProps> = ({
   data,
-}: PostsItemProps) => {
+}: PostItemProps) => {
   const memoizedDate = useMemo(() => {
     return new Date(data.date).toLocaleDateString();
   }, [data.date]);
@@ -113,7 +124,12 @@ const PostsItem: React.FC<PostsItemProps> = ({
       </PostContainer>
 
       <PostContent className="post__content">
-        <ReactMarkdown plugins={[gfm]}>
+        <ReactMarkdown
+          plugins={[gfm]}
+          renderers={{
+            code: PostCodeBlock,
+          }}
+        >
           {sample}
         </ReactMarkdown>
       </PostContent>
@@ -121,4 +137,4 @@ const PostsItem: React.FC<PostsItemProps> = ({
   );
 };
 
-export default PostsItem;
+export default PostItem;
