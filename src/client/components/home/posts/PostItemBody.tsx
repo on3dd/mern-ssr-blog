@@ -14,6 +14,11 @@ const PostBody = styled.div`
 
 const PostLink = styled(NavLink)`
   text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
 `;
 
 const PostHeader = styled.h2`

@@ -25,12 +25,6 @@ const NavbarUl = styled.ul`
 const NavbarLi = styled.li`
   display: block;
   list-style: none;
-  color: ${COLORS.grayLighten};
-
-  &:hover {
-    color: ${COLORS.grayDarken};
-    text-decoration: underline;
-  }
 
   @media (min-width: ${BREAKPOINTS.tablet}) {
     &:not(:first-child) {
@@ -40,14 +34,18 @@ const NavbarLi = styled.li`
 `;
 
 const NavbarLink = styled(NavLink)`
-  color: inherit;
+  color: ${COLORS.grayLighten};
   font-size: 1.2rem;
-  text-decoration: none;
   text-transform: lowercase;
   transition: all 0.1s ease-out;
 
   &.is-active {
     color: ${COLORS.primary};
+  }
+
+  &:hover,
+  &:focus {
+    color: ${COLORS.grayDarken};
   }
 `;
 

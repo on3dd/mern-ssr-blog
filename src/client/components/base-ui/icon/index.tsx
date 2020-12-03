@@ -28,7 +28,8 @@ const IconButton = styled('button')<{ size?: string }>`
 
   color: ${COLORS.gray};
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: ${COLORS.grayDarken};
     background-color: rgba(0, 0, 0, 0.1);
   }

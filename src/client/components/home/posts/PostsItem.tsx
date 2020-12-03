@@ -16,7 +16,8 @@ const PostsCard = styled.article`
   grid-gap: 1.5rem;
   margin-bottom: 3rem;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: ${COLORS.primary};
   }
 `;
