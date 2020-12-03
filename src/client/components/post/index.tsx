@@ -28,8 +28,6 @@ const Post: React.FC = () => {
     dispatch(fetchPost(id));
   }, [dispatch, id]);
 
-  console.log('post.data', post.data);
-
   const renderPost = useMemo(() => {
     return post.data === null ? (
       <PostPlaceholder />
