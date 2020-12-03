@@ -2,7 +2,10 @@ import { Controller } from '@server';
 import Post from '@server/models/post';
 import Category from '@server/models/category';
 
-import { POST_FIND_EXCLUDE } from '@server/utils/constants';
+import {
+  POST_FIELDS,
+  CATEGORY_FIELDS,
+} from '@server/utils/constants';
 
 type PostProps = {
   title: string;
@@ -13,11 +16,14 @@ type PostProps = {
 
 class PostController implements Controller {
   public async all() {
-    return Post.find().populate('category');
+    return Post.find({}, POST_FIELDS).populate(
+      'category',
+      CATEGORY_FIELDS,
+    );
   }
 
   public async find(id: string) {
-    return await Post.findOne({ id }, POST_FIND_EXCLUDE);
+    return await Post.findOne({ id }, POST_FIELDS);
   }
 
   public async create({
@@ -26,7 +32,7 @@ class PostController implements Controller {
   }: PostProps) {
     const category = await Category.findOne({
       name,
-    }).exec();
+    });
 
     const post = new Post({
       category,
@@ -40,7 +46,7 @@ class PostController implements Controller {
       { $push: { posts: post } },
     );
 
-    return post.populate('category');
+    return post.populate('category', CATEGORY_FIELDS);
   }
 }
 
