@@ -17,6 +17,7 @@ declare module '@client' {
     id: number;
     title: string;
     description: string;
+    content: string;
     date: string;
     category: Category;
   }

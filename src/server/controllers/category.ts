@@ -6,7 +6,7 @@ import {
   CATEGORY_FIELDS,
 } from '@server/utils/constants';
 
-type CategoryProps = {
+type CategoryDraft = {
   name: string;
 };
 
@@ -18,7 +18,7 @@ class CategoryController implements Controller {
     );
   }
 
-  public async create(props: CategoryProps) {
+  public async create(props: CategoryDraft) {
     const category = new Category({
       ...props,
     });

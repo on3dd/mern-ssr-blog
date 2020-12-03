@@ -12,8 +12,6 @@ import {
   PLACEHOLDER_URL,
 } from '@utils/constants';
 
-import sample from './sample';
-
 import PostCodeBlock from './PostCodeBlock';
 
 const postBlock = css`
@@ -105,6 +103,8 @@ const PostItem: React.FC<PostItemProps> = ({
     return new Date(data.date).toLocaleDateString();
   }, [data.date]);
 
+  console.log('data.content', data.content);
+
   return (
     <PostBody className="post__body">
       <PostHeading className="post__heading">
@@ -130,7 +130,7 @@ const PostItem: React.FC<PostItemProps> = ({
             code: PostCodeBlock,
           }}
         >
-          {sample}
+          {data.content}
         </ReactMarkdown>
       </PostContent>
     </PostBody>

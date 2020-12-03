@@ -7,19 +7,19 @@ import {
   CATEGORY_FIELDS,
 } from '@server/utils/constants';
 
-type PostProps = {
+type PostDraft = {
   title: string;
   description: string;
+  content: string;
   date: Date;
   category: string;
 };
 
 class PostController implements Controller {
   public async all() {
-    return Post.find({}, POST_FIELDS).populate(
-      'category',
-      CATEGORY_FIELDS,
-    );
+    return Post.find({}, POST_FIELDS)
+      .sort({ id: 'desc' })
+      .populate('category', CATEGORY_FIELDS);
   }
 
   public async find(id: string) {
@@ -29,7 +29,7 @@ class PostController implements Controller {
   public async create({
     category: name,
     ...props
-  }: PostProps) {
+  }: PostDraft) {
     const category = await Category.findOne({
       name,
     });
