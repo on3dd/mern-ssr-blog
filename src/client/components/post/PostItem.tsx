@@ -96,11 +96,6 @@ const PostContent = styled.div`
     color: inherit;
     text-decoration: underline;
     transition: color 0.1s ease-out;
-
-    &:hover,
-    &:focus {
-      color: ${COLORS.primary};
-    }
   }
 `;
 

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Navbar from '@components/base-ui/header/Navbar';
+import Emoji from '@components/base-ui/emoji';
 
 const HeaderDiv = styled.header`
   display: flex;
@@ -64,6 +65,7 @@ const Header: React.FC = () => (
               on3dd
             </BrandLink>
             blog
+            <Emoji value="👨‍💻" />
           </Brand>
         </Left>
 

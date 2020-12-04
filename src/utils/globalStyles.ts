@@ -50,6 +50,7 @@ const GlobalStyle = createGlobalStyle`
 
     &:hover,
     &:focus {
+      color: ${COLORS.primary};
       text-decoration: underline;
     }
   }

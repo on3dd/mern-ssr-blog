@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import styled from 'styled-components';
 
 type EmojiProps = {
   value: string;
+  style?: CSSProperties;
 };
 
 const EmojiSpan = styled.span`
@@ -11,8 +12,9 @@ const EmojiSpan = styled.span`
 
 const Emoji: React.FC<EmojiProps> = ({
   value,
+  style,
 }: EmojiProps) => (
-  <EmojiSpan role="img" aria-label="pensive">
+  <EmojiSpan role="img" aria-label="pensive" style={style}>
     {value}
   </EmojiSpan>
 );

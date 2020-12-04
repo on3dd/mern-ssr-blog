@@ -1,9 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
 import styled from 'styled-components';
 
 import { COLORS, BREAKPOINTS } from '@utils/constants';
+
+import Emoji from '@components/base-ui/emoji';
 
 const NavbarDiv = styled.nav`
   display: block;
@@ -34,26 +35,26 @@ const NavbarLi = styled.li`
 `;
 
 const NavbarLink = styled(NavLink)`
-  color: ${COLORS.grayLighten};
   font-size: 1.2rem;
   text-transform: lowercase;
-  transition: all 0.1s ease-out;
+  color: ${COLORS.grayLighten};
 
   &.is-active {
-    color: ${COLORS.primary};
+    color: ${COLORS.primary} !important;
   }
 
   &:hover,
   &:focus {
     color: ${COLORS.grayDarken};
+    text-decoration: none;
   }
 `;
 
 const routes = [
-  { to: '/', name: 'home' },
-  { to: '/programming', name: 'programming' },
-  { to: '/music', name: 'music' },
-  { to: '/other', name: 'other' },
+  { to: '/', name: 'home', emoji: '🏠' },
+  { to: '/programming', name: 'programming', emoji: '⌨️' },
+  { to: '/music', name: 'music', emoji: '🎵' },
+  { to: '/other', name: 'other', emoji: '😵‍💫' },
 ];
 
 const Navbar: React.FC = () => (
@@ -67,6 +68,7 @@ const Navbar: React.FC = () => (
             activeClassName="is-active"
           >
             {el.name}
+            <Emoji value={el.emoji} />
           </NavbarLink>
         </NavbarLi>
       ))}

@@ -14,11 +14,6 @@ const PostsCard = styled.article`
     minmax(175px, 1fr) //
     minmax(auto, 152px);
   grid-gap: 1.5rem;
-
-  &:hover,
-  &:focus {
-    color: ${COLORS.primary};
-  }
 `;
 
 type PostssItemProps = {
