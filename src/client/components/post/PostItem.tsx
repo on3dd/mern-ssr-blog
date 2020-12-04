@@ -23,7 +23,9 @@ const colorGrayLighten = css`
   color: ${COLORS.grayLighten};
 `;
 
-const PostBody = styled.article``;
+const PostBody = styled.article`
+  width: 100%;
+`;
 
 const PostHeading = styled.h1`
   margin: 0 0 1rem 0;
@@ -65,7 +67,6 @@ const PostImg = styled.img`
   transform: translate(-50%, -50%);
 `;
 
-// TODO: fix width issues on mobile devices
 const PostContent = styled.div`
   font-size: 1.25rem;
 
