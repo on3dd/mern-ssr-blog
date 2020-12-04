@@ -5,6 +5,7 @@ import Html from '@client/Html.ts';
 import createStore from '@client/store';
 import clientRoutes from '@client/router';
 
+import generateHtmlTitle from '@server/utils/generateHtmlTitle';
 import generateHtmlContent from '@server/utils/generateHtmlContent';
 
 const router = Router();
@@ -39,7 +40,7 @@ router.get('/*', (req, res) => {
       context,
     });
 
-    const title = 'Test Server Side Rendering App';
+    const title = generateHtmlTitle(req);
 
     res.send(
       Html({
