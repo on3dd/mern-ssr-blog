@@ -40,9 +40,8 @@ const PostHeader = styled.h2`
 const PostDescription = styled.p`
   display: block;
   height: 100%;
-  max-height: 40px;
-  margin: 0;
-  margin-top: 0.5rem;
+  max-height: 2.5rem;
+  margin: 0.5rem 0 0 0;
   padding: 0;
   color: ${COLORS.grayLighten};
   font-size: 1rem;
@@ -52,7 +51,7 @@ const PostDescription = styled.p`
 const PostFooter = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   margin-top: 0.66rem;
 `;
 

@@ -6,8 +6,9 @@ export const PLACEHOLDER_URL =
 
 export const COLORS = {
   black: 'rgba(0, 0, 0, 0.9)',
-  grayDarken: 'rgba(0, 0, 0, 0.84)',
+  white: 'rgba(255, 255, 255, 1)',
   gray: 'rgba(0, 0, 0, 0.68)',
+  grayDarken: 'rgba(0, 0, 0, 0.84)',
   grayLighten: 'rgba(0, 0, 0, 0.54)',
   primary: 'rgba(41, 128, 185, 1.0)',
   backgroundColor: 'rgba(255, 255, 255, 1)',

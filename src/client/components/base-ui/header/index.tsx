@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { COLORS } from '@utils/constants';
+
 import Navbar from '@components/base-ui/header/Navbar';
 
 const HeaderDiv = styled.header`
@@ -17,6 +19,7 @@ const InnerDiv = styled.div`
 
 const InnerTopBar = styled.div`
   display: flex;
+  justify-content: space-between;
   width: 100%;
 `;
 
@@ -28,14 +31,20 @@ const ContentDiv = styled.div`
 const Left = styled(ContentDiv)``;
 const Right = styled(ContentDiv)``;
 
-const Brand = styled(Link)`
+const Brand = styled.span`
+  display: block;
   padding: 1rem 0;
   font-size: 2rem !important;
   font-family: inherit;
   font-weight: bolder;
+`;
+
+const BrandLink = styled.a`
+  margin-right: 0.5ch;
   text-decoration: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration: underline;
   }
 `;
@@ -53,8 +62,11 @@ const Header: React.FC = () => (
     <InnerDiv className="header__inner container">
       <InnerTopBar className="header__inner-topbar">
         <Left className="header__inner-left">
-          <Brand to="/" className="header__brand">
-            on3dd blog
+          <Brand className="header__brand">
+            <BrandLink href="" className="header__link">
+              on3dd
+            </BrandLink>
+            blog
           </Brand>
         </Left>
 
