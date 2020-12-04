@@ -68,7 +68,7 @@ const Navbar: React.FC = () => (
             activeClassName="is-active"
           >
             {el.name}
-            <Emoji value={el.emoji} />
+            <Emoji value={el.emoji} ariaLabel={el.name} />
           </NavbarLink>
         </NavbarLi>
       ))}

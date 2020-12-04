@@ -28,7 +28,8 @@ const PostsPlaceholder: React.FC = () => (
     </PostsHeading>
 
     <PostsText className="posts-text">
-      There are no posts here yet <Emoji value="😔" />
+      There are no posts here yet
+      <Emoji value="😔" ariaLabel="pensive" />
     </PostsText>
   </PostsContainer>
 );

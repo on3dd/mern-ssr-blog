@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 import { Post } from '@client';
 
-import { COLORS } from '@utils/constants';
-
 import PostsBody from '@components/home/posts/PostItemBody';
 import PostsImage from '@components/home/posts/PostItemImage';
 

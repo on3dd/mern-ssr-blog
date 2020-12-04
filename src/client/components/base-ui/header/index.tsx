@@ -65,7 +65,7 @@ const Header: React.FC = () => (
               on3dd
             </BrandLink>
             blog
-            <Emoji value="👨‍💻" />
+            <Emoji value="👨‍💻" ariaLabel="coding" />
           </Brand>
         </Left>
 

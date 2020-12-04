@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import ReactMarkdown from 'react-markdown';
@@ -11,6 +12,8 @@ import {
   BREAKPOINTS,
   PLACEHOLDER_URL,
 } from '@utils/constants';
+
+import Emoji from '@components/base-ui/emoji';
 
 import PostCodeBlock from './PostCodeBlock';
 
@@ -32,9 +35,19 @@ const PostHeading = styled.h1`
   font-size: 3rem;
 `;
 
-const PostDate = styled.p`
+const PostInfo = styled.p`
   ${postBlock};
   ${colorGrayLighten};
+`;
+
+const PostDate = styled.span``;
+
+const PostEmoji = styled(Emoji)`
+  margin-left: 0 !important;
+`;
+
+const PostLink = styled(Link)`
+  margin: 0 0.5ch;
 `;
 
 const PostDescription = styled.p`
@@ -46,7 +59,6 @@ const PostContainer = styled.div`
   margin-bottom: 1rem;
   position: relative;
   height: 300px;
-  /* width: 100%; */
   border-radius: 5px;
   overflow: hidden;
 
@@ -88,14 +100,18 @@ const PostContent = styled.div`
   }
 
   pre {
-    border: 1px solid ${COLORS.borderColor};
     border-radius: 5px;
+    border: 1px solid ${COLORS.borderColor};
   }
 
   a {
     color: inherit;
     text-decoration: underline;
-    transition: color 0.1s ease-out;
+
+    &:hover,
+    &:focus {
+      color: ${COLORS.primary};
+    }
   }
 `;
 
@@ -110,6 +126,10 @@ const PostItem: React.FC<PostItemProps> = ({
     return new Date(data.date).toLocaleDateString();
   }, [data.date]);
 
+  const to = useMemo(() => {
+    return `/categories/${data.category.id}`;
+  }, [data.category.id]);
+
   const alt = useMemo(() => {
     return `${data.title} image preview`;
   }, [data.title]);
@@ -120,9 +140,16 @@ const PostItem: React.FC<PostItemProps> = ({
         {data.title}
       </PostHeading>
 
-      <PostDate className="post__date">
-        {memoizedDate}
-      </PostDate>
+      <PostInfo className="post__info">
+        <PostDate className="post__date">
+          <PostEmoji value="📅" ariaLabel="calendar" />
+          {memoizedDate},
+        </PostDate>
+
+        <PostLink to={to} className="post__link">
+          {data.category.name}
+        </PostLink>
+      </PostInfo>
 
       <PostDescription className="post__description">
         {data.description}
