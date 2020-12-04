@@ -1,8 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
-import { COLORS } from '@utils/constants';
 
 import Navbar from '@components/base-ui/header/Navbar';
 

@@ -9,7 +9,7 @@ type PostCodeBlockProps = {
 
 const PostCodeBlock: React.FC<PostCodeBlockProps> = ({
   value,
-  language,
+  language = 'typescript',
 }: PostCodeBlockProps) => (
   <SyntaxHighlighter language={language} style={githubGist}>
     {value}

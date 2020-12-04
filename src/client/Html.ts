@@ -14,7 +14,7 @@ const Html = ({
   preloadedState,
 }: HtmlProps) => `
   <!DOCTYPE html>
-  <html>
+  <html lang="ru">
     <head>
       <title>${title}</title>
       <link rel="icon" href="${FAVICON_URL}" />

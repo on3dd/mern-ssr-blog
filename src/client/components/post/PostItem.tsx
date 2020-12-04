@@ -115,7 +115,9 @@ const PostItem: React.FC<PostItemProps> = ({
     return new Date(data.date).toLocaleDateString();
   }, [data.date]);
 
-  console.log('data.content', data.content);
+  const alt = useMemo(() => {
+    return `${data.title} image preview`;
+  }, [data.title]);
 
   return (
     <PostBody className="post__body">
@@ -132,7 +134,7 @@ const PostItem: React.FC<PostItemProps> = ({
       </PostDescription>
 
       <PostContainer className="post__container">
-        <PostImg src={PLACEHOLDER_URL} />
+        <PostImg alt={alt} src={PLACEHOLDER_URL} />
       </PostContainer>
 
       <PostContent className="post__content">

@@ -11,6 +11,11 @@ const Ul = styled.ul`
   width: 100%;
 `;
 
+const Li = styled.li`
+  margin-bottom: 3rem;
+  list-style: none;
+`;
+
 type PostListProps = {
   data: Post[];
 };
@@ -20,7 +25,9 @@ const PostList: React.FC<PostListProps> = ({
 }: PostListProps) => (
   <Ul className="post-list">
     {data.map((el) => (
-      <PostsItem data={el} key={el.id} />
+      <Li key={el.id} className="post-item">
+        <PostsItem data={el} />
+      </Li>
     ))}
   </Ul>
 );

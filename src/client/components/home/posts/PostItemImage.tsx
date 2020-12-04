@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 
 import { PLACEHOLDER_URL } from '@utils/constants';
@@ -26,13 +26,20 @@ type PostItemImageProps = {
 
 const PostImage: React.FC<PostItemImageProps> = ({
   data,
-}: PostItemImageProps) => (
-  <PostPlaceholder className="post__placeholder">
-    <PostImg
-      className="post__image"
-      src={PLACEHOLDER_URL}
-    />
-  </PostPlaceholder>
-);
+}: PostItemImageProps) => {
+  const alt = useMemo(() => {
+    return `${data.title} image preview`;
+  }, [data.title]);
+
+  return (
+    <PostPlaceholder className="post__placeholder">
+      <PostImg
+        alt={alt}
+        src={PLACEHOLDER_URL}
+        className="post__image"
+      />
+    </PostPlaceholder>
+  );
+};
 
 export default PostImage;
