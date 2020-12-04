@@ -23,7 +23,10 @@ class PostController implements Controller {
   }
 
   public async find(id: string) {
-    return await Post.findOne({ id }, POST_FIELDS);
+    return await Post.findOne({ id }, POST_FIELDS).populate(
+      'category',
+      CATEGORY_FIELDS,
+    );
   }
 
   public async create({
