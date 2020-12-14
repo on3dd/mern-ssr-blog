@@ -2,7 +2,7 @@ import {
   FETCHING_POST,
   FETCHING_POST_SUCCESS,
   FETCHING_POST_FAIL,
-} from '@root/src/client/utils/actionTypes';
+} from '@client/utils/actionTypes';
 
 import { AsyncAction, PostState } from '@client';
 
