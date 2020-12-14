@@ -3,6 +3,7 @@
 
 ## Things to be done
 - [x] Basic pages
+- [x] Basic routing
 - [x] Basic API for posts and categories
 - [ ] Admin panel
 - [ ] Authentication
