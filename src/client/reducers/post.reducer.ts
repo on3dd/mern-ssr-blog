@@ -12,6 +12,7 @@ const initialState: PostState = {
     title: '',
     description: '',
     date: '',
+    content: '',
     category: {
       id: 0,
       name: '',
