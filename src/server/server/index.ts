@@ -7,8 +7,10 @@ import router from '@server/routes';
 import httpLogger from '@server/middlewares/httpLogger';
 import errorHandler from '@server/middlewares/errorLogger';
 
-const webpack = require('webpack');
-const webpackConfig = require('@root/webpack.config') as any[];
+import webpack, { Configuration } from 'webpack';
+import config from '@root/webpack.config';
+
+const webpackConfig = config as Configuration[];
 const compiler = webpack(webpackConfig);
 
 export default class Server {
@@ -24,7 +26,7 @@ export default class Server {
         noInfo: true,
         publicPath: webpackConfig.find(
           (el) => el.name === 'server',
-        ).output.publicPath,
+        )!.output!.publicPath,
       }),
     );
 
