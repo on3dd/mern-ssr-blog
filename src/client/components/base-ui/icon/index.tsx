@@ -9,7 +9,7 @@ interface IconProps {
   color?: string;
   size?: string;
   style?: string;
-  onClick?: () => void;
+  onClick?: (...args: any[]) => void;
 }
 
 const IconButton = styled('button')<{ size?: string }>`

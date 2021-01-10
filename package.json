@@ -41,10 +41,10 @@
   "scripts": {
     "run:dev": "npm run build:dev && npm run start:dev",
     "run:prod": "npm run build:prod && npm run start:prod",
-    "start:prod": "node ./dist/server",
     "start:dev": "npm-run-all --parallel watch:client watch:server",
-    "watch:client": "webpack --watch",
-    "watch:server": "nodemon \"./dist/server.js\" --watch \"./dist \"",
+    "start:prod": "node ./dist/server.bundle.js",
+    "watch:client": "webpack --config-name client --watch",
+    "watch:server": "nodemon \"./dist/server.bundle.js\" --watch \"./dist \"",
     "build:dev": "cross-env NODE_ENV=development webpack",
     "build:prod": "cross-env NODE_ENV=production webpack",
     "test": "react-scripts test",

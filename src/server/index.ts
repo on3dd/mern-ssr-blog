@@ -44,15 +44,15 @@ start();
   },
 );
 
-const shutdown = async () => {
-  logger.warn(
-    'SIGTERM signal received: closing HTTP server',
-  );
+// const shutdown = async () => {
+//   logger.warn(
+//     'SIGTERM signal received: closing HTTP server',
+//   );
 
-  await server.close();
+//   await server.close();
 
-  logger.warn('HTTP server closed');
-};
+//   logger.warn('HTTP server closed');
+// };
 
-(process as NodeJS.EventEmitter).on('SIGTERM', shutdown);
-(process as NodeJS.EventEmitter).on('SIGINT', shutdown);
+// (process as NodeJS.EventEmitter).on('SIGTERM', shutdown);
+// (process as NodeJS.EventEmitter).on('SIGINT', shutdown);

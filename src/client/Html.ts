@@ -22,7 +22,8 @@ const Html = ({
       ${styles}
     </head>
     <body>
-      <div id="app">${body}</div>
+      <div id="root">${body}</div>
+      <!-- <script src="./client.bundle.js"></script> -->
       <script>
           // WARNING: See the following for security issues around embedding JSON in HTML:
           // https://redux.js.org/recipes/server-rendering/#security-considerations

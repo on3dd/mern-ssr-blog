@@ -5,57 +5,91 @@ const dotenv = require('dotenv').config({
 
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
 
-const isDevelopment = process.env.NODE_ENV !== 'production';
+const IS_DEV = process.env.NODE_ENV !== 'production';
 
-module.exports = {
-  entry: [
-    'react-hot-loader/patch',
-    './src/server/index.ts',
-  ],
-  mode: isDevelopment ? 'development' : 'production',
-  target: 'node',
-  node: {
-    __dirname: false,
-    __filename: false,
-  },
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'server.js',
-    publicPath: '/',
-  },
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
-  },
-  externals: nodeExternals(),
-  plugins: [
-    // new BundleAnalyzerPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': dotenv.parsed,
-    }),
-    isDevelopment &&
-      new webpack.HotModuleReplacementPlugin(),
-  ].filter(Boolean),
-  module: {
-    rules: [
-      {
-        test: /\.ts(x)?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          // This is a feature of `babel-loader` for webpack (not Babel itself).
-          // It enables caching results in ./node_modules/.cache/babel-loader/
-          // directory for faster rebuilds.
-          cacheDirectory: true,
-          plugins: ['react-hot-loader/babel'],
-        },
-      },
-    ],
-  },
-  devServer: {
-    compress: true,
-    port: 3000,
-  },
+const SHARED_MODE = IS_DEV ? 'development' : 'production';
+
+const SHARED_OUTPUT = {
+  path: path.resolve(__dirname, 'dist'),
+  filename: '[name].bundle.js',
 };
+
+const SHARED_RESOLVE = {
+  extensions: ['.ts', '.tsx', '.js', '.jsx'],
+};
+
+const SHARED_PLUGINS = [
+  new webpack.DefinePlugin({
+    'process.env': dotenv.parsed,
+  }),
+  new webpack.DefinePlugin({
+    'process.env.REACT_APP_SC_ATTR': JSON.stringify(
+      'data-styled-mern-ssr-blog',
+    ),
+    'process.env.SC_ATTR': JSON.stringify(
+      'data-styled-mern-ssr-blog',
+    ),
+    'process.env.REACT_APP_SC_DISABLE_SPEEDY': JSON.stringify(
+      true,
+    ),
+  }),
+].filter(Boolean);
+
+const SHARED_MODULE = {
+  rules: [
+    {
+      test: /\.ts(x)?$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader',
+      options: {
+        // This is a feature of `babel-loader` for webpack (not Babel itself).
+        // It enables caching results in ./node_modules/.cache/babel-loader/
+        // directory for faster rebuilds.
+        cacheDirectory: true,
+        plugins: ['react-hot-loader/babel'],
+      },
+    },
+  ],
+};
+
+module.exports = [
+  {
+    name: 'server',
+    mode: SHARED_MODE,
+    entry: {
+      server: ['./src/server/index.ts'],
+    },
+    target: 'node',
+    node: {
+      __dirname: false,
+      __filename: false,
+    },
+    output: Object.assign({}, SHARED_OUTPUT, {
+      publicPath: '/',
+    }),
+    resolve: SHARED_RESOLVE,
+    externals: [nodeExternals()],
+    plugins: SHARED_PLUGINS,
+    module: SHARED_MODULE,
+    devServer: {
+      compress: true,
+      port: 3000,
+    },
+  },
+  {
+    name: 'client',
+    mode: SHARED_MODE,
+    entry: {
+      client: ['./src/client/index.tsx'],
+    },
+    target: 'web',
+    output: SHARED_OUTPUT,
+    resolve: SHARED_RESOLVE,
+    plugins: SHARED_PLUGINS.concat([
+      () =>
+        IS_DEV && new webpack.HotModuleReplacementPlugin(),
+    ]),
+    module: SHARED_MODULE,
+  },
+];

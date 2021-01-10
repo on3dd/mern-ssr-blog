@@ -8,7 +8,7 @@ import httpLogger from '@server/middlewares/httpLogger';
 import errorHandler from '@server/middlewares/errorLogger';
 
 const webpack = require('webpack');
-const webpackConfig = require('@root/webpack.config');
+const webpackConfig = require('@root/webpack.config') as any[];
 const compiler = webpack(webpackConfig);
 
 export default class Server {
@@ -22,7 +22,9 @@ export default class Server {
     this.app.use(
       require('webpack-dev-middleware')(compiler, {
         noInfo: true,
-        publicPath: webpackConfig.output.publicPath,
+        publicPath: webpackConfig.find(
+          (el) => el.name === 'server',
+        ).output.publicPath,
       }),
     );
 
