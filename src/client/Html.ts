@@ -32,7 +32,7 @@ const Html = ({
         ).replace(/</g, '\\u003c')}
       </script>
 
-      <script src="./client.bundle.js"></script>
+      <script src="/client.bundle.js"></script>
     </body>
   </html>
 `;

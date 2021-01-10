@@ -25,8 +25,7 @@ const Post: React.FC = () => {
   const { id }: { id: string } = useParams();
 
   useEffect(() => {
-    if (post.data.id === 0) {
-      console.log('id', id);
+    if (post.data.id !== parseInt(id)) {
       dispatch(fetchPost(id));
     }
   }, [dispatch, post.data.id, id]);
