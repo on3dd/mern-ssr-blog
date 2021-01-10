@@ -4,7 +4,7 @@ import {
   FETCHING_POSTS_FAIL,
 } from '@client/utils/actionTypes';
 
-import { AsyncAction, PostsState } from '@client';
+import { AsyncAction, PostsState, Post } from '@client';
 
 const initialState: PostsState = {
   data: [],
@@ -15,8 +15,8 @@ const initialState: PostsState = {
 
 const postsReducer = (
   state = initialState,
-  action: AsyncAction,
-) => {
+  action: AsyncAction<Post[]>,
+): PostsState => {
   switch (action.type) {
     case FETCHING_POSTS:
       return Object.assign({}, state, {

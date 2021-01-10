@@ -4,7 +4,7 @@ import {
   FETCHING_POST_FAIL,
 } from '@client/utils/actionTypes';
 
-import { AsyncAction, PostState } from '@client';
+import { AsyncAction, PostState, Post } from '@client';
 
 const initialState: PostState = {
   data: {
@@ -26,8 +26,8 @@ const initialState: PostState = {
 
 const postsReducer = (
   state = initialState,
-  action: AsyncAction,
-) => {
+  action: AsyncAction<Post | null>,
+): PostState => {
   switch (action.type) {
     case FETCHING_POST:
       return Object.assign({}, state, {
@@ -38,7 +38,7 @@ const postsReducer = (
 
     case FETCHING_POST_SUCCESS:
       return Object.assign({}, state, {
-        data: action.payload,
+        data: action.payload ?? initialState.data,
         isFetching: false,
         hasError: false,
         errorMessage: null,

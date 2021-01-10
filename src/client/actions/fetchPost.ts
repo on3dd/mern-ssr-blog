@@ -1,3 +1,4 @@
+import { PostResponse } from '@client';
 import { Dispatch } from '@client/thunk';
 
 import axiosService from '@client/utils/axiosService';
@@ -16,7 +17,7 @@ const fetchPost = (id: string) => {
 
     return axiosService
       .get(API_ENDPOINTS.post(id))
-      .then((res) => {
+      .then((res: PostResponse) => {
         dispatch({
           type: FETCHING_POST_SUCCESS,
           payload: res.data.data,

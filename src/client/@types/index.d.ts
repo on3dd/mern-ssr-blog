@@ -1,15 +1,15 @@
 declare module '@client' {
   import React from 'react';
-  import { AnyAction } from 'redux';
+  import { AxiosResponse } from 'axios';
 
   export { AnyAction } from 'redux';
 
-  export interface Action extends AnyAction {
+  export interface Action<T> extends AnyAction {
     type: string;
-    payload: any;
+    payload: T;
   }
 
-  export interface AsyncAction extends Action {
+  export interface AsyncAction<T> extends Action<T> {
     err: string;
   }
 
@@ -28,7 +28,7 @@ declare module '@client' {
     posts: string[];
   }
 
-  export interface State<T> {
+  interface State<T> {
     data: T;
     isFetching: boolean;
     hasError: boolean;
@@ -42,4 +42,12 @@ declare module '@client' {
     post: PostState;
     posts: PostsState;
   }
+
+  type ApiResponse<T> = AxiosResponse<{
+    data: T;
+    error: Error;
+  }>;
+
+  export type PostResponse = ApiResponse<Post | null>;
+  export type PostsResponse = ApiResponse<Post[]>;
 }
