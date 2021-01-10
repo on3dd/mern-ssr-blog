@@ -5,7 +5,7 @@
 - [x] Basic pages
 - [x] Basic routing
 - [x] Basic API for posts and categories
-- [ ] Admin panel
+- [x] ~~Admin panel~~
 - [ ] Authentication
 - [ ] User reactions
 - [ ] Tests for front-end
