@@ -6,6 +6,8 @@ import fetchPosts from '@actions/fetchPosts';
 
 import { RootState } from '@client';
 
+import Spinner from '@components/base-ui/spinner';
+
 import PostsList from '@components/home/posts/PostsList';
 import PostsPlaceholder from '@components/home/posts/PostsPlaceholder';
 
@@ -27,13 +29,23 @@ const Posts: React.FC = () => {
     }
   }, [dispatch, posts.data.length]);
 
-  const renderPosts = useMemo(() => {
-    return posts.data.length === 0 ? (
-      <PostsPlaceholder />
+  const renderPlaceholder = useMemo(() => {
+    return posts.isFetching ? (
+      <Spinner />
     ) : (
-      <PostsList data={posts.data} />
+      <PostsPlaceholder />
     );
+  }, [posts.isFetching]);
+
+  const renderList = useMemo(() => {
+    return <PostsList data={posts.data} />;
   }, [posts.data]);
+
+  const renderPosts = useMemo(() => {
+    return posts.data.length
+      ? renderList
+      : renderPlaceholder;
+  }, [posts.data, renderList, renderPlaceholder]);
 
   return (
     <PostsDiv className="posts">{renderPosts}</PostsDiv>
