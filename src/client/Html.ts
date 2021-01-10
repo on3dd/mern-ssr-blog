@@ -23,14 +23,16 @@ const Html = ({
     </head>
     <body>
       <div id="root">${body}</div>
-      <!-- <script src="./client.bundle.js"></script> -->
+
       <script>
-          // WARNING: See the following for security issues around embedding JSON in HTML:
-          // https://redux.js.org/recipes/server-rendering/#security-considerations
-          window.__PRELOADED_STATE__ = ${JSON.stringify(
-            preloadedState,
-          ).replace(/</g, '\\u003c')}
-        </script>
+        // WARNING: See the following for security issues around embedding JSON in HTML:
+        // https://redux.js.org/recipes/server-rendering/#security-considerations
+        window.__PRELOADED_STATE__ = ${JSON.stringify(
+          preloadedState,
+        ).replace(/</g, '\\u003c')}
+      </script>
+
+      <script src="./client.bundle.js"></script>
     </body>
   </html>
 `;

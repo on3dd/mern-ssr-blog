@@ -19,7 +19,7 @@ const routes = [
             ...Home,
           },
           {
-            path: '/posts',
+            path: '/posts/:id',
             ...Post,
           },
           {

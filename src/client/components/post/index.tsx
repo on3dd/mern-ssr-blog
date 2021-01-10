@@ -25,8 +25,11 @@ const Post: React.FC = () => {
   const { id }: { id: string } = useParams();
 
   useEffect(() => {
-    dispatch(fetchPost(id));
-  }, [dispatch, id]);
+    if (post.data.id === 0) {
+      console.log('id', id);
+      dispatch(fetchPost(id));
+    }
+  }, [dispatch, post.data.id, id]);
 
   const renderPost = useMemo(() => {
     return post.data === null ? (

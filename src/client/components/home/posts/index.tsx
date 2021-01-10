@@ -22,8 +22,10 @@ const Posts: React.FC = () => {
   );
 
   useEffect(() => {
-    dispatch(fetchPosts());
-  }, [dispatch]);
+    if (posts.data.length === 0) {
+      dispatch(fetchPosts());
+    }
+  }, [dispatch, posts.data.length]);
 
   const renderPosts = useMemo(() => {
     return posts.data.length === 0 ? (
