@@ -1,5 +1,5 @@
 import React, { useMemo, useCallback } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { COLORS, BREAKPOINTS } from '@utils/constants';
@@ -12,7 +12,7 @@ const PostBody = styled.div`
   text-transform: lowercase;
 `;
 
-const PostLink = styled(NavLink)`
+const PostLink = styled(Link)`
   text-decoration: none;
 
   &:hover,
