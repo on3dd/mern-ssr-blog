@@ -4,6 +4,12 @@ declare module '@client' {
 
   export { AnyAction } from 'redux';
 
+  export interface Route {
+    to: string;
+    name: string;
+    emoji: string;
+  }
+
   export interface Action<T> extends AnyAction {
     type: string;
     payload: T;

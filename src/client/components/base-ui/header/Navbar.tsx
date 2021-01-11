@@ -2,7 +2,11 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { COLORS, BREAKPOINTS } from '@utils/constants';
+import {
+  ROUTES,
+  COLORS,
+  BREAKPOINTS,
+} from '@utils/constants';
 
 import Emoji from '@components/base-ui/emoji';
 
@@ -32,6 +36,10 @@ const NavbarLi = styled.li`
       margin-left: 1.5rem;
     }
   }
+
+  &:last-of-type {
+    margin-left: auto;
+  }
 `;
 
 const NavbarLink = styled(NavLink)`
@@ -50,17 +58,10 @@ const NavbarLink = styled(NavLink)`
   }
 `;
 
-const routes = [
-  { to: '/', name: 'home', emoji: '🏠' },
-  { to: '/programming', name: 'programming', emoji: '⌨️' },
-  { to: '/music', name: 'music', emoji: '🎵' },
-  { to: '/other', name: 'other', emoji: '😵‍💫' },
-];
-
 const Navbar: React.FC = () => (
   <NavbarDiv className="navbar">
     <NavbarUl className="navbar__links">
-      {routes.map((el) => (
+      {ROUTES.map((el) => (
         <NavbarLi key={el.name} className="navbar__links">
           <NavbarLink
             to={el.to}
