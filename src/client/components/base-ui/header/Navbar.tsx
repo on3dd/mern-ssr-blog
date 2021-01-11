@@ -35,15 +35,16 @@ const NavbarLi = styled.li`
     &:not(:first-child) {
       margin-left: 1.5rem;
     }
-  }
 
-  &:last-of-type {
-    margin-left: auto;
+    &:last-of-type {
+      margin-left: auto;
+    }
   }
 `;
 
 const NavbarLink = styled(NavLink)`
   font-size: 1.2rem;
+  line-height: 2.5rem;
   text-transform: lowercase;
   color: ${COLORS.grayLighten};
 
@@ -55,6 +56,10 @@ const NavbarLink = styled(NavLink)`
   &:focus {
     color: ${COLORS.grayDarken};
     text-decoration: none;
+  }
+
+  @media (min-width: ${BREAKPOINTS.tablet}) {
+    line-height: inherit;
   }
 `;
 
