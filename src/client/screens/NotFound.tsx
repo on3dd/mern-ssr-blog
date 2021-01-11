@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Emoji from '@components/base-ui/emoji';
+
 const Div = styled.div`
   display: flex;
   flex-direction: column;
@@ -24,10 +26,8 @@ const NotFound: React.FC = () => (
   <Div className="not-found">
     <Code className="not-found__code">404</Code>
     <Text className="not-found__text">
-      Sorry, this page is unavailable{' '}
-      <span role="img" aria-label="pensive">
-        😔
-      </span>
+      Sorry, this page is unavailable
+      <Emoji value="😔" ariaLabel="pensive" />
     </Text>
   </Div>
 );
