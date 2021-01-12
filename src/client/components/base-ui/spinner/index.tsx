@@ -4,14 +4,22 @@ import {
   SpinnerCircularProps,
 } from 'spinners-react';
 
+import { COLORS } from '@utils/constants';
+
 type SpinnerProps = SpinnerCircularProps & {};
 
 const Spinner: React.FC<SpinnerProps> = ({
   size = 75,
-  color = 'rgba(41,128,185,1.0)',
+  color = COLORS.primary,
+  secondaryColor = COLORS.cloud,
   ...props
 }: SpinnerProps) => (
-  <SpinnerCircular size={75} color={color} {...props} />
+  <SpinnerCircular
+    size={75}
+    color={color}
+    secondaryColor={secondaryColor}
+    {...props}
+  />
 );
 
 export default Spinner;

@@ -6,7 +6,7 @@ import { COLORS, BREAKPOINTS } from '@utils/constants';
 
 import { Post } from '@client';
 
-import Icon from '@components/base-ui/icon';
+import IconButton from '@root/src/client/components/base-ui/icon-button';
 
 const PostBody = styled.div`
   text-transform: lowercase;
@@ -80,7 +80,7 @@ const PostDate = styled.span`
   color: ${COLORS.grayLighten};
 `;
 
-const PostIcon = styled(Icon)`
+const PostIconButton = styled(IconButton)`
   margin-left: 0.25rem;
 `;
 
@@ -127,14 +127,14 @@ const PostItemBody: React.FC<PostItemBodyProps> = ({
         </PostFooterDiv>
 
         <PostFooterDiv className="post__footer__div">
-          <PostIcon
+          <PostIconButton
             icon="RegBookmark"
             size="2rem"
             title="Add to bookmarks"
             onClick={onClick}
           />
 
-          <PostIcon
+          <PostIconButton
             icon="EllipsisH"
             size="2rem"
             title="Other actions"
