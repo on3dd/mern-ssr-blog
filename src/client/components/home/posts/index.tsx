@@ -1,10 +1,9 @@
 import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import ReactPlaceholder from 'react-placeholder';
-// import 'react-placeholder/lib/reactPlaceholder.css';
-
 import styled from 'styled-components';
+
+// import 'react-placeholder/lib/reactPlaceholder.css';
 
 import fetchPosts from '@actions/fetchPosts';
 

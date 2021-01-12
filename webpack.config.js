@@ -50,6 +50,10 @@ const SHARED_MODULE = {
         plugins: ['react-hot-loader/babel'],
       },
     },
+    {
+      test: /\.css$/,
+      loader: 'style-loader!css-loader',
+    },
   ],
 };
 
@@ -85,11 +89,15 @@ module.exports = [
     },
     target: 'web',
     output: SHARED_OUTPUT,
-    resolve: SHARED_RESOLVE,
+    module: SHARED_MODULE,
     plugins: SHARED_PLUGINS.concat([
       () =>
         IS_DEV && new webpack.HotModuleReplacementPlugin(),
     ]),
-    module: SHARED_MODULE,
+    resolve: Object.assign({}, SHARED_RESOLVE, {
+      extensions: SHARED_RESOLVE.extensions.concat([
+        '.css',
+      ]),
+    }),
   },
 ];
