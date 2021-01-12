@@ -10,6 +10,7 @@
 - [ ] User reactions
 - [ ] Tests for front-end
 - [ ] Tests for back-end
+- [ ] Docker setup
 
 ## Technology stack
 
