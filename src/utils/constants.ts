@@ -11,7 +11,7 @@ export const ROUTES: Route[] = [
   { to: '/programming', name: 'programming', emoji: '⌨️' },
   { to: '/music', name: 'music', emoji: '🎵' },
   { to: '/other', name: 'other', emoji: '😵‍💫' },
-  { to: '/login', name: 'login', emoji: '👥' },
+  { to: '/login', name: 'auth', emoji: '👥' },
 ];
 
 export const COLORS = {

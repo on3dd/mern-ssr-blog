@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import {
-  ROUTES,
   COLORS,
+  ROUTES,
   BREAKPOINTS,
 } from '@utils/constants';
 
@@ -72,6 +72,11 @@ const Navbar: React.FC = () => (
             to={el.to}
             exact
             activeClassName="is-active"
+            isActive={(match, { pathname: path }) => {
+              return el.to === '/login'
+                ? path === '/login' || path === '/register'
+                : !!match;
+            }}
           >
             {el.name}
             <Emoji value={el.emoji} ariaLabel={el.name} />
