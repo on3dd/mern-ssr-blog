@@ -4,6 +4,7 @@ import Default from '@layouts/Default';
 import Home from '@screens/Home';
 import Post from '@screens/Post';
 import Login from '@screens/Login';
+import Register from '@screens/Register';
 import NotFound from '@screens/NotFound';
 
 const routes = [
@@ -23,6 +24,11 @@ const routes = [
             path: '/login',
             exact: true,
             ...Login,
+          },
+          {
+            path: '/register',
+            exact: true,
+            ...Register,
           },
           {
             path: '/posts/:id',

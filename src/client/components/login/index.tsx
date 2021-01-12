@@ -17,7 +17,8 @@ const LoginHeading = styled.h1`
   text-align: center;
 `;
 
-const LoginForgotPassword = styled(Link)`
+const LoginLink = styled(Link)`
+  display: block;
   font-size: 0.9rem;
   color: ${COLORS.primary};
 
@@ -37,9 +38,13 @@ const Login: React.FC = () => {
 
       <LoginForm />
 
-      <LoginForgotPassword to="/password-reset">
+      <LoginLink to="/password-reset">
         Forgot password?
-      </LoginForgotPassword>
+      </LoginLink>
+
+      <LoginLink to="/register">
+        Don't have an account yet?
+      </LoginLink>
     </LoginDiv>
   );
 };

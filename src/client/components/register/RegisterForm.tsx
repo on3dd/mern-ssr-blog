@@ -9,9 +9,9 @@ import {
   FormInput,
 } from '@components/base-ui/form';
 
-const LoginForm: React.FC = () => {
+const RegisterForm: React.FC = () => {
   return (
-    <Form className="login__form">
+    <Form className="register__form">
       <FormGroup>
         <FormInput
           id="email"
@@ -33,7 +33,17 @@ const LoginForm: React.FC = () => {
       </FormGroup>
 
       <FormGroup>
-        <FormButton title="Sign in">Sign in</FormButton>
+        <FormInput
+          id="confirm-password"
+          type="password"
+          placeholder="confirm password"
+          // value={value}
+          // onChange={onChange}
+        />
+      </FormGroup>
+
+      <FormGroup>
+        <FormButton title="Sign up">Sign up</FormButton>
       </FormGroup>
 
       <FormGroup>
@@ -41,12 +51,12 @@ const LoginForm: React.FC = () => {
       </FormGroup>
 
       <FormGroup>
-        <FormGoogleButton title="Sign in with Google">
-          Sign in with Google
+        <FormGoogleButton title="Sign up with Google">
+          Sign up with Google
         </FormGoogleButton>
       </FormGroup>
     </Form>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
