@@ -1,11 +1,8 @@
 import { Request } from 'express';
 
-interface IPathnames {
-  [key: string]: string;
-}
-
-const PATHNAMES: IPathnames = Object.freeze({
+const PATHNAMES: Record<string, string> = Object.freeze({
   '': 'home',
+  login: 'login',
   posts: 'posts',
   categories: 'categories',
 });
