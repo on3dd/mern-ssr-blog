@@ -28,6 +28,7 @@ export const COLORS = {
   backgroundColor: 'rgba(255, 255, 255, 1)',
   borderColor: 'rgba(0, 0, 0, 0.1)',
   shadowColor: 'rgba(0, 0, 0, 0.25)',
+  placeholderColor: '#CDCDCD',
 };
 
 // For using with min-width media query

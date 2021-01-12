@@ -1,37 +1,80 @@
 import React from 'react';
+import {
+  TextBlock,
+  RectShape,
+} from 'react-placeholder/lib/placeholders';
 import styled from 'styled-components';
 
-import Emoji from '@components/base-ui/emoji';
+import { COLORS } from '@utils/constants';
 
-const PostsContainer = styled.div`
+const PlaceholderDiv = styled.div`
   width: 100%;
-  text-align: center;
-  text-transform: lowercase;
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: //
+    minmax(175px, 1fr) //
+    minmax(auto, 152px);
 `;
 
-const PostsHeading = styled.h1`
-  display: block;
-  margin: 0;
-  font-size: 10rem;
+const PlaceholderHeading = styled(TextBlock)`
+  > div {
+    width: 75% !important;
+    height: 1.25rem !important;
+  }
 `;
 
-const PostsText = styled.span`
-  display: block;
-  margin-top: 1rem;
-  font-size: 1.5rem;
+const PlaceholderDescription = styled(TextBlock)`
+  margin: 0.5rem 0 0.66rem 0;
+
+  > div {
+    height: 1rem !important;
+
+    &:not(:first-of-type) {
+      margin-top: 0.5rem !important;
+    }
+  }
 `;
+
+const PlaceholderInfo = styled(TextBlock)`
+  width: 105px !important;
+
+  > div {
+    height: 0.9rem !important;
+
+    &:not(:first-of-type) {
+      margin-top: 0.5rem !important;
+    }
+  }
+`;
+
+const PlaceholderGroup = styled.div``;
 
 const PostsPlaceholder: React.FC = () => (
-  <PostsContainer className="posts-container">
-    <PostsHeading className="posts-heading">
-      Oops..
-    </PostsHeading>
+  <PlaceholderDiv className="posts-placeholder">
+    <PlaceholderGroup>
+      <PlaceholderHeading
+        rows={1}
+        color={COLORS.placeholderColor}
+      />
 
-    <PostsText className="posts-text">
-      There are no posts here yet
-      <Emoji value="😔" ariaLabel="pensive" />
-    </PostsText>
-  </PostsContainer>
+      <PlaceholderDescription
+        rows={2}
+        color={COLORS.placeholderColor}
+      />
+
+      <PlaceholderInfo
+        rows={2}
+        color={COLORS.placeholderColor}
+      />
+    </PlaceholderGroup>
+
+    <PlaceholderGroup>
+      <RectShape
+        style={{ width: '100%' }}
+        color={COLORS.placeholderColor}
+      />
+    </PlaceholderGroup>
+  </PlaceholderDiv>
 );
 
 export default PostsPlaceholder;

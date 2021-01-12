@@ -1,14 +1,17 @@
 import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
+import ReactPlaceholder from 'react-placeholder';
+// import 'react-placeholder/lib/reactPlaceholder.css';
+
 import styled from 'styled-components';
 
 import fetchPosts from '@actions/fetchPosts';
 
 import { RootState } from '@client';
 
-import Spinner from '@components/base-ui/spinner';
-
 import PostsList from '@components/home/posts/PostsList';
+import PostsListEmpty from '@components/home/posts/PostsListEmpty';
 import PostsPlaceholder from '@components/home/posts/PostsPlaceholder';
 
 const PostsDiv = styled.div`
@@ -29,26 +32,28 @@ const Posts: React.FC = () => {
     }
   }, [dispatch, posts.data.length]);
 
-  const renderPlaceholder = useMemo(() => {
-    return posts.isFetching ? (
-      <Spinner />
-    ) : (
-      <PostsPlaceholder />
-    );
+  const ready = useMemo(() => {
+    return posts.isFetching === false;
   }, [posts.isFetching]);
 
-  const renderList = useMemo(() => {
-    return <PostsList data={posts.data} />;
+  const renderPosts = useMemo(() => {
+    return posts.data.length === 0 ? (
+      <PostsListEmpty />
+    ) : (
+      <PostsList data={posts.data} />
+    );
   }, [posts.data]);
 
-  const renderPosts = useMemo(() => {
-    return posts.data.length
-      ? renderList
-      : renderPlaceholder;
-  }, [posts.data, renderList, renderPlaceholder]);
-
   return (
-    <PostsDiv className="posts">{renderPosts}</PostsDiv>
+    <PostsDiv className="posts">
+      <ReactPlaceholder
+        ready={ready}
+        showLoadingAnimation={true}
+        customPlaceholder={<PostsPlaceholder />}
+      >
+        {renderPosts}
+      </ReactPlaceholder>
+    </PostsDiv>
   );
 };
 

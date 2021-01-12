@@ -14,17 +14,17 @@ const PostsCard = styled.article`
   grid-gap: 1.5rem;
 `;
 
-type PostssItemProps = {
+type PostsItemProps = {
   data: Post;
 };
 
-const PostssItem: React.FC<PostssItemProps> = ({
+const PostsItem: React.FC<PostsItemProps> = ({
   data,
-}: PostssItemProps) => (
+}: PostsItemProps) => (
   <PostsCard className="post">
     <PostsBody data={data} />
     <PostsImage data={data} />
   </PostsCard>
 );
 
-export default PostssItem;
+export default PostsItem;
