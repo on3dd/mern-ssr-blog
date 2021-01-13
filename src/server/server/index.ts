@@ -7,11 +7,10 @@ import router from '@server/routes';
 import httpLogger from '@server/middlewares/httpLogger';
 import errorHandler from '@server/middlewares/errorLogger';
 
-import webpack, { Configuration } from 'webpack';
+import webpack from 'webpack';
 import config from '@root/webpack.config';
 
-const webpackConfig = config as Configuration[];
-const compiler = webpack(webpackConfig);
+const compiler = webpack(config);
 
 export default class Server {
   private app: Express;
@@ -24,7 +23,7 @@ export default class Server {
     this.app.use(
       require('webpack-dev-middleware')(compiler, {
         noInfo: true,
-        publicPath: webpackConfig.find(
+        publicPath: config.find(
           (el) => el.name === 'server',
         )!.output!.publicPath,
       }),
