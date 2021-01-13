@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 import { Post } from '@client';
 
-import PostsBody from '@components/home/posts/PostItemBody';
-import PostsImage from '@components/home/posts/PostItemImage';
+import PostsBody from '@components/home/PostItemBody';
+import PostsImage from '@components/home/PostItemImage';
 
 const PostsCard = styled.article`
   display: grid;

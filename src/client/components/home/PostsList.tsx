@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { Post } from '@client';
 
-import PostsItem from '@components/home/posts/PostsItem';
+import PostsItem from '@components/home/PostsItem';
 
 const Ul = styled.ul`
   margin: 0;

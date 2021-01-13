@@ -6,7 +6,7 @@ import { COLORS, BREAKPOINTS } from '@utils/constants';
 
 import { Post } from '@client';
 
-import IconButton from '@root/src/client/components/base-ui/icon-button';
+import IconButton from '@components/base-ui/icon-button';
 
 const PostBody = styled.div`
   text-transform: lowercase;
