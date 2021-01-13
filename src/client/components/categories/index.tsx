@@ -1,10 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import fetchCategories from '@actions/fetchCategories';
 
 import { RootState } from '@client';
+
+import CategoriesList from '@components/categories/CategoriesList';
+import CategoriesListEmpty from '@components/categories/CategoriesListEmpty';
+// import PostsPlaceholder from '@components/categories/PostsPlaceholder';
 
 const CategoriesDiv = styled.div``;
 
@@ -21,11 +25,17 @@ const Categories: React.FC = () => {
     }
   }, [dispatch, categories.data.length]);
 
+  const renderCategories = useMemo(() => {
+    return categories.data.length === 0 ? (
+      <CategoriesListEmpty />
+    ) : (
+      <CategoriesList data={categories.data} />
+    );
+  }, [categories.data]);
+
   return (
     <CategoriesDiv className="categories">
-      <code>
-        {JSON.stringify(categories.data, null, 2)}
-      </code>
+      {renderCategories}
     </CategoriesDiv>
   );
 };
