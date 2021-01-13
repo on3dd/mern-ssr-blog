@@ -3,7 +3,7 @@ import { authenticate } from 'passport';
 import { sign } from 'jsonwebtoken';
 import { StatusCodes } from 'http-status-codes';
 
-import { SECRET } from '../../../utils/constants';
+const secret = process.env.JWT_SECRET || '';
 
 const router = Router();
 
@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
         }
 
         /** generate a signed json web token and return it in the response */
-        const token = sign(JSON.stringify(payload), SECRET);
+        const token = sign(JSON.stringify(payload), secret);
 
         console.log('token', token);
 

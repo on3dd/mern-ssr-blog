@@ -21,6 +21,7 @@ import deserializeUser from '@server/utils/deserializeUser';
 
 const compiler = webpack(config);
 const secret = String(process.env.JWT_SECRET) || '';
+
 export default class Server {
   private app: Express;
   private server!: HttpServer;
@@ -71,12 +72,12 @@ export default class Server {
 
     this.app.use('/', router);
 
-    this.app.use(errorLogger);
-
     passport.use('jwt', Jwt);
 
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
+
+    this.app.use(errorLogger);
   }
 
   public start(port: number) {

@@ -3,6 +3,8 @@ import { StatusCodes } from 'http-status-codes';
 
 import CategoryController from '@server/controllers/category';
 
+import jwt from '@server/middlewares/jwt';
+
 const router = Router();
 const controller = new CategoryController();
 
@@ -17,7 +19,7 @@ router.get('/', async (req, res) => {
     });
 });
 
-router.post('/', async (req, res) => {
+router.post('/', jwt, async (req, res) => {
   const Category = await controller.create(req.body);
 
   res //
