@@ -5,6 +5,7 @@ import ErrorHandler from '@server/shared/ErrorHandler';
 
 const errorHandler = ErrorHandler.getInstance();
 
+/** Note: It must be placed after the router! */
 const errorLogger = (
   err: Error,
   req: Request,
