@@ -7,9 +7,9 @@ export const PLACEHOLDER_URL =
   'https://breakthrough.org/wp-content/uploads/2018/10/default-placeholder-image.png';
 
 export const ROUTES: Route[] = [
-  { to: '/', name: 'home', emoji: '🏠' },
-  { to: '/programming', name: 'programming', emoji: '⌨️' },
-  { to: '/music', name: 'music', emoji: '🎵' },
+  { to: '/', name: 'recent', emoji: '🔥' },
+  { to: '/posts', name: 'posts', emoji: '💎' },
+  { to: '/categories', name: 'categories', emoji: '📚' },
   { to: '/other', name: 'other', emoji: '😵‍💫' },
   { to: '/login', name: 'auth', emoji: '👥' },
 ];
