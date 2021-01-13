@@ -1,7 +1,7 @@
-import User from '../models/user';
+import User from '@server/models/user';
 
 const deserializeUser = (
-  _id: string,
+  _id: any,
   done: (...args: any[]) => any,
 ) => {
   User.findOne({ _id }).then((user) => {

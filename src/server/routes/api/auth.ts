@@ -3,9 +3,9 @@ import { authenticate } from 'passport';
 import { sign } from 'jsonwebtoken';
 import { StatusCodes } from 'http-status-codes';
 
-const secret = process.env.JWT_SECRET || '';
-
 const router = Router();
+
+const secret = process.env.JWT_SECRET || '';
 
 router.post('/', (req, res) => {
   authenticate(
@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
       /** This is what ends up in our JWT */
       const payload = {
         _id: user._id,
-        name: user.name,
+        username: user.username,
         expires:
           Date.now() +
           Number(process.env.JWT_EXPIRATION_MS),
