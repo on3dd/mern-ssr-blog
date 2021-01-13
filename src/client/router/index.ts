@@ -22,11 +22,17 @@ const routes = [
             ...Home,
           },
           {
+            path: '/posts',
+            exact: true,
+            ...Home,
+          },
+          {
             path: '/posts/:id',
             ...Post,
           },
           {
             path: '/categories',
+            exact: true,
             ...Categories,
           },
           {
