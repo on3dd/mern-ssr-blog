@@ -1,50 +1,43 @@
 import {
-  FETCHING_POST,
-  FETCHING_POST_SUCCESS,
-  FETCHING_POST_FAIL,
+  FETCHING_CATEGORIES,
+  FETCHING_CATEGORIES_SUCCESS,
+  FETCHING_CATEGORIES_FAIL,
 } from '@client/utils/actionTypes';
 
-import { AsyncAction, Post, PostState } from '@client';
+import {
+  AsyncAction,
+  Category,
+  CategoriesState,
+} from '@client';
 
-const initialState: PostState = {
-  data: {
-    id: 0,
-    title: '',
-    description: '',
-    date: '',
-    content: '',
-    category: {
-      id: 0,
-      name: '',
-      posts: [],
-    },
-  },
+const initialState: CategoriesState = {
+  data: [],
   isFetching: false,
   hasError: false,
   errorMessage: null,
 };
 
-const postsReducer = (
+const categoriesReducer = (
   state = initialState,
-  action: AsyncAction<Post | null>,
-): PostState => {
+  action: AsyncAction<Category[]>,
+): CategoriesState => {
   switch (action.type) {
-    case FETCHING_POST:
+    case FETCHING_CATEGORIES:
       return Object.assign({}, state, {
         isFetching: true,
         hasError: false,
         errorMessage: null,
       });
 
-    case FETCHING_POST_SUCCESS:
+    case FETCHING_CATEGORIES_SUCCESS:
       return Object.assign({}, state, {
-        data: action.payload ?? initialState.data,
+        data: action.payload,
         isFetching: false,
         hasError: false,
         errorMessage: null,
       });
 
-    case FETCHING_POST_FAIL:
+    case FETCHING_CATEGORIES_FAIL:
       return Object.assign({}, state, {
         isFetching: false,
         hasError: true,
@@ -56,4 +49,4 @@ const postsReducer = (
   }
 };
 
-export default postsReducer;
+export default categoriesReducer;
