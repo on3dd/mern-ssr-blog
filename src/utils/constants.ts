@@ -14,6 +14,11 @@ export const ROUTES: Route[] = [
   { to: '/login', name: 'auth', emoji: '👥' },
 ];
 
+export const REGISTER_ROUTES = {
+  login: '/login',
+  register: '/register',
+};
+
 export const COLORS = {
   black: 'rgba(0, 0, 0, 0.9)',
   cloud: 'rgba(229, 229, 229, 1)',
