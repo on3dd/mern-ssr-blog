@@ -1,4 +1,6 @@
 declare module '@server' {
+  import { Document } from 'mongoose';
+
   type AsyncResult = Promise<any>;
 
   export interface Controller {
@@ -7,5 +9,13 @@ declare module '@server' {
     create?: (body: any) => AsyncResult;
     update?: (body: any) => AsyncResult;
     delete?: (id: any) => AsyncResult;
+  }
+  export interface User extends Document {
+    id: number;
+    email: string;
+    username: string;
+    password: string;
+
+    isValidPassword: (password: string) => Promise<boolean>;
   }
 }
