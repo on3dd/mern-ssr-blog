@@ -1,5 +1,5 @@
 # mern-ssr-blog
-📰 An isomorphic blog application with SSR using MERN stack, TypeScript and Docker (in progress)
+📰 An isomorphic blog application with SSR using MERN stack, TypeScript and Docker (in progress 🚧)
 
 ## Things to be done
 - [x] API
