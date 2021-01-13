@@ -6,6 +6,7 @@ import {
   COLORS,
   ROUTES,
   BREAKPOINTS,
+  REGISTER_ROUTES,
 } from '@utils/constants';
 
 import Emoji from '@components/base-ui/emoji';
@@ -70,13 +71,14 @@ const Navbar: React.FC = () => (
         <NavbarLi key={el.name} className="navbar__links">
           <NavbarLink
             to={el.to}
-            exact
+            exact={el.to === '/'}
             activeClassName="is-active"
-            isActive={(match, { pathname: path }) => {
-              return el.to === '/login'
-                ? path === '/login' || path === '/register'
-                : !!match;
-            }}
+            isActive={(match, { pathname: path }) =>
+              !el.to.includes(REGISTER_ROUTES.login)
+                ? !!match
+                : path.includes(REGISTER_ROUTES.login) ||
+                  path.includes(REGISTER_ROUTES.register)
+            }
           >
             {el.name}
             <Emoji value={el.emoji} ariaLabel={el.name} />
