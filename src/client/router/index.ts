@@ -4,6 +4,7 @@ import Default from '@layouts/Default';
 import Home from '@screens/Home';
 import Post from '@screens/Post';
 import Posts from '@screens/Posts';
+import Category from '@screens/Category';
 import Categories from '@screens/Categories';
 import Login from '@screens/Login';
 import Register from '@screens/Register';
@@ -35,6 +36,11 @@ const routes = [
             path: '/categories',
             exact: true,
             ...Categories,
+          },
+          {
+            path: '/categories/:id',
+            exact: true,
+            ...Category,
           },
           {
             path: '/login',
