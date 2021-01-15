@@ -32,14 +32,18 @@ const PlaceholderDescription = styled(TextBlock)`
   }
 `;
 
+const PlaceholderItem = styled.div`
+  margin-bottom: 1.5rem;
+`;
+
 const PlaceholderGroup = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 0.5rem;
 `;
 
-const CategoriesPlaceholder: React.FC = () => (
-  <PlaceholderDiv className="categories-placeholder">
+const CategoriesPlaceholderItem: React.FC = () => (
+  <PlaceholderItem>
     <PlaceholderGroup>
       <PlaceholderTitle
         rows={1}
@@ -58,6 +62,14 @@ const CategoriesPlaceholder: React.FC = () => (
         color={COLORS.placeholderColor}
       />
     </PlaceholderGroup>
+  </PlaceholderItem>
+);
+
+const CategoriesPlaceholder: React.FC = () => (
+  <PlaceholderDiv className="categories-placeholder">
+    <CategoriesPlaceholderItem />
+    <CategoriesPlaceholderItem />
+    <CategoriesPlaceholderItem />
   </PlaceholderDiv>
 );
 

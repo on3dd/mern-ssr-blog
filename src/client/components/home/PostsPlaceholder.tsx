@@ -9,11 +9,6 @@ import { COLORS } from '@utils/constants';
 
 const PlaceholderDiv = styled.div`
   width: 100%;
-  display: grid;
-  grid-gap: 1.5rem;
-  grid-template-columns: //
-    minmax(175px, 1fr) //
-    minmax(auto, 152px);
 `;
 
 const PlaceholderHeading = styled(TextBlock)`
@@ -47,10 +42,20 @@ const PlaceholderInfo = styled(TextBlock)`
   }
 `;
 
+const PlaceholderItem = styled.div`
+  width: 100%;
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: //
+    minmax(175px, 1fr) //
+    minmax(auto, 152px);
+  margin-bottom: 3rem;
+`;
+
 const PlaceholderGroup = styled.div``;
 
-const PostsPlaceholder: React.FC = () => (
-  <PlaceholderDiv className="posts-placeholder">
+const PostsPlaceholderItem: React.FC = () => (
+  <PlaceholderItem>
     <PlaceholderGroup>
       <PlaceholderHeading
         rows={1}
@@ -74,6 +79,13 @@ const PostsPlaceholder: React.FC = () => (
         color={COLORS.placeholderColor}
       />
     </PlaceholderGroup>
+  </PlaceholderItem>
+);
+
+const PostsPlaceholder: React.FC = () => (
+  <PlaceholderDiv className="posts-placeholder">
+    <PostsPlaceholderItem />
+    <PostsPlaceholderItem />
   </PlaceholderDiv>
 );
 
