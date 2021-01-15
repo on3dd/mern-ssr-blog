@@ -13,12 +13,12 @@ import PostsList from '@components/base-ui/posts/PostsList';
 import PostsListEmpty from '@components/base-ui/posts/PostsListEmpty';
 import PostsPlaceholder from '@components/base-ui/posts/PostsPlaceholder';
 
-const HomeDiv = styled.div`
+const PostsDiv = styled.div`
   display: flex;
   justify-content: center;
 `;
 
-const Home: React.FC = () => {
+const Posts: React.FC = () => {
   const dispatch = useDispatch();
 
   const posts = useSelector(
@@ -44,7 +44,7 @@ const Home: React.FC = () => {
   }, [posts.data]);
 
   return (
-    <HomeDiv className="home">
+    <PostsDiv className="posts">
       <ReactPlaceholder
         ready={ready}
         showLoadingAnimation={true}
@@ -52,8 +52,8 @@ const Home: React.FC = () => {
       >
         {renderPosts}
       </ReactPlaceholder>
-    </HomeDiv>
+    </PostsDiv>
   );
 };
 
-export default Home;
+export default Posts;

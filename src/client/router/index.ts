@@ -3,6 +3,7 @@ import App from '@client/App';
 import Default from '@layouts/Default';
 import Home from '@screens/Home';
 import Post from '@screens/Post';
+import Posts from '@screens/Posts';
 import Categories from '@screens/Categories';
 import Login from '@screens/Login';
 import Register from '@screens/Register';
@@ -24,7 +25,7 @@ const routes = [
           {
             path: '/posts',
             exact: true,
-            ...Home,
+            ...Posts,
           },
           {
             path: '/posts/:id',
