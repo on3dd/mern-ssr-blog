@@ -1,6 +1,9 @@
 import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import ReactPlaceholder from 'react-placeholder';
 import styled from 'styled-components';
+
+// import 'react-placeholder/lib/reactPlaceholder.css';
 
 import fetchCategories from '@actions/fetchCategories';
 
@@ -8,7 +11,7 @@ import { RootState } from '@client';
 
 import CategoriesList from '@components/categories/CategoriesList';
 import CategoriesListEmpty from '@components/categories/CategoriesListEmpty';
-// import PostsPlaceholder from '@components/categories/PostsPlaceholder';
+import CategoriesPlaceholder from '@components/categories/CategoriesPlaceholder';
 
 const CategoriesDiv = styled.div``;
 
@@ -25,6 +28,10 @@ const Categories: React.FC = () => {
     }
   }, [dispatch, categories.data.length]);
 
+  const ready = useMemo(() => {
+    return categories.isFetching === false;
+  }, [categories.isFetching]);
+
   const renderCategories = useMemo(() => {
     return categories.data.length === 0 ? (
       <CategoriesListEmpty />
@@ -35,7 +42,13 @@ const Categories: React.FC = () => {
 
   return (
     <CategoriesDiv className="categories">
-      {renderCategories}
+      <ReactPlaceholder
+        ready={ready}
+        showLoadingAnimation={true}
+        customPlaceholder={<CategoriesPlaceholder />}
+      >
+        {renderCategories}
+      </ReactPlaceholder>
     </CategoriesDiv>
   );
 };
