@@ -18,6 +18,13 @@ class CategoryController implements Controller {
     );
   }
 
+  public async find(id: string) {
+    return await Category.findOne(
+      { id },
+      CATEGORY_FIELDS,
+    ).populate('posts', POST_FIELDS);
+  }
+
   public async create(props: CategoryDraft) {
     const category = new Category({
       ...props,

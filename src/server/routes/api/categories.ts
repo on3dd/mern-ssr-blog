@@ -17,6 +17,19 @@ router.get('/', async (req, res) => {
     });
 });
 
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+
+  const data = await controller.find(id);
+
+  res //
+    .status(StatusCodes.OK)
+    .send({
+      data,
+      error: null,
+    });
+});
+
 router.post('/', async (req, res) => {
   const Category = await controller.create(req.body);
 
