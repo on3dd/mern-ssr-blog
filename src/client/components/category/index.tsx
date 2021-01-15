@@ -9,9 +9,8 @@ import fetchPosts from '@actions/fetchPosts';
 
 import { RootState } from '@client';
 
-import PostsList from '@components/base-ui/posts/PostsList';
-import PostsListEmpty from '@components/base-ui/posts/PostsListEmpty';
 import PostsPlaceholder from '@components/base-ui/posts/PostsPlaceholder';
+import CategoryBody from '@components/category/CategoryBody';
 
 const CategoryDiv = styled.div`
   display: flex;
@@ -21,27 +20,20 @@ const CategoryDiv = styled.div`
 const Category: React.FC = () => {
   const dispatch = useDispatch();
 
+  // TODO: change with correct selector
   const posts = useSelector(
     (state: RootState) => state.posts,
   );
 
   useEffect(() => {
     if (posts.data.length === 0) {
-      dispatch(fetchPosts());
+      dispatch(fetchPosts()); // TODO: change with correct action
     }
   }, [dispatch, posts.data.length]);
 
   const ready = useMemo(() => {
     return posts.isFetching === false;
   }, [posts.isFetching]);
-
-  const renderPosts = useMemo(() => {
-    return posts.data.length === 0 ? (
-      <PostsListEmpty />
-    ) : (
-      <PostsList data={posts.data} />
-    );
-  }, [posts.data]);
 
   return (
     <CategoryDiv className="category">
@@ -50,7 +42,7 @@ const Category: React.FC = () => {
         showLoadingAnimation={true}
         customPlaceholder={<PostsPlaceholder />}
       >
-        {renderPosts}
+        <CategoryBody data={posts.data} />
       </ReactPlaceholder>
     </CategoryDiv>
   );
