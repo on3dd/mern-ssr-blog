@@ -1,16 +1,28 @@
 # mern-ssr-blog
-📰 An isomorphic blog application with SSR using MERN stack, TypeScript and Docker (in progress)
+📰 An isomorphic blog application with SSR using MERN stack, TypeScript and Docker (in progress 🚧)
 
 ## Things to be done
-- [x] Basic pages
-- [x] Basic routing
-- [x] Basic API for posts and categories
+- [x] API
+- [x] Pages
+- - [x] home 
+- - [ ] posts
+- - [x] posts/:id 
+- - [x] categories
+- - [ ] categories/:id
+- - [x] sign-in
+- - [x] sign-up
+- [x] Routing
 - [x] ~~Admin panel~~
+- [ ] Site search
 - [ ] Authentication
+- [ ] Social sharing
 - [ ] User reactions
-- [ ] Tests for front-end
-- [ ] Tests for back-end
+- [ ] Push notifications
+- [ ] Tests
+- - [ ] for back-end
+- - [ ] for front-end
 - [ ] Docker setup
+- [ ] Deployment
 
 ## Technology stack
 
