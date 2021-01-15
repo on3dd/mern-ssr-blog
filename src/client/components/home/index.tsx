@@ -9,9 +9,9 @@ import fetchPosts from '@actions/fetchPosts';
 
 import { RootState } from '@client';
 
-import PostsList from '@components/home/PostsList';
-import PostsListEmpty from '@components/home/PostsListEmpty';
-import PostsPlaceholder from '@components/home/PostsPlaceholder';
+import PostsList from '@components/base-ui/posts/PostsList';
+import PostsListEmpty from '@components/base-ui/posts/PostsListEmpty';
+import PostsPlaceholder from '@components/base-ui/posts/PostsPlaceholder';
 
 const PostsDiv = styled.div`
   display: flex;
