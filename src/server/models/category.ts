@@ -12,6 +12,10 @@ const schema = new Schema({
     unique: true,
     required: true,
   },
+  description: {
+    type: String,
+    required: true,
+  },
   posts: [
     {
       type: Schema.Types.ObjectId,
