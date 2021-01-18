@@ -10,8 +10,8 @@ import fetchCategory from '@actions/fetchCategory';
 
 import { RootState } from '@client';
 
-import PostsPlaceholder from '@components/base-ui/posts/PostsPlaceholder';
 import CategoryBody from '@components/category/CategoryBody';
+import CategoryPlaceholder from '@components/category/CategoryPlaceholder';
 
 const CategoryDiv = styled.div`
   display: flex;
@@ -46,7 +46,7 @@ const Category: React.FC = () => {
       <ReactPlaceholder
         ready={ready}
         showLoadingAnimation={true}
-        customPlaceholder={<PostsPlaceholder />}
+        customPlaceholder={<CategoryPlaceholder />}
       >
         <CategoryBody data={category.data} />
       </ReactPlaceholder>
