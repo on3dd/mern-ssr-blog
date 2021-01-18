@@ -31,6 +31,7 @@ declare module '@client' {
   export interface Category {
     id: number;
     name: string;
+    description: string;
     posts: Post[];
   }
 
@@ -44,12 +45,14 @@ declare module '@client' {
   export interface PostState extends State<Post> {}
   export interface PostsState extends State<Post[]> {}
 
+  export interface CategoryState extends State<Category> {}
   export interface CategoriesState
-    extends State<Categories[]> {}
+    extends State<Category[]> {}
 
   export interface RootState {
     post: PostState;
     posts: PostsState;
+    category: CategoryState;
     categories: CategoriesState;
   }
 
@@ -61,5 +64,6 @@ declare module '@client' {
   export type PostResponse = ApiResponse<Post | null>;
   export type PostsResponse = ApiResponse<Post[]>;
 
+  export type CategoryResponse = ApiResponse<Category | null>;
   export type CategoriesResponse = ApiResponse<Category[]>;
 }
