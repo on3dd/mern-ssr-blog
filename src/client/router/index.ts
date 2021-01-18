@@ -39,7 +39,6 @@ const routes = [
           },
           {
             path: '/categories/:id',
-            exact: true,
             ...Category,
           },
           {

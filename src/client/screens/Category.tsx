@@ -1,14 +1,16 @@
 import React from 'react';
 import { Store } from 'redux';
 
-import fetchPosts from '@actions/fetchPosts';
+import fetchCategory from '@actions/fetchCategory';
 
 import CategoryComponent from '@components/category';
 
 const component: React.FC = () => <CategoryComponent />;
 
-const loadData = (store: Store<unknown>) => {
-  return store.dispatch(fetchPosts() as any); // TODO: change with correct action
+const loadData = (store: Store<unknown>, params: any) => {
+  const id = params['0'].split('/')[1];
+
+  return store.dispatch(fetchCategory(id) as any);
 };
 
 export default {

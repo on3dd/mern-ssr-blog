@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 
-import { Post } from '@client';
+import { Category } from '@client';
 
 import { COLORS, BREAKPOINTS } from '@utils/constants';
 
@@ -37,31 +37,30 @@ const CategoryBodyPosts = styled.div`
 
 // TODO: change with correct type
 type CategoryBodyProps = {
-  data: Post[];
+  data: Category;
 };
 
 const CategoryBody: React.FC<CategoryBodyProps> = ({
   data,
 }: CategoryBodyProps) => {
   const renderPosts = useMemo(() => {
-    return data.length === 0 ? (
+    return data.posts.length === 0 ? (
       <PostsListEmpty />
     ) : (
-      <PostsList data={data} />
+      <PostsList data={data.posts} />
     );
-  }, [data]);
+  }, [data.posts]);
 
   return (
     <CategoryBodyDiv className="category-body">
       {/* TODO: change with correct title */}
       <CategoryBodyTitle className="category-body__title">
-        Category
+        {data.name}
       </CategoryBodyTitle>
 
       {/* TODO: change with correct description */}
       <CategoryBodyDescription className="category-body__description">
-        Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Nobis, suscipit!
+        {data.description}
       </CategoryBodyDescription>
 
       <CategoryBodyPosts className="category-body__posts">

@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import ReactPlaceholder from 'react-placeholder';
 import styled from 'styled-components';
 
 // import 'react-placeholder/lib/reactPlaceholder.css';
 
-import fetchPosts from '@actions/fetchPosts';
+import fetchCategory from '@actions/fetchCategory';
 
 import { RootState } from '@client';
 
@@ -21,19 +22,25 @@ const Category: React.FC = () => {
   const dispatch = useDispatch();
 
   // TODO: change with correct selector
-  const posts = useSelector(
-    (state: RootState) => state.posts,
+  const category = useSelector(
+    (state: RootState) => state.category,
   );
 
+  const { id }: { id: string } = useParams();
+
+  const equals = useMemo(() => {
+    return category.data.id === parseInt(id);
+  }, [category.data.id, id]);
+
   useEffect(() => {
-    if (posts.data.length === 0) {
-      dispatch(fetchPosts()); // TODO: change with correct action
+    if (!equals) {
+      dispatch(fetchCategory(id));
     }
-  }, [dispatch, posts.data.length]);
+  }, [dispatch, equals, id]);
 
   const ready = useMemo(() => {
-    return posts.isFetching === false;
-  }, [posts.isFetching]);
+    return category.isFetching === false;
+  }, [category.isFetching]);
 
   return (
     <CategoryDiv className="category">
@@ -42,7 +49,7 @@ const Category: React.FC = () => {
         showLoadingAnimation={true}
         customPlaceholder={<PostsPlaceholder />}
       >
-        <CategoryBody data={posts.data} />
+        <CategoryBody data={category.data} />
       </ReactPlaceholder>
     </CategoryDiv>
   );
