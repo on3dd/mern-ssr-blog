@@ -5,16 +5,16 @@
 - [x] API
 - [x] Pages
 - - [x] home 
-- - [ ] posts
+- - [x] posts
 - - [x] posts/:id 
 - - [x] categories
-- - [ ] categories/:id
+- - [x] categories/:id
 - - [x] sign-in
 - - [x] sign-up
 - [x] Routing
 - [x] ~~Admin panel~~
-- [ ] Site search
 - [ ] Authentication
+- [ ] Site search
 - [ ] Social sharing
 - [ ] User reactions
 - [ ] Push notifications
