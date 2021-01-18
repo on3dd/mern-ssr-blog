@@ -16,7 +16,7 @@ const fetchCategory = (id: string) => {
     dispatch({ type: FETCHING_CATEGORY });
 
     return axiosService
-      .get(API_ENDPOINTS.category(id))
+      .get(API_ENDPOINTS.categories.id(id))
       .then((res: CategoryResponse) => {
         dispatch({
           type: FETCHING_CATEGORY_SUCCESS,

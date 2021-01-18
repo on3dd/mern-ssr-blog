@@ -35,7 +35,6 @@ const CategoryBodyPosts = styled.div`
   width: 100%;
 `;
 
-// TODO: change with correct type
 type CategoryBodyProps = {
   data: Category;
 };
@@ -53,12 +52,10 @@ const CategoryBody: React.FC<CategoryBodyProps> = ({
 
   return (
     <CategoryBodyDiv className="category-body">
-      {/* TODO: change with correct title */}
       <CategoryBodyTitle className="category-body__title">
         {data.name}
       </CategoryBodyTitle>
 
-      {/* TODO: change with correct description */}
       <CategoryBodyDescription className="category-body__description">
         {data.description}
       </CategoryBodyDescription>

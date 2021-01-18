@@ -21,7 +21,6 @@ const CategoryDiv = styled.div`
 const Category: React.FC = () => {
   const dispatch = useDispatch();
 
-  // TODO: change with correct selector
   const category = useSelector(
     (state: RootState) => state.category,
   );

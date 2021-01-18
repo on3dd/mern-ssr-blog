@@ -15,7 +15,7 @@ const fetchPosts = () => {
     dispatch({ type: FETCHING_POSTS });
 
     return axiosService
-      .get(API_ENDPOINTS.posts)
+      .get(API_ENDPOINTS.posts.index)
       .then((res) => {
         dispatch({
           type: FETCHING_POSTS_SUCCESS,
