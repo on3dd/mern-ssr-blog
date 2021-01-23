@@ -11,7 +11,7 @@ import generateHtmlContent from '@server/utils/generateHtmlContent';
 const router = Router();
 
 router.get('/*', (req, res) => {
-  const store = createStore() as any;
+  const store = createStore();
   const routes = matchRoutes(clientRoutes, req.path);
 
   const promises = routes
