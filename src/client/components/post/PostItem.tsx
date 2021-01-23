@@ -48,6 +48,12 @@ const PostEmoji = styled(Emoji)`
 
 const PostLink = styled(Link)`
   margin: 0 0.5ch;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
 `;
 
 const PostDescription = styled.p`

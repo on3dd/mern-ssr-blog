@@ -1,67 +1,72 @@
 import { Router } from 'express';
-import { authenticate } from 'passport';
 import { sign } from 'jsonwebtoken';
 import { StatusCodes } from 'http-status-codes';
 
+import {
+  USER_DOES_NOT_EXIST,
+  USER_CREDENTIALS_ARE_INCOMPLETE,
+} from '@server/utils/errorMessages';
+
+import AuthController from '@server/controllers/auth';
+
 const router = Router();
+const controller = new AuthController();
 
 const secret = process.env.JWT_SECRET || '';
 
-console.log('secret in auth controller:', secret);
+router.post('/', async (req, res) => {
+  const { username, password } = req.body;
 
-router.post('/', (req, res) => {
-  authenticate(
-    'login',
-    { session: false },
-    (error, user) => {
-      if (error || !user) {
-        console.log('error', error);
-        console.log('user', user);
+  /** Check if user credentials are complete  */
+  if (!username || !password) {
+    return res.status(StatusCodes.BAD_REQUEST).send({
+      data: null,
+      error: USER_CREDENTIALS_ARE_INCOMPLETE,
+    });
+  }
 
-        return res
-          .status(StatusCodes.BAD_REQUEST)
-          .send({ data: null, error });
-      }
+  const user = await controller.authenticate({
+    username,
+  });
 
-      /** This is what ends up in our JWT */
-      const payload = {
-        _id: user._id,
-        username: user.username,
-        expires:
-          Date.now() +
-          Number(process.env.JWT_EXPIRATION_MS),
-      };
+  /** Check if user exist  */
+  if (user === null) {
+    return res.status(StatusCodes.BAD_REQUEST).send({
+      data: null,
+      error: USER_DOES_NOT_EXIST,
+    });
+  }
 
-      /** assigns payload to req.user */
-      req.login(payload, { session: false }, (error) => {
-        if (error) {
-          console.error(error);
+  const validate = await user.isValidPassword(password);
 
-          return res
-            .status(StatusCodes.BAD_REQUEST)
-            .send({ data: null, error });
-        }
+  /** Check if user password is valid  */
+  if (!validate) {
+    return res.status(StatusCodes.BAD_REQUEST).send({
+      data: null,
+      error: USER_DOES_NOT_EXIST,
+    });
+  }
 
-        /** generate a signed json web token and return it in the response */
-        const token = sign(JSON.stringify(payload), secret);
+  /** This is what ends up in our JWT */
+  const payload = {
+    _id: user._id,
+    username: user.username,
+    expires:
+      Date.now() + Number(process.env.JWT_EXPIRATION_MS),
+  };
 
-        console.log('token', token);
+  /** Generate a signed json web token and return it in the response */
+  const token = sign(JSON.stringify(payload), secret);
 
-        /** assign our jwt to the cookie */
-        res.cookie('token', token, {
-          // domain: 'localhost',
-          // path: '/',
-          httpOnly: true,
-          // secure: true,
-          secure: false,
-        });
+  /** Assign our jwt to the cookie */
+  res.cookie('token', token, {
+    httpOnly: true,
+    secure: false, // TODO: set to 'true'
+  });
 
-        return res
-          .status(StatusCodes.OK)
-          .send({ data: user });
-      });
-    },
-  )(req, res);
+  return res
+    .status(StatusCodes.OK)
+    .send({ data: user, error: null });
 });
 
 export default router;
