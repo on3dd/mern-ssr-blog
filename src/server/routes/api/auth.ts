@@ -58,14 +58,10 @@ router.post('/', async (req, res) => {
   /** Generate a signed json web token and return it in the response */
   const token = sign(JSON.stringify(payload), secret);
 
-  console.log('token', token);
-
   /** Assign our jwt to the cookie */
   res.cookie('token', token, {
     httpOnly: true,
-    secure: false, // TODO: change with "true"
-    // domain: 'localhost',
-    // path: '/',
+    secure: false, // TODO: set to 'true'
   });
 
   return res
