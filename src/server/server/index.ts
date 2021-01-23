@@ -24,7 +24,7 @@ import deserializeUser from '@server/utils/deserializeUser';
 const compiler = webpack(config);
 const secret = String(process.env.JWT_SECRET) || '';
 
-console.log('secret:', secret);
+console.log('secret in server:', secret);
 
 export default class Server {
   private app: Express;

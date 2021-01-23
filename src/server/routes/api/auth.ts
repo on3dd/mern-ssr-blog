@@ -7,6 +7,8 @@ const router = Router();
 
 const secret = process.env.JWT_SECRET || '';
 
+console.log('secret in auth controller:', secret);
+
 router.post('/', (req, res) => {
   authenticate(
     'login',
