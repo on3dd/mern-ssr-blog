@@ -13,7 +13,9 @@
 - - [x] sign-up
 - [x] Routing
 - [x] ~~Admin panel~~
-- [ ] Authentication
+- [x] Authentication
+- - [x] for back-end
+- - [ ] for front-end (not sure about it)
 - [ ] Site search
 - [ ] Social sharing
 - [ ] User reactions

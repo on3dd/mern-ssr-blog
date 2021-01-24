@@ -2,6 +2,8 @@ import { Router } from 'express';
 import { sign } from 'jsonwebtoken';
 import { StatusCodes } from 'http-status-codes';
 
+import { TokenPayload } from '@server';
+
 import {
   USER_DOES_NOT_EXIST,
   USER_CREDENTIALS_ARE_INCOMPLETE,
@@ -48,9 +50,8 @@ router.post('/', async (req, res) => {
   }
 
   /** This is what ends up in our JWT */
-  const payload = {
-    _id: user._id,
-    username: user.username,
+  const payload: TokenPayload = {
+    username,
     expires:
       Date.now() + Number(process.env.JWT_EXPIRATION_MS),
   };
@@ -64,9 +65,10 @@ router.post('/', async (req, res) => {
     secure: false, // TODO: set to 'true'
   });
 
-  return res
-    .status(StatusCodes.OK)
-    .send({ data: user, error: null });
+  return res.status(StatusCodes.OK).send({
+    data: { username },
+    error: null,
+  });
 });
 
 export default router;

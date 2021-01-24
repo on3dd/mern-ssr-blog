@@ -18,4 +18,13 @@ declare module '@server' {
 
     isValidPassword: (password: string) => Promise<boolean>;
   }
+
+  export type Token = string;
+
+  export type TokenDecoded = TokenPayload | undefined;
+
+  export interface TokenPayload {
+    username: string;
+    expires: number;
+  }
 }
