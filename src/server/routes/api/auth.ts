@@ -49,8 +49,7 @@ router.post('/', async (req, res) => {
 
   /** This is what ends up in our JWT */
   const payload = {
-    _id: user._id,
-    username: user.username,
+    username,
     expires:
       Date.now() + Number(process.env.JWT_EXPIRATION_MS),
   };
@@ -64,9 +63,10 @@ router.post('/', async (req, res) => {
     secure: false, // TODO: set to 'true'
   });
 
-  return res
-    .status(StatusCodes.OK)
-    .send({ data: user, error: null });
+  return res.status(StatusCodes.OK).send({
+    data: { username },
+    error: null,
+  });
 });
 
 export default router;
