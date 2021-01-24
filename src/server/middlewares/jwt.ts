@@ -1,7 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
 
-import { UNAUTHORIZED } from '@server/utils/errorMessages';
+import { TokenPayload } from '@server';
+
+import {
+  UNAUTHORIZED,
+  AUTH_EXPIRED,
+} from '@server/utils/errorMessages';
 
 const secret = process.env.JWT_SECRET || '';
 
@@ -12,13 +17,21 @@ const jwt = (
 ) => {
   const token = req.cookies.token;
 
-  verify(token, secret, (err: unknown) => {
-    if (err) {
-      return next(UNAUTHORIZED);
-    }
+  verify(
+    token,
+    secret,
+    (err: unknown, decoded: object | undefined) => {
+      if (err || decoded === undefined) {
+        return next(UNAUTHORIZED);
+      }
 
-    next();
-  });
+      if (Date.now() > (decoded as TokenPayload).expires) {
+        return next(AUTH_EXPIRED);
+      }
+
+      next();
+    },
+  );
 };
 
 export default jwt;
