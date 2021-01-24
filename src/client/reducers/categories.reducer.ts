@@ -24,6 +24,7 @@ const categoriesReducer = (
   switch (action.type) {
     case FETCHING_CATEGORIES:
       return Object.assign({}, state, {
+        data: initialState.data,
         isFetching: true,
         hasError: false,
         errorMessage: null,
@@ -39,6 +40,7 @@ const categoriesReducer = (
 
     case FETCHING_CATEGORIES_FAIL:
       return Object.assign({}, state, {
+        data: initialState.data,
         isFetching: false,
         hasError: true,
         errorMessage: action.payload,

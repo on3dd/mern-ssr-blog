@@ -20,6 +20,7 @@ const postsReducer = (
   switch (action.type) {
     case FETCHING_POSTS:
       return Object.assign({}, state, {
+        data: initialState.data,
         isFetching: true,
         hasError: false,
         errorMessage: null,
@@ -35,6 +36,7 @@ const postsReducer = (
 
     case FETCHING_POSTS_FAIL:
       return Object.assign({}, state, {
+        data: initialState.data,
         isFetching: false,
         hasError: true,
         errorMessage: action.payload,

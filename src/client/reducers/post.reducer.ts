@@ -17,6 +17,7 @@ const initialState: PostState = {
       id: 0,
       name: '',
       posts: [],
+      description: '',
     },
   },
   isFetching: false,
@@ -31,6 +32,7 @@ const postsReducer = (
   switch (action.type) {
     case FETCHING_POST:
       return Object.assign({}, state, {
+        data: initialState.data,
         isFetching: true,
         hasError: false,
         errorMessage: null,
@@ -46,6 +48,7 @@ const postsReducer = (
 
     case FETCHING_POST_FAIL:
       return Object.assign({}, state, {
+        data: initialState.data,
         isFetching: false,
         hasError: true,
         errorMessage: action.payload,
