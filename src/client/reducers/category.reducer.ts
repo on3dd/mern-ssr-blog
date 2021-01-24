@@ -4,6 +4,8 @@ import {
   FETCHING_CATEGORY_FAIL,
 } from '@client/utils/actionTypes';
 
+import { DEFAULT_CATEGORY } from '@client/utils/constants';
+
 import {
   AsyncAction,
   Category,
@@ -11,12 +13,7 @@ import {
 } from '@client';
 
 const initialState: CategoryState = {
-  data: {
-    id: 0,
-    name: '',
-    description: '',
-    posts: [],
-  },
+  data: DEFAULT_CATEGORY,
   isFetching: false,
   hasError: false,
   errorMessage: null,

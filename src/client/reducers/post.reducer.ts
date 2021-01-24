@@ -4,22 +4,12 @@ import {
   FETCHING_POST_FAIL,
 } from '@client/utils/actionTypes';
 
+import { DEFAULT_POST } from '@client/utils/constants';
+
 import { AsyncAction, Post, PostState } from '@client';
 
 const initialState: PostState = {
-  data: {
-    id: 0,
-    title: '',
-    description: '',
-    date: '',
-    content: '',
-    category: {
-      id: 0,
-      name: '',
-      posts: [],
-      description: '',
-    },
-  },
+  data: DEFAULT_POST,
   isFetching: false,
   hasError: false,
   errorMessage: null,
