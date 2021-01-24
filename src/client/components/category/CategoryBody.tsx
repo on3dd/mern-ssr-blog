@@ -9,6 +9,7 @@ import PostsList from '@components/base-ui/posts/PostsList';
 import PostsListEmpty from '@components/base-ui/posts/PostsListEmpty';
 
 const CategoryBodyDiv = styled.div`
+  width: 100%;
   text-transform: lowercase;
 `;
 
