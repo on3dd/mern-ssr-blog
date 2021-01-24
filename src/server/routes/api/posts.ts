@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
+import jwt from '@server/middlewares/jwt';
+
 import PostController from '@server/controllers/post';
 
 const router = Router();
@@ -30,7 +32,7 @@ router.get('/:id', async (req, res) => {
     });
 });
 
-router.post('/', async (req, res) => {
+router.post('/', jwt, async (req, res) => {
   const data = await controller.create(req.body);
 
   res //
