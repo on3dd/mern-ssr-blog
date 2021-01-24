@@ -16,6 +16,7 @@
 - [x] Authentication
 - - [x] for back-end
 - - [ ] for front-end (not sure about it)
+- [ ] Accessibility
 - [ ] Site search
 - [ ] Social sharing
 - [ ] User reactions
