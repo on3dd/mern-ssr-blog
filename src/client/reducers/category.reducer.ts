@@ -34,7 +34,7 @@ const categoryReducer = (
 
     case FETCHING_CATEGORY_SUCCESS:
       return Object.assign({}, state, {
-        data: action.payload ?? initialState.data,
+        data: action.payload,
         isFetching: false,
         hasError: false,
         errorMessage: null,

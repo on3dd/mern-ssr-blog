@@ -3,6 +3,8 @@ import { StatusCodes } from 'http-status-codes';
 
 import jwt from '@server/middlewares/jwt';
 
+import { POST_DOES_NOT_EXIST } from '@server/utils/errorMessages';
+
 import PostController from '@server/controllers/post';
 
 const router = Router();
@@ -24,12 +26,19 @@ router.get('/:id', async (req, res) => {
 
   const data = await controller.find(id);
 
-  res //
-    .status(StatusCodes.OK)
-    .send({
-      data,
-      error: null,
-    });
+  return data
+    ? res //
+        .status(StatusCodes.OK)
+        .send({
+          data,
+          error: null,
+        })
+    : res //
+        .status(StatusCodes.NOT_FOUND)
+        .send({
+          data,
+          error: POST_DOES_NOT_EXIST,
+        });
 });
 
 router.post('/', jwt, async (req, res) => {

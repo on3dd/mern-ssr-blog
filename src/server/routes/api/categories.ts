@@ -3,6 +3,8 @@ import { StatusCodes } from 'http-status-codes';
 
 import jwt from '@server/middlewares/jwt';
 
+import { CATEGORY_DOES_NOT_EXIST } from '@server/utils/errorMessages';
+
 import CategoryController from '@server/controllers/category';
 
 const router = Router();
@@ -24,12 +26,19 @@ router.get('/:id', async (req, res) => {
 
   const data = await controller.find(id);
 
-  res //
-    .status(StatusCodes.OK)
-    .send({
-      data,
-      error: null,
-    });
+  return data
+    ? res //
+        .status(StatusCodes.OK)
+        .send({
+          data,
+          error: null,
+        })
+    : res //
+        .status(StatusCodes.NOT_FOUND)
+        .send({
+          data,
+          error: CATEGORY_DOES_NOT_EXIST,
+        });
 });
 
 router.post('/', jwt, async (req, res) => {

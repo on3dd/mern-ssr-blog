@@ -30,7 +30,7 @@ const postsReducer = (
 
     case FETCHING_POST_SUCCESS:
       return Object.assign({}, state, {
-        data: action.payload ?? initialState.data,
+        data: action.payload,
         isFetching: false,
         hasError: false,
         errorMessage: null,
