@@ -1,3 +1,5 @@
+export const UNAUTHORIZED = 'Unauthorized!';
+
 export const USER_CREDENTIALS_ARE_INCOMPLETE =
   'User credentials are incomplete!';
 
