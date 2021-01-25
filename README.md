@@ -17,6 +17,7 @@
 - - [x] for back-end
 - - [ ] for front-end (not sure about it)
 - [ ] Accessibility
+- [ ] SEO
 - [ ] Site search
 - [ ] Social sharing
 - [ ] User reactions
