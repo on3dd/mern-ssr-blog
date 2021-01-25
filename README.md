@@ -16,7 +16,10 @@
 - [x] Authentication
 - - [x] for back-end
 - - [ ] for front-end (not sure about it)
-- [ ] Accessibility
+- [x] Accessibility
+- [ ] Database stuff
+- - [ ] seeds
+- - [ ] migrations
 - [ ] SEO
 - [ ] Site search
 - [ ] Social sharing
