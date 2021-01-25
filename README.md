@@ -28,12 +28,14 @@
 - [ ] Tests
 - - [ ] for back-end
 - - [ ] for front-end
-- [ ] Docker setup
+- [ ] Docker
 - [ ] Deployment
 
 ## Technology stack
 
 ### Global
+- Webpack 4
+- Babel 7.11.6
 - Typescript 3.7.5
 - Docker (not yet)
 
@@ -49,7 +51,7 @@
 - Node.js 14.15
 - Express 4.17
 
-### Database stuff
+### Database
 - MongoDB Cloud
 - Mongoose 5.10
 
@@ -62,17 +64,22 @@
 - Jest
 - React testing library
 
+### Editor related
+- Prettier
+- Editorconfig
+- ESLint (not yet)
+
 ## Project setup
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compiles and runs for development
 ```
 npm run run:dev
 ```
 
-### Compiles for production
+### Compiles and runs for production
 ```
 npm run run:prod
 ```
