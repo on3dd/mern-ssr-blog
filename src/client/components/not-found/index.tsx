@@ -7,17 +7,17 @@ import {
   PlaceholderText,
 } from '@components/base-ui/placeholder';
 
-const PostsEmpty: React.FC = () => (
-  <PlaceholderContainer className="posts-container">
-    <PlaceholderHeading className="posts-heading">
-      Oops..
+const NotFound: React.FC = () => (
+  <PlaceholderContainer className="not-found">
+    <PlaceholderHeading className="not-found__code">
+      404
     </PlaceholderHeading>
 
-    <PlaceholderText className="posts-text">
-      There are no posts here yet
+    <PlaceholderText className="not-found__text">
+      Sorry, this page is unavailable
       <Emoji value="😔" ariaLabel="pensive" />
     </PlaceholderText>
   </PlaceholderContainer>
 );
 
-export default PostsEmpty;
+export default NotFound;

@@ -1,37 +1,23 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import Emoji from '@components/base-ui/emoji';
-
-const PostContainer = styled.div`
-  width: 100%;
-  text-align: center;
-  text-transform: lowercase;
-`;
-
-const PostHeading = styled.h1`
-  display: block;
-  margin: 0;
-  font-size: 10rem;
-`;
-
-const PostText = styled.span`
-  display: block;
-  margin-top: 1rem;
-  font-size: 1.5rem;
-`;
+import {
+  PlaceholderContainer,
+  PlaceholderHeading,
+  PlaceholderText,
+} from '@components/base-ui/placeholder';
 
 const PostPlaceholder: React.FC = () => (
-  <PostContainer className="posts-container">
-    <PostHeading className="posts-heading">
+  <PlaceholderContainer className="posts-container">
+    <PlaceholderHeading className="posts-heading">
       Oops..
-    </PostHeading>
+    </PlaceholderHeading>
 
-    <PostText className="posts-text">
-      It looks like a post with this id doesn't exist
+    <PlaceholderText className="posts-text">
+      Looks like a post with this id doesn't exist
       <Emoji value="😨" />
-    </PostText>
-  </PostContainer>
+    </PlaceholderText>
+  </PlaceholderContainer>
 );
 
 export default PostPlaceholder;
