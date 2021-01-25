@@ -22,6 +22,12 @@ export const FormGroup = styled.div`
   }
 `;
 
+export const FormLabel = styled.label`
+  display: block;
+  margin-bottom: 0.5rem;
+  text-transform: lowercase;
+`;
+
 export const FormInput = styled(Input)`
   ${formControl}
 `;
