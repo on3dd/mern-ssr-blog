@@ -3,19 +3,9 @@
 
 ## Things to be done
 - [x] API
-- [x] Pages
-- - [x] home 
-- - [x] posts
-- - [x] posts/:id 
-- - [x] categories
-- - [x] categories/:id
-- - [x] sign-in
-- - [x] sign-up
+- [x] Layouts
 - [x] Routing
-- [x] ~~Admin panel~~
 - [x] Authentication
-- - [x] for back-end
-- - [ ] for front-end (not sure about it)
 - [x] Accessibility
 - [ ] Tests
 - - [ ] for back-end
