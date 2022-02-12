@@ -7,6 +7,7 @@ export default class Db {
 
   public connect(url: string) {
     return mongoose.connect(url, {
+      authSource: "admin",
       useCreateIndex: true,
       useUnifiedTopology: true,
       useNewUrlParser: true,

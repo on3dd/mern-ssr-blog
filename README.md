@@ -7,10 +7,9 @@
 - [x] Routing
 - [x] Authentication
 - [x] Accessibility
-- [ ] Tests
-- - [ ] for back-end
-- - [ ] for front-end
 - [ ] Docker
+- - [x] for development
+- - [ ] for production
 - [ ] Deployment
 
 ## Technology stack

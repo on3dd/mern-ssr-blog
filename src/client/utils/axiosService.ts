@@ -1,8 +1,10 @@
 import axios from 'axios';
-import { API_BASE_URL } from '@client/utils/constants';
+import url from 'url';
 
 const axiosService = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: url.format({
+    pathname: '/api',
+  }),
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',

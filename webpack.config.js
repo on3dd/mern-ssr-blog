@@ -20,9 +20,7 @@ const SHARED_RESOLVE = {
 };
 
 const SHARED_PLUGINS = [
-  new webpack.DefinePlugin({
-    'process.env': dotenv.parsed,
-  }),
+  new webpack.EnvironmentPlugin(Object.keys(dotenv.parsed || {})),
   new webpack.DefinePlugin({
     'process.env.REACT_APP_SC_ATTR': JSON.stringify(
       'data-styled-mern-ssr-blog',

@@ -5,8 +5,8 @@ import { logger } from '@server/shared/Logger';
 import AppError from '@server/shared/AppError';
 import ErrorHandler from '@server/shared/ErrorHandler';
 
-const url = String(process.env.DB_URL) || '';
-const port = Number(process.env.PORT) || 3000;
+const dbUrl = String(process.env.DATABASE_URL) || '';
+const appPort = Number(process.env.APP_PORT) || 8000;
 
 const db = Db.getInstance();
 const server = Server.getInstance();
@@ -15,10 +15,10 @@ const errorHandler = ErrorHandler.getInstance();
 
 const start = async () => {
   try {
-    await db.connect(url);
-    await server.start(port);
+    await db.connect(dbUrl);
+    await server.start(appPort);
 
-    logger.info(`Serving at http://localhost:${port} \n`);
+    logger.info(`Serving at http://localhost:${appPort} \n`);
   } catch (err) {
     throw new AppError('Error starting server', err, false);
   }
