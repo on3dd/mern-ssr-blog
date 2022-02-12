@@ -1,7 +1,9 @@
 import { Schema, model } from 'mongoose';
+import { Post } from '@server';
+
 import autoincrement from '@server/utils/autoincrement';
 
-const schema = new Schema({
+const schema = new Schema<Post>({
   id: {
     type: Number,
     unique: true,
@@ -30,6 +32,6 @@ const schema = new Schema({
   },
 });
 
-schema.pre('save', autoincrement);
+schema.pre<Post>('save', autoincrement);
 
-export default model('Post', schema);
+export default model<Post>('Post', schema);

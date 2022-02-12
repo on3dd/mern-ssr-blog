@@ -1,55 +1,17 @@
 import { Router } from 'express';
-import { StatusCodes } from 'http-status-codes';
 
 import jwt from '@server/middlewares/jwt';
 
-import { POST_DOES_NOT_EXIST } from '@server/utils/errorMessages';
-
-import PostController from '@server/controllers/post';
+import { PostsService } from '@server/services';
+import { PostsController } from '@server/controllers/PostsController';
 
 const router = Router();
-const controller = new PostController();
 
-router.get('/', async (req, res) => {
-  const data = await controller.all();
+const postsService = new PostsService();
+const postsController = new PostsController(postsService);
 
-  res //
-    .status(StatusCodes.OK)
-    .send({
-      data,
-      error: null,
-    });
-});
-
-router.get('/:id', async (req, res) => {
-  const { id } = req.params;
-
-  const data = await controller.find(id);
-
-  return data
-    ? res //
-        .status(StatusCodes.OK)
-        .send({
-          data,
-          error: null,
-        })
-    : res //
-        .status(StatusCodes.NOT_FOUND)
-        .send({
-          data,
-          error: POST_DOES_NOT_EXIST,
-        });
-});
-
-router.post('/', jwt, async (req, res) => {
-  const data = await controller.create(req.body);
-
-  res //
-    .status(StatusCodes.OK)
-    .send({
-      data,
-      error: null,
-    });
-});
+router.get('/', postsController.all.bind(postsController));
+router.get('/:id', postsController.find.bind(postsController));
+router.post('/', jwt, postsController.create.bind(postsController));
 
 export default router;

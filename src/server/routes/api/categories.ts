@@ -1,55 +1,17 @@
 import { Router } from 'express';
-import { StatusCodes } from 'http-status-codes';
 
 import jwt from '@server/middlewares/jwt';
 
-import { CATEGORY_DOES_NOT_EXIST } from '@server/utils/errorMessages';
-
-import CategoryController from '@server/controllers/category';
+import { CategoriesService } from '@server/services';
+import { CategoriesController } from '@server/controllers';
 
 const router = Router();
-const controller = new CategoryController();
 
-router.get('/', async (req, res) => {
-  const categories = await controller.all();
+const categoriesService = new CategoriesService();
+const categoriesController = new CategoriesController(categoriesService);
 
-  res //
-    .status(StatusCodes.OK)
-    .send({
-      data: categories,
-      error: null,
-    });
-});
-
-router.get('/:id', async (req, res) => {
-  const { id } = req.params;
-
-  const data = await controller.find(id);
-
-  return data
-    ? res //
-        .status(StatusCodes.OK)
-        .send({
-          data,
-          error: null,
-        })
-    : res //
-        .status(StatusCodes.NOT_FOUND)
-        .send({
-          data,
-          error: CATEGORY_DOES_NOT_EXIST,
-        });
-});
-
-router.post('/', jwt, async (req, res) => {
-  const Category = await controller.create(req.body);
-
-  res //
-    .status(StatusCodes.OK)
-    .send({
-      data: Category,
-      error: null,
-    });
-});
+router.get('/', categoriesController.all.bind(categoriesController));
+router.get('/:id', categoriesController.find.bind(categoriesController));
+router.post('/', jwt, categoriesController.create.bind(categoriesController));
 
 export default router;

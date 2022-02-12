@@ -1,16 +1,22 @@
-import { Controller } from '@server';
-import Category from '@server/models/category';
+import {
+  Category as ICategory,
+  CrudService,
+} from '@server';
 
 import {
   POST_FIELDS,
   CATEGORY_FIELDS,
 } from '@server/utils/constants';
 
+import Category from '@server/models/category';
+
 type CategoryDraft = {
   name: string;
 };
 
-class CategoryController implements Controller {
+export class CategoriesService
+  implements CrudService<ICategory>
+{
   public async all() {
     return Category.find({}, CATEGORY_FIELDS).populate(
       'posts',
@@ -19,7 +25,7 @@ class CategoryController implements Controller {
   }
 
   public async find(id: string) {
-    return await Category.findOne(
+    return Category.findOne(
       { id },
       CATEGORY_FIELDS,
     ).populate('posts', POST_FIELDS);
@@ -35,5 +41,3 @@ class CategoryController implements Controller {
     return category;
   }
 }
-
-export default CategoryController;

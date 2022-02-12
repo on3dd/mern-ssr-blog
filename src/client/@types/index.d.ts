@@ -19,6 +19,7 @@ declare module '@client' {
     err: string;
   }
 
+  // TODO: move it to src/shared/types
   export interface Post {
     id: number;
     title: string;
@@ -28,6 +29,7 @@ declare module '@client' {
     category: Category;
   }
 
+  // TODO: move it to src/shared/types
   export interface Category {
     id: number;
     name: string;
@@ -64,6 +66,7 @@ declare module '@client' {
   export type PostResponse = ApiResponse<Post | null>;
   export type PostsResponse = ApiResponse<Post[]>;
 
-  export type CategoryResponse = ApiResponse<Category | null>;
+  export type CategoryResponse =
+    ApiResponse<Category | null>;
   export type CategoriesResponse = ApiResponse<Category[]>;
 }

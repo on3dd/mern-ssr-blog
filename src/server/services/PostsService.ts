@@ -1,4 +1,4 @@
-import { Controller } from '@server';
+import { CrudService, Post as IPost } from '@server';
 import Post from '@server/models/post';
 import Category from '@server/models/category';
 
@@ -15,7 +15,7 @@ type PostDraft = {
   category: string;
 };
 
-class PostController implements Controller {
+export class PostsService implements CrudService<IPost> {
   public async all() {
     return Post.find({}, POST_FIELDS)
       .sort({ id: 'desc' })
@@ -23,7 +23,7 @@ class PostController implements Controller {
   }
 
   public async find(id: string) {
-    return await Post.findOne({ id }, POST_FIELDS).populate(
+    return Post.findOne({ id }, POST_FIELDS).populate(
       'category',
       CATEGORY_FIELDS,
     );
@@ -52,5 +52,3 @@ class PostController implements Controller {
     return post.populate('category', CATEGORY_FIELDS);
   }
 }
-
-export default PostController;

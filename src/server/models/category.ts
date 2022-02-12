@@ -1,7 +1,9 @@
 import { Schema, model } from 'mongoose';
+import { Category } from '@server';
+
 import autoincrement from '@server/utils/autoincrement';
 
-const schema = new Schema({
+const schema = new Schema<Category>({
   id: {
     type: Number,
     unique: true,
@@ -24,6 +26,6 @@ const schema = new Schema({
   ],
 });
 
-schema.pre('save', autoincrement);
+schema.pre<Category>('save', autoincrement);
 
-export default model('Category', schema);
+export default model<Category>('Category', schema);

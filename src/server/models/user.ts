@@ -5,7 +5,7 @@ import { User } from '@server';
 
 import autoincrement from '@server/utils/autoincrement';
 
-const schema = new Schema({
+const schema = new Schema<User>({
   id: {
     type: Number,
     unique: true,
