@@ -12,7 +12,7 @@ type AuthDraft = {
 
 class AuthController implements IAuthController {
   public async authenticate({ username }: AuthDraft) {
-    return await User.findOne({ username });
+    return User.findOne({ username });
   }
 }
 

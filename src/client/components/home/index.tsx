@@ -46,6 +46,7 @@ const Home: React.FC = () => {
   return (
     <HomeDiv className="home">
       <ReactPlaceholder
+        delay={1000}
         ready={ready}
         showLoadingAnimation={true}
         customPlaceholder={<PostsPlaceholder />}

@@ -43,6 +43,7 @@ const Categories: React.FC = () => {
   return (
     <CategoriesDiv className="categories">
       <ReactPlaceholder
+        delay={1000}
         ready={ready}
         showLoadingAnimation={true}
         customPlaceholder={<CategoriesPlaceholder />}

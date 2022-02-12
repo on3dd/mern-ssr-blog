@@ -8,6 +8,7 @@ services:
     ports:
       - "8000:${APP_PORT}"
     environment:
+      NODE_ENV: development
       APP_PORT: ${APP_PORT}
       JWT_SECRET: ${JWT_SECRET}
       JWT_EXPIRATION_MS: ${JWT_EXPIRATION_MS}

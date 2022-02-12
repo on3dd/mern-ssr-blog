@@ -20,7 +20,9 @@ const SHARED_RESOLVE = {
 };
 
 const SHARED_PLUGINS = [
-  new webpack.EnvironmentPlugin(Object.keys(dotenv.parsed || {})),
+  new webpack.EnvironmentPlugin(
+    Object.keys(dotenv.parsed || {}),
+  ),
   new webpack.DefinePlugin({
     'process.env.REACT_APP_SC_ATTR': JSON.stringify(
       'data-styled-mern-ssr-blog',
@@ -28,9 +30,8 @@ const SHARED_PLUGINS = [
     'process.env.SC_ATTR': JSON.stringify(
       'data-styled-mern-ssr-blog',
     ),
-    'process.env.REACT_APP_SC_DISABLE_SPEEDY': JSON.stringify(
-      true,
-    ),
+    'process.env.REACT_APP_SC_DISABLE_SPEEDY':
+      JSON.stringify(true),
   }),
 ].filter(Boolean);
 
@@ -75,8 +76,9 @@ module.exports = [
     plugins: SHARED_PLUGINS,
     module: SHARED_MODULE,
     devServer: {
+      hot: true,
       compress: true,
-      port: 3000,
+      port: process.env.APP_PORT || 8000,
     },
   },
   {

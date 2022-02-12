@@ -46,6 +46,7 @@ const Posts: React.FC = () => {
   return (
     <PostsDiv className="posts">
       <ReactPlaceholder
+        delay={1000}
         ready={ready}
         showLoadingAnimation={true}
         customPlaceholder={<PostsPlaceholder />}
